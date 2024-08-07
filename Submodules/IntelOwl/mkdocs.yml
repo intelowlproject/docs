@@ -1,0 +1,128 @@
+site_name: IntelOwl Documentation
+site_description: "A documentation for IntelOwl."
+site_author: "Matteo Lodi"
+
+copyright: |
+  &copy; Matteo Lodi
+
+repo_name: intelowlproject/IntelOwl
+repo_url: https://github.com/intelowlproject/IntelOwl
+
+nav:
+  - IntelOwl:
+      - Introduction: "introduction.md"
+      - Installation: "installation.md"
+      - Advanced Configuration: "advanced_configuration.md"
+      - Usage: "usage.md"
+      - Advanced Usage: "advanced_usage.md"
+      - Contribute: "contribute.md"
+      - API docs: "api_docs.md"
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - monorepo
+  - mkdocstrings
+theme:
+  name: material
+  # custom_dir: overrides
+  features:
+    - announce.dismiss
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - search.highlight
+    - search.share
+    - search.suggest
+    # - toc.follow
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  shortcuts:
+    help: 191 # ?
+    next: 78 # n
+    previous: 80 # p
+    search: 83 # s
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: "material/library"
+    repo: "material/library"
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/flame-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+      data: octicons/database-16
+      squirell: octicons/squirrel-16
+      goal: octicons/goal-16
+      rocket: octicons/rocket-16
+# markdown_extensions:
+#   - abbr
+#   - admonition
+#   - attr_list
+#   - def_list
+#   - footnotes
+#   - md_in_html
+#   - markdown_inline_graphviz
+#   - mdx_truly_sane_lists
+#   - plantuml_markdow  n
+#   - tables
+#   - pymdownx.critic
+#   - pymdownx.caret
+#   - pymdownx.details
+#   - pymdownx.extra
+#   - pymdownx.inlinehilite
+#   - pymdownx.keys
+#   - pymdownx.mark
+#   - pymdownx.magiclink
+#   - pymdownx.smartsymbols
+#   - pymdownx.snippets
+#   - pymdownx.tilde
+#   - toc:
+#       permalink: true
+#   - pymdownx.arithmatex:
+#       generic: true
+#   - pymdownx.betterem:
+#       smart_enable: all
+#   - pymdownx.emoji:
+#       emoji_index: !!python/name:materialx.emoji.twemoji
+#       emoji_generator: !!python/name:materialx.emoji.to_svg
+#       options:
+#         custom_icons:
+#           - overrides/.icons
+#   - pymdownx.highlight:
+#       anchor_linenums: true
+#       line_spans: __span
+#       pygments_lang_class: true
+#   - pymdownx.tabbed:
+#       alternate_style: true
+#   - pymdownx.tasklist:
+#       custom_checkbox: true
