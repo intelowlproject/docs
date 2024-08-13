@@ -1,1 +1,1 @@
-<swagger-ui src="../Submodules/IntelOwl/old-docs/source/schema.yml"/>
+<swagger-ui src="../Submodules/IntelOwl/docs/source/schema.yml"/>

@@ -1,12 +1,12 @@
 [submodule "docs/Submodules/IntelOwl"]
 	path = docs/Submodules/IntelOwl
-	url = https://github.com/aryan-bhokare/IntelOwl.git
+	url = https://github.com/intelowlproject/IntelOwl.git
 [submodule "docs/Submodules/GreedyBear"]
 	path = docs/Submodules/GreedyBear
-	url = https://github.com/aryan-bhokare/GreedyBear.git
+	url = https://github.com/intelowlproject/GreedyBear.git
 [submodule "docs/Submodules/pyintelowl"]
 	path = docs/Submodules/pyintelowl
-	url = https://github.com/aryan-bhokare/pyintelowl.git
+	url = https://github.com/intelowlproject/pyintelowl.git
 [submodule "docs/Submodules/GoIntelOwl"]
 	path = docs/Submodules/GoIntelOwl
-	url = https://github.com/aryan-bhokare/go-intelowl.git
+	url = https://github.com/intelowlproject/go-intelowl.git
