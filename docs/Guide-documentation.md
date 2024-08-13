@@ -34,6 +34,15 @@ To install all the necessary Python packages listed in requirements.txt, run:
 pip install -r requirements.txt
 ```
 
+Please run these commands to update and fetch the local Submodules.
+
+```
+git submodule foreach --recursive 'git fetch --all'
+git submodule update --init --remote --recursive --depth 1
+git submodule sync --recursive
+git submodule update --remote --recursive
+```
+
 ## 4. Serve the Documentation Locally
 
 Start a local development server to preview the documentation in your web browser. The server will automatically reload whenever you make changes to the documentation files.

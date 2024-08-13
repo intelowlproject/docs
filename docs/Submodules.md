@@ -11,11 +11,22 @@ There are four submodules under the IntelOwlProject:
 3. pyintelowl
 4. GoIntelOwl
 
-These submodules are updated daily via a cron job to ensure the documentation remains current.
+These submodules are updated whenever we push new changes to our documentation site, here's the [Github Action](https://github.com/intelowlproject/docs/blob/main/.github/workflows/deploy_and_update_submodules.yml) file.
 
 ## Making Changes to Documentation
 
-When you make changes to the IntelOwl codebase, it typically takes a day for the submodules to update automatically. However, if you need to test changes immediately, you can do the following:
+When you make changes to the IntelOwl codebase, it typically does not update automatically in the github repository of documentation site.
+
+While development if you want to update the submodules to latest changes you can do the following:
+
+```
+git submodule foreach --recursive 'git fetch --all'
+git submodule update --init --remote --recursive --depth 1
+git submodule sync --recursive
+git submodule update --remote --recursive
+```
+
+However, if you need to test changes immediately, you can do the following:
 
 ## Add Custom Submodules for Testing:
 
@@ -29,4 +40,4 @@ After modifying `.gitmodules`, run the following command to fetch the latest cha
 git submodule update --remote --merge
 ```
 
-This ensures that your documentation reflects the most recent code changes without waiting for the daily update.
+This ensures that your documentation reflects the most recent code changes.
