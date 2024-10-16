@@ -213,6 +213,13 @@ Some analyzers could require a special configuration:
     - The `repositories` values is what will be used to actually run the analysis: if you have added private repositories, remember to add the url in `repositories` too!
   - You can add local rules inside the directory at `/opt/deploy/files_required/yara/YOUR_USERNAME/custom_rules/`. Please remember that these rules are not synced in a cluster deploy: for this reason is advised to upload them on GitHub and use the `repositories` or `private_repositories` attributes.
 
+- `NERD` :
+  - The `nerd_analysis` parameter allows you to customize the level of detail in the analysis response. Available options are:
+    - `basic` (default): Provides a simplified response from the database.
+    - `full`: Includes all available information about the IP from the database.
+    - `fmp`: Returns only the FMP (Future Misbehavior Probability) score.
+    - `rep`: Returns only the reputation score of the IP.
+    
 ## Notifications
 
 Since v4, IntelOwl integrated the notification system from the `certego_saas` package, allowing the admins to create notification that every user will be able to see.
