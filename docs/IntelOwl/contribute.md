@@ -424,6 +424,107 @@ You can use the django management command `dumpplugin` to automatically create t
 
 Example: `docker exec -ti intelowl_uwsgi python3 manage.py dumpplugin PlaybookConfig <new_analyzer_name>`
 
+## DataModel
+In version XXX of IntelOwl, a new plugin has been added: the `DataModel`.
+Its main functionality is to model an `Analyzer` result to a set of prearranged keys, allowing users to easily search, evaluate and use the analyzer result.
+The author of an `AnalyzerConfig` is able to decide mapping between each field of the `AnalyzerReport` and the corresponding in the `DataModel`.
+### AnalyzerConfig.mapping_data_model
+Each `AnalyzerConfig` has now a new field, called `mapping_data_model`:
+this is a dictionary of which the keys represent the path from which retrieve the value in the `AnalyzerReport`,
+and the value the path of the `DataModel`. If you precede the key with the symbol `$` it means that is a constant.
+Example:
+```python3
+report= {
+   "data": {
+      "urls": [
+         {"url": "intelowl.com"},
+         {"url": "https://intelowl.com"}
+      ],
+      "country": "IT",
+      "tags": [
+            "social_engineering",
+            "random_things"
+        ]
+   }
+}
+mapping_data_model={
+   "data.urls.url": "external_urls", # unmarshaling of the array is done automatically
+   "data.country": "country_code",
+   "$MALICIOUS": "evaluation", # the $ specify that this is a constant
+   "data.tags.0": "tags" # we just want the first tag
+}
+```
+With this `AnalyzerReport` and its mapping, we will create a DataModel with this conditions
+```python3
+# the values are lowercase because everything inside the DataModel is converted to lowercase 
+assert external_urls == ["intelowl.com", "https://intelowl.com"]
+assert country_code == "it"
+assert evaluation == "malicious"
+```
+
+If you specify a path that is not present in the `DataModel`, an error will be added to the job.
+If you specify a path that is not present in the `AnalyzerConfig`, a warning will be added to the job.
+### Analyzer._do_create_data_model
+This is a function that every `Analyzer` can override: this functions returns a boolean and, if `False`, the datamodel will not be created.
+This can be used if the `Analyzers` can succeed without retrieving useful results.
+Let's use as an example `UrlHaus`: if the domain analyzed is not present in its database, the result will be
+```python3
+{"query_status": "no_results"}
+```
+meaning that we can provide use the following code to consider only _real_ results:
+```python3
+def _do_create_data_model(self) -> bool:
+  return (
+      super()._do_create_data_model()
+      and self.report.report.get("query_status", "no_results") != "no_results"
+  )
+```
+
+### Analyzer._create_data_model_mtm
+This is a function that every `Analyzer` can override: this functions returns a dictionary where the values are the objects that will be added in a many to many relationship in the datamodel, and the keys the names of the fields.
+Let's use the `Yara` Analyzer as an example.
+
+```python3
+def _create_data_model_mtm(self):
+  from api_app.data_model_manager.models import Signature
+
+  signatures = []
+  for signature in self.report.report:
+      url = signature.pop("rule_url", None)
+      sign = Signature.objects.create(
+          provider=Signature.PROVIDERS.YARA.value,
+          signature=signature,
+          url=url,
+          score=1,
+      )
+      signatures.append(sign)
+
+  return {"signatures": signatures}
+
+```
+Here we are creating many `Signature` objects (using the signatures that matched the sample analyzed) and adding them to the `signatures` field.
+
+### Analyzer._update_data_model
+This is the last function that you can override in the `Analyzer` class: this functions returns nothing, and is called after every other check.
+This mean that you can use it for more articulate data transformation to parse the `AnalyzerReport` into a `DataModel`.
+Again, let's use an example, this time with the analyzer `AbuseIPDB`.
+```python3
+def _update_data_model(self, data_model) -> None:
+  super()._update_data_model(data_model)
+  if self.report.report.get("totalReports", 0):
+      self.report: AnalyzerReport
+      if self.report.report["isWhitelisted"]:
+          evaluation = (
+              self.report.data_model_class.EVALUATIONS.FALSE_POSITIVE.value
+          )
+      else:
+          evaluation = self.report.data_model_class.EVALUATIONS.MALICIOUS.value
+      data_model.evaluation = evaluation
+```
+We are setting the field `evaluation` depending on some logic that we constructed, using the data inside the report.
+If the IP has some report but is whitelisted then we set the `evaluation` to `false positive`, otherwise to `malicious`.
+
+
 ## How to modify a plugin
 
 If the changes that you have to make should stay local, you can just change the configuration inside the `Django admin` page.
