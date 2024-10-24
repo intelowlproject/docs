@@ -126,6 +126,16 @@ table, th, td {
     <td><code>PhoneInfoga_scan</code></td>
     <td><a href="https://github.com/sundowndev/phoneinfoga/tree/master">PhoneInfoga</a> is one of the most advanced tools to scan international phone numbers. It allows you to first gather basic information such as country, area, carrier and line type, then use various techniques to try to find the VoIP provider or identify the owner. It works with a collection of scanners that must be configured in order for the tool to be effective. PhoneInfoga doesn't automate everything, it's just there to help investigating on phone numbers. <a href="#phoneinfoga">here</a></td>
   </tr>
+  <tr>
+    <td>Phishing Analyzers</td>
+    <td>
+      <ul>
+        <li><code>Phishing_Extractor</code></li>
+        <li><code>Phishing_Form_Compiler</code></li>
+      </ul>
+    </td>
+    <td>This framework tries to render a potential phishing page and extract useful information from it. Also, if the page contains a form tries to submit it using fake data to extract IOCs and check if the page is real phishing.</td>
+  </tr>
 </table>
 
 To enable all the optional analyzers you can add the option `--all_analyzers` when starting the project. Example:
@@ -188,6 +198,22 @@ the [recipe](https://github.com/gchq/CyberChef-server#example-one-operation-non-
 use.
 
 Additionally, you can also (optionally) set the `output_type` argument.
+
+#### Phishing Analyzers
+The framework aims to be extandable and provides two different playbooks connected through a pivot.
+The first playbook's job is to extract useful information from the web page rendered with Selenium-based browser.
+The second playbook is called `PhishingAnalysis` and it's main purposes are to extract useful insight on the page itself
+and tring to submit forms with fake data to extract other IOCs.
+
+To find element in page it leverages XPath syntax. These selector are customizable via plugin's config page.
+The parameter `xpath_form_selector` controls how the form is retrieved from page and `xpath_js_selector` is used to search
+for JavaScript inside the page.
+
+A mapping is used in order to compile the page with fake data. This is due to the fact that most input tag of type "text"
+don't have a specific role in page, so there must be some degree of approximation.
+This behaviour is controlled through `*-mapping` parameters. They're a list that must contain the input tag's name to
+compile with fake data.
+
 
 ##### Pre-defined recipes
 
