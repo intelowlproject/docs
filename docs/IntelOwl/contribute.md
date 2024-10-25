@@ -332,7 +332,7 @@ To do so, some utility classes have been made:
   <tr>
     <td class="tg-7n4c">VisualizablePage</td>
     <td class="tg-0pky">A single page of the final report, made of different <span style="font-weight:bold">levels</span>. Each page added is represented as a new tab in frontend.</td>
-    <td class="tg-c3ow"><img alt="Visualizable Page example" src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/visualizablePage_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Page example" src="./static/visualizablePage_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableLevel</td>
@@ -341,37 +341,37 @@ To do so, some utility classes have been made:
       <span class="tg-zh46">VisualizableHorizontalList</span>.
       The dimension of the level can be customized with the size parameter (1 is the biggest, 6 is the smallest). 
     </td>
-    <td class="tg-c3ow"><img alt="Visualizable Level example" src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/visualizableLevel_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Level example" src="./static/visualizableLevel_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableHorizontalList</td>
     <td class="tg-0pky">An horizontal list of visualizable elements. In the example there is an horizontal list of vertical lists.</td>
-    <td class="tg-c3ow"><img alt="Visualizable Horizontal List Example" src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/visualizableHlist_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Horizontal List Example" src="./static/visualizableHlist_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableVerticalList</td>
     <td class="tg-0pky">A vertical list made of a name, a title, and the list of elements.</td>
-    <td class="tg-c3ow"><img alt="Visualizable Vertical List Example" src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/visualizableVlist_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Vertical List Example" src="./static/visualizableVlist_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableTable</td>
     <td class="tg-0pky">A table of visualizable elements. In the example there is a table of base and vertical lists.</td>
-    <td class="tg-c3ow"><img alt="Visualizable Table Example" src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/visualizableTable_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Table Example" src="./static/visualizableTable_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableBool</td>
     <td class="tg-0pky">The representation of a boolean value. It can be enabled or disabled with colors.</td>
-    <td class="tg-c3ow"><img alt="Visualizable Bool example" src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/visualizableBool_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Bool example" src="./static/visualizableBool_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableTitle</td>
     <td class="tg-0pky">The representation of a tuple, composed of a title and a value.</td>
-    <td class="tg-c3ow"><img alt="Visualizable Title example" src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/visualizableTitle_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Title example" src="./static/visualizableTitle_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableBase</td>
     <td class="tg-0pky">The representation of a base string. Can have a link attached to it and even an icon. The background color can be changed.</td>
-    <td class="tg-0pky">The title above is composed by two `VisualizableBase`</td>
+    <td class="tg-0pky">The title above is composed by two <code>VisualizableBase</code></td>
   </tr>
 </tbody>
 </table>
