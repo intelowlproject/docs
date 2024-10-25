@@ -134,7 +134,7 @@ table, th, td {
         <li><code>Phishing_Form_Compiler</code></li>
       </ul>
     </td>
-    <td>This framework tries to render a potential phishing page and extract useful information from it. Also, if the page contains a form tries to submit it using fake data to extract IOCs and check if the page is real phishing.</td>
+    <td>This framework tries to render a potential phishing page and extract useful information from it. Also, if the page contains a form, it tries to submit the form using fake data. The goal is to extract IOCs and check whether the page is real phishing or not.</td>
   </tr>
 </table>
 
@@ -181,7 +181,7 @@ pyintelowl_client.send_file_analysis_request(..., runtime_configuration=runtime_
 
 #### PhoneInfoga
 
-PhoneInfoga provides several [Scanners](https://sundowndev.github.io/phoneinfoga/getting-started/scanners/) to extract as much information as possible from a given phone number. Those scanners may require authentication, so they're automatically skipped when no authentication credentials are found.
+PhoneInfoga provides several [Scanners](https://sundowndev.github.io/phoneinfoga/getting-started/scanners/) to extract as much information as possible from a given phone number. Those scanners may require authentication, so they are automatically skipped when no authentication credentials are found.
 
 By default the scanner used is `local`.
 Go through this [guide](https://sundowndev.github.io/phoneinfoga/getting-started/scanners/) to initiate other required API keys related to this analyzer.
@@ -201,17 +201,17 @@ Additionally, you can also (optionally) set the `output_type` argument.
 
 #### Phishing Analyzers
 The framework aims to be extandable and provides two different playbooks connected through a pivot.
-The first playbook's job is to extract useful information from the web page rendered with Selenium-based browser.
-The second playbook is called `PhishingAnalysis` and it's main purposes are to extract useful insight on the page itself
-and tring to submit forms with fake data to extract other IOCs.
+The first playbook, named `PhishingExtractor`, is in charge of extracting useful information from the web page rendered with Selenium-based browser.
+The second playbook is called `PhishingAnalysis` and its main purposes are to extract useful insights on the page itself
+and to try to submit forms with fake data to extract other IOCs.
 
-To find element in page it leverages XPath syntax. These selector are customizable via plugin's config page.
-The parameter `xpath_form_selector` controls how the form is retrieved from page and `xpath_js_selector` is used to search
+[XPath](https://www.w3schools.com/xml/xpath_intro.asp) syntax is used to find elements in the page. These selectors are customizable via the plugin's config page.
+The parameter `xpath_form_selector` controls how the form is retrieved from the page and `xpath_js_selector` is used to search
 for JavaScript inside the page.
 
-A mapping is used in order to compile the page with fake data. This is due to the fact that most input tag of type "text"
-don't have a specific role in page, so there must be some degree of approximation.
-This behaviour is controlled through `*-mapping` parameters. They're a list that must contain the input tag's name to
+A mapping is used in order to compile the page with fake data. This is due to the fact that most input tags of type "text"
+do not have a specific role in the page, so there must be some degree of approximation.
+This behaviour is controlled through `*-mapping` parameters. They are a list that must contain the input tag's name to
 compile with fake data.
 
 
