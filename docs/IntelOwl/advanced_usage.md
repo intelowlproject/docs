@@ -199,6 +199,10 @@ use.
 
 Additionally, you can also (optionally) set the `output_type` argument.
 
+##### Pre-defined recipes
+
+- "to decimal": `[{"op": "To Decimal", "args": ["Space", False]}]`
+
 #### Phishing Analyzers
 The framework aims to be extandable and provides two different playbooks connected through a pivot.
 The first playbook, named `PhishingExtractor`, is in charge of extracting useful information from the web page rendered with Selenium-based browser.
@@ -214,10 +218,8 @@ do not have a specific role in the page, so there must be some degree of approxi
 This behaviour is controlled through `*-mapping` parameters. They are a list that must contain the input tag's name to
 compile with fake data.
 
-
-##### Pre-defined recipes
-
-- "to decimal": `[{"op": "To Decimal", "args": ["Space", False]}]`
+Here is an example of what a phishing investigation looks like started from `PhishingExtractor` playbook: 
+![img.png](./static/phishing_analysis.png)
 
 ## Analyzers with special configuration
 
