@@ -60,6 +60,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 ###### Internal tools
 
 - `APKiD`: [APKiD](https://github.com/rednaga/APKiD) identifies many compilers, packers, obfuscators, and other weird stuff from an APK or DEX file.
+- `Androguard` : [Androguard](https://github.com/androguard/androguard) is a python tool which can be leveraged to get useful information from the APK, for example, permissions, activities, services, 3rd party permissions, etc.
 - `BoxJS_Scan_Javascript`: [Box-JS](https://github.com/CapacitorSet/box-js) is a tool for studying JavaScript malware.
 - `Capa_Info`: [Capa](https://github.com/mandiant/capa) detects capabilities in executable files
 - `Capa_Info_Shellcode`: [Capa](https://github.com/mandiant/capa) detects capabilities in shellcode
