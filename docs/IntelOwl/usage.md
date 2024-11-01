@@ -173,6 +173,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `DNS0_EU`: Retrieve current domain resolution with DNS0.eu DoH (DNS over HTTPS)
 - `DNS0_EU_Malicious_Detector`: Check if a domain or an url is marked as malicious in DNS0.eu database ([Zero](https://www.dns0.eu/zero) service)
 - `DocGuard_Get`: check if an hash was analyzed on DocGuard. [DocGuard](https://www.docguard.io)
+- `DShield`: Service Provided by [DShield](https://www.dshield.org/) to get useful information about IP addresses
 - `Feodo_Tracker`: [Feodo Tracker](https://feodotracker.abuse.ch/) offers various blocklists, helping network owners to protect their users from Dridex and Emotet/Heodo.
 - `FileScan_Search`: Finds reports and uploaded files by various tokens, like hash, filename, verdict, IOCs etc via [FileScan.io API](https://www.filescan.io/api/docs).
 - `FireHol_IPList`: check if an IP is in [FireHol's IPList](https://iplists.firehol.org/)
@@ -208,6 +209,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Mnemonic_PassiveDNS` : Look up a domain or IP using the [Mnemonic PassiveDNS public API](https://docs.mnemonic.no/display/public/API/Passive+DNS+Overview).
 - `MWDB_Get`: [mwdblib](https://mwdb.readthedocs.io/en/latest/) Retrieve malware file analysis by hash from repository maintained by CERT Polska MWDB.
 - `Netlas`: search an IP against [Netlas](https://netlas.io/api)
+- `NERD_analyzer`: scan an IP address against [NERD](https://nerd.cesnet.cz/) database
 - `ONYPHE`: search an observable in [ONYPHE](https://www.onyphe.io/)
 - `OpenCTI`: scan an observable on an [OpenCTI](https://github.com/OpenCTI-Platform/opencti) instance
 - `OTXQuery`: scan an observable on [Alienvault OTX](https://otx.alienvault.com/)
