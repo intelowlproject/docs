@@ -93,7 +93,6 @@ IntelOwl is composed of various different technologies, namely:
 - Uwsgi: Application Server
 - Daphne: Asgi Server for WebSockets
 - Elastic Search (_optional_): Auto-sync indexing of analysis' results.
-- Kibana (_optional_): GUI for Elastic Search. We provide a saved configuration with dashboards and visualizations.
 - Flower (_optional_): Celery Management Web Interface
 
 All these components are managed via `docker compose`.

@@ -4,34 +4,33 @@ This page includes details about some advanced features that Intel Owl provides 
 
 ## ElasticSearch
 
+_Available for version > 6.1.0_
+
 Right now only ElasticSearch v8 is supported.
 
-### DSL
-
-IntelOwl makes use of [django-elasticsearch-dsl](https://django-elasticsearch-dsl.readthedocs.io/en/latest/about.html) to index Job results into elasticsearch. The `save` and `delete` operations are auto-synced so you always have the latest data in ES.
-
+### Configuration
 In the `env_file_app_template`, you'd see various elasticsearch related environment variables. The user should spin their own Elastic Search instance and configure these variables.
 
-#### Kibana
-
-Intel Owl provides a Kibana's "Saved Object" configuration (with example dashboard and visualizations). It can be downloaded from [here](https://github.com/intelowlproject/IntelOwl/blob/develop/configuration/Kibana-Saved-Conf.ndjson) and can be imported into Kibana by going to the "Saved Objects" panel (http://localhost:5601/app/management/kibana/objects).
+* ELASTIC_HOST: URL of the Elasticsearch instance.
+* ELASTIC_PASSWORD: (optional) Password of the "elastic" user. This can be empty in case of external services with credentials in the url.
+* ELASTICSEARCH_BI_ENABLED: Use the Business Intelligence feature.
+* ELASTICSEARCH_BI_HOST: URL of the Elasticsearch instance for the BI.
+* ELASTICSEARCH_BI_INDEX: Base path of the BI index.
 
 #### Example Configuration
 
-1. Setup [Elastic Search and Kibana](https://hub.docker.com/r/nshou/elasticsearch-kibana/) and say it is running in a docker service with name `elasticsearch` on port `9200` which is exposed to the shared docker network.
-   (Alternatively, you can spin up a local Elastic Search instance, by appending `--elastic` to the `./start` command. Note that the local Elastic Search instance consumes large amount of memory, and hence having >=16GB is recommended.))
-2. In the `env_file_app`, we set `ELASTICSEARCH_DSL_ENABLED` to `True` and `ELASTICSEARCH_DSL_HOST` to `elasticsearch:9200`.
-3. Now start the docker containers and execute
+* Use external instance: In this case it's enough to set the `ELASTIC_HOST` with the URL of the external instance.
+* Use docker instance: With the `--elastic` option you can run a container based Elasticsearch instance. In this case the `ELASTIC_HOST` must be set to https://elasticsearch:9200. Configure also `ELASTIC_PASSWORD`.
 
-```bash
-docker exec -ti intelowl_uwsgi python manage.py search_index --rebuild
-```
+### Data Search
 
-This will build and populate all existing job objects into the `jobs` index.
+Thanks to [django-elasticsearch-dsl](https://django-elasticsearch-dsl.readthedocs.io/en/latest/about.html) Job results are indexed into elasticsearch. The `save` and `delete` operations are auto-synced so you always have the latest data in ES.
+
+With [elasticsearch-py](https://elasticsearch-py.readthedocs.io/en/8.x/index.html) the AnalyzerReport, ConnectorReport and PivotReport objects are indexed into elasticsearch. In this way is possible to search data inside the report fields and many other via the UI. Each time IntelOwl is restarted the index template is updated and the every 5 minutes a task insert the reports in ElasticSearch. 
 
 ### Business Intelligence
 
-IntelOwl makes use of [elasticsearch-py](https://elasticsearch-py.readthedocs.io/en/8.x/index.html) to store data that can be used for Business Intelligence purpose.
+IntelOwl stores data that can be used for Business Intelligence purpose.
 Since plugin reports are deleted periodically, this feature allows to save indefinitely small amount of data to keep track of how analyzers perform and user usage.
 At the moment, the following information are sent to elastic:
 
@@ -50,8 +49,6 @@ To activate this feature, it is necessary to set `ELASTICSEARCH_BI_ENABLED` to `
 or your elasticsearch server.
 
 An [index template](https://github.com/intelowlproject/IntelOwl/blob/master/configuration/elastic_search_mappings/intel_owl_bi.json) is created after the first bulk submission of reports.
-If you want to use kibana to visualize your data/make dashboard, you must create an index pattern:
-Go to Kibana -> Discover -> Stack Management -> Index Patterns -> search for your index and use as time field `timestamp`
 
 ## Authentication options
 
