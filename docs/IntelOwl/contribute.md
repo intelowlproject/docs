@@ -369,12 +369,18 @@ To do so, some utility classes have been made:
     <td class="tg-c3ow"><img alt="Visualizable Title example" src="./static/visualizableTitle_example.png"></td>
   </tr>
   <tr>
+    <td class="tg-7n4c">VisualizableDownload</td>
+    <td class="tg-0pky">A button useful for download a file with custom content.</td>
+    <td class="tg-c3ow"><img alt="Visualizable Download example" src="./static/visualizableDownload_example.png"></td>
+  </tr>
+  <tr>
     <td class="tg-7n4c">VisualizableBase</td>
     <td class="tg-0pky">The representation of a base string. Can have a link attached to it and even an icon. The background color can be changed.</td>
     <td class="tg-0pky">The title above is composed by two <code>VisualizableBase</code></td>
   </tr>
 </tbody>
 </table>
+
 Inside a `Visualizer` you can retrieve the reports of the analyzers and connectors  that have been specified inside configuration of the Visualizer itself using `.analyzer_reports()` and `.connector_reports()`.
 At this point, you can compose these values as you wish wrapping them with the `Visualizable` classes mentioned before.
 
