@@ -221,6 +221,10 @@ compile with fake data.
 Here is an example of what a phishing investigation looks like started from `PhishingExtractor` playbook: 
 ![img.png](./static/phishing_analysis.png)
 
+##### Infrastructure diagram
+To better understand how this integration works, here is a diagram showing how the components are arranged (at container level) and how they communicate to reach target website.
+![img.png](./static/intel_owl_phishing_analyzers.png)
+
 ## Analyzers with special configuration
 
 Some analyzers could require a special configuration:
