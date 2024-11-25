@@ -282,6 +282,17 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 
 [Some analyzers are optional](https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#optional-analyzers) and need to be enabled explicitly.
 
+#### Creating Analyzers from the GUI
+
+Sometimes, it's enough to provide a URL and a way to authenticate, like an API key, to connect to the service you want to integrate. If the service provides results in JSON format, you will get it in the report. There's no need to write python code for these cases, you need to leverage the "Create analyzer" button that you can find on the top right of the Analyzers table Page. 
+
+![img.png](./static/analyzer_creation_btn.png)
+
+The form will open with the fields to fill in to create the analyzer.
+
+![img.png](./static/analyzer_creation.png)
+
+
 ### Connectors
 
 Connectors are designed to run after every successful analysis which makes them suitable for automated threat-sharing. They support integration with other SIEM/SOAR projects, specifically aimed at Threat Sharing Platforms.
@@ -319,12 +330,12 @@ You can build your own custom Pivot with your custom logic with just few lines o
 
 #### Creating Pivots from the GUI
 
-From the GUI, the users can pivot in two ways:
+From the GUI, the users can pivot in 3 ways:
 
-- If a Job executed a [Visualizer](#visualizers), it is possible to select a field extracted and analyze its value by clicking the "Pivot" button (see following image). In this way, the user is able to "jump" from one indicator to another.
+1. If a Job executed a [Visualizer](#visualizers), it is possible to select a field extracted and analyze its value by clicking the "Pivot" button (see following image). In this way, the user is able to "jump" from one indicator to another.
   ![img.png](./static/pivot_job_report.png)
 
-- Starting from an already existing [Investigation](#investigations-framework), it is possible to select a Job block and click the "Pivot" button to analyze the same observable again, usually choosing another [Playbook](#playbooks) (see following image)
+2. Starting from an already existing [Investigation](#investigations-framework), it is possible to select a Job block and click the "Pivot" button to analyze the same observable again, usually choosing another [Playbook](#playbooks) (see following image)
   ![img.png](./static/pivot_investigation_report.png)
 
 In both cases, the user is redirected to the Scan Page that is precompiled with the observable selected. Then the user would be able to select the [Playbook](#playbooks) to execute in the new job.
@@ -338,6 +349,11 @@ In the following image you can find an example of an [Investigation](#investigat
 - leveraging the second way to create a Pivot, the second `test\.com` analysis had been created with a different Playbook.
 
 ![img.png](./static/pivot_investigation.png)
+
+3. If you want to create a pivot that will run automatically after certain conditions are triggered, you need to leverage the "Create pivot" button that you can find on the top right of the Pivots table Page.
+This plugin can only run automatically within a playbook so it is important to select the analyzers or connectors required by your pivot.
+![img.png](./static/pivot_creation_btn.png)
+![img.png](./static/pivot_creation_form.png)
 
 ### Visualizers
 
@@ -410,12 +426,15 @@ You can create new playbooks in different ways, based on the users you want to s
 
 If you want to share them to every user in IntelOwl, create them via the Django Admin interface at `/admin/playbooks_manager/playbookconfig/`.
 
-If you want share them to yourself or your organization only, you need to leverage the "Save as Playbook" button that you can find on the top right of the Job Result Page.
-In this way, after you have done an analysis, you can save the configuration of the Plugins you executed for re-use with a single click.
+If you want share them to yourself or your organization only, you have 2 options:
 
-![img.png](./static/playbook_creation.png)
+1. After you have done an analysis, you can save the configuration of the Plugins you executed for re-use with a single click. You need to leverage the "Save as Playbook" button that you can find on the top right of the Job Result Page.
+  ![img.png](./static/playbook_creation.png)
 
-The created Playbook would be available to yourself only. If you want either to share it with your organization or to delete it, you need to go to the "Plugins" section and enable it manually by clicking the dedicated button.
+2. If you want to create completely new playbooks, you need to leverage the "Create playbook" button that you can find on the top right of the Playbooks table Page. The form will open with the fields to fill in to create the playbook.
+  ![img.png](./static/playbook_creation_form.png)
+
+In both cases, the created Playbook would be available to yourself only. If you want either to share it with your organization, to update it or to delete it, you need to go to the "Plugins" section and enable it manually by clicking the dedicated button.
 
 ![img.png](./static/playbooks_cr.png)
 
