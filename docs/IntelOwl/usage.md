@@ -234,6 +234,8 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `TorProject`: check if an IP is a Tor Exit Node
 - `Triage_Search`: Search for reports of observables or upload from URL on triage cloud
 - `Tranco`: Check if a domain is in the latest [Tranco](https://tranco-list.eu/) ranking top sites list
+- `UrlDNA_Search`: Look up an IP address, domain, URL, or hash in the [urlDNA.io](https://urldna.io) database to retrieve relevant information.
+- `UrlDNA_New_Scan`: Submit a URL to [urlDNA.io](https://urldna.io) for analysis and retrieve the results.
 - `URLhaus`: Query a domain or URL against [URLhaus](https://urlhaus.abuse.ch/) API.
 - `UrlScan_Search`: Search an IP/domain/url/hash against [URLScan](https://urlscan.io) API
 - `UrlScan_Submit_Result`: Submit & retrieve result of an URL against [URLScan](https://urlscan.io) API

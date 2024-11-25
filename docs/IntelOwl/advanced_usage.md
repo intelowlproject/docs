@@ -251,6 +251,15 @@ Some analyzers could require a special configuration:
     - `full`: Includes all available information about the IP from the database.
     - `fmp`: Returns only the FMP (Future Misbehavior Probability) score.
     - `rep`: Returns only the reputation score of the IP.
+- `urlDNA.io`:
+  - The `UrlDNA_New_Scan` analyzer offers optional configurations that can be adjusted to achieve more accurate results. Full documentation of these settings is available on the [urlDNA.io API](https://urldna.io/api) page.
+    - `device`: Specifies the device used for the scan. Options are `DESKTOP` or `MOBILE`.
+    - `user_agent`: Defines the browser user agent string used during the scan.
+    - `viewport_width`: Sets the viewport width for the scan.
+    - `viewport_height`: Sets the viewport height for the scan.
+    - `waiting_time`: Determines the waiting time for the page to load during the scan (in seconds).
+    - `private_scan`: When set to `true`, the scan results will not be shared with other `urlDNA.io` users.
+    - `scanned_from`: Allows selecting the country of origin for the scan using a two-letter country code (ISO 3166-1 alpha-2). This feature is available only to `urlDNA.io` Premium Users.
     
 ## Notifications
 
