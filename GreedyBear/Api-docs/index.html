@@ -1,0 +1,2317 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A centralized documentation for all the projects under IntelOwl." name="description"/>
+<meta content="IntelOwl Project" name="author"/>
+<link href="../Contribute/" rel="prev"/>
+<link href="../../pyintelowl/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<title>API docs - IntelOwl Project Documentation</title>
+<link href="../../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../assets/css/custom.css" rel="stylesheet"/>
+<link href="../../assests/css/SwaggerDark.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-DB4K9LZPDZ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-DB4K9LZPDZ",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-DB4K9LZPDZ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="DARKUI" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#api-documentation">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="IntelOwl Project Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="IntelOwl Project Documentation">
+<img alt="logo" src="../../static/intel_owl_negative.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            IntelOwl Project Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              API docs
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/intelowlproject/IntelOwl" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    intelowlproject/IntelOwl
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../IntelOwl/introduction/">
+          
+  
+  IntelOwl
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../Introduction/">
+          
+  
+  GreedyBear
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../pyintelowl/">
+          
+  
+  PyIntelOwl
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../GoIntelOwl/">
+          
+  
+  GoIntelOwl
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Guide-documentation/">
+          
+  
+  Guides
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="IntelOwl Project Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="IntelOwl Project Documentation">
+<img alt="logo" src="../../static/intel_owl_negative.png"/>
+</a>
+    IntelOwl Project Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/intelowlproject/IntelOwl" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    intelowlproject/IntelOwl
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    IntelOwl
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            IntelOwl
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../IntelOwl/introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../IntelOwl/installation/">
+<span class="md-ellipsis">
+    Installation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../IntelOwl/advanced_configuration/">
+<span class="md-ellipsis">
+    Advanced Configuration
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../IntelOwl/usage/">
+<span class="md-ellipsis">
+    Usage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../IntelOwl/advanced_usage/">
+<span class="md-ellipsis">
+    Advanced Usage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../IntelOwl/contribute/">
+<span class="md-ellipsis">
+    Contribute
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../IntelOwl/api_docs/">
+<span class="md-ellipsis">
+    API docs
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    GreedyBear
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            GreedyBear
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Installation/">
+<span class="md-ellipsis">
+    Installation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Usage/">
+<span class="md-ellipsis">
+    Usage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Contribute/">
+<span class="md-ellipsis">
+    Contribute
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    API docs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    API docs
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enrichment">
+<span class="md-ellipsis">
+      enrichment
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.enrichment_view">
+<span class="md-ellipsis">
+      enrichment_view
+    </span>
+</a>
+<nav aria-label="enrichment_view" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feeds">
+<span class="md-ellipsis">
+      feeds
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.feeds">
+<span class="md-ellipsis">
+      feeds
+    </span>
+</a>
+<nav aria-label="feeds" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feeds_pagination">
+<span class="md-ellipsis">
+      feeds_pagination
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.feeds_pagination">
+<span class="md-ellipsis">
+      feeds_pagination
+    </span>
+</a>
+<nav aria-label="feeds_pagination" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#statistics">
+<span class="md-ellipsis">
+      Statistics
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet">
+<span class="md-ellipsis">
+      StatisticsViewSet
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__aggregation_response_static_ioc">
+<span class="md-ellipsis">
+      __aggregation_response_static_ioc
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__aggregation_response_static_statistics">
+<span class="md-ellipsis">
+      __aggregation_response_static_statistics
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__parse_range">
+<span class="md-ellipsis">
+      __parse_range
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.enrichment">
+<span class="md-ellipsis">
+      enrichment
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.feeds">
+<span class="md-ellipsis">
+      feeds
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.feeds_types">
+<span class="md-ellipsis">
+      feeds_types
+    </span>
+</a>
+<nav aria-label="feeds_types" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general_honeypot_list">
+<span class="md-ellipsis">
+      general_honeypot_list
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.general_honeypot_list">
+<span class="md-ellipsis">
+      general_honeypot_list
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    PyIntelOwl
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            PyIntelOwl
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pyintelowl/">
+<span class="md-ellipsis">
+    Quickstart
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Usage
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Modules
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_2_1">
+<span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pyintelowl/IntelOwlClass/">
+<span class="md-ellipsis">
+    IntelOwlClass
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pyintelowl/IntelOwlClientException/">
+<span class="md-ellipsis">
+    IntelOwlClientException
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pyintelowl/Tests/">
+<span class="md-ellipsis">
+    Tests
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    GoIntelOwl
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            GoIntelOwl
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GoIntelOwl/">
+<span class="md-ellipsis">
+    index
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Guides
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Guide-documentation/">
+<span class="md-ellipsis">
+    Documentation guide
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Guide-docstrings/">
+<span class="md-ellipsis">
+    Docstrings guide
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Submodules/">
+<span class="md-ellipsis">
+    Submodules
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enrichment">
+<span class="md-ellipsis">
+      enrichment
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.enrichment_view">
+<span class="md-ellipsis">
+      enrichment_view
+    </span>
+</a>
+<nav aria-label="enrichment_view" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feeds">
+<span class="md-ellipsis">
+      feeds
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.feeds">
+<span class="md-ellipsis">
+      feeds
+    </span>
+</a>
+<nav aria-label="feeds" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feeds_pagination">
+<span class="md-ellipsis">
+      feeds_pagination
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.feeds_pagination">
+<span class="md-ellipsis">
+      feeds_pagination
+    </span>
+</a>
+<nav aria-label="feeds_pagination" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#statistics">
+<span class="md-ellipsis">
+      Statistics
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet">
+<span class="md-ellipsis">
+      StatisticsViewSet
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__aggregation_response_static_ioc">
+<span class="md-ellipsis">
+      __aggregation_response_static_ioc
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__aggregation_response_static_statistics">
+<span class="md-ellipsis">
+      __aggregation_response_static_statistics
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__parse_range">
+<span class="md-ellipsis">
+      __parse_range
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.enrichment">
+<span class="md-ellipsis">
+      enrichment
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.feeds">
+<span class="md-ellipsis">
+      feeds
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.StatisticsViewSet.feeds_types">
+<span class="md-ellipsis">
+      feeds_types
+    </span>
+</a>
+<nav aria-label="feeds_types" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general_honeypot_list">
+<span class="md-ellipsis">
+      general_honeypot_list
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docs.Submodules.GreedyBear.api.views.general_honeypot_list">
+<span class="md-ellipsis">
+      general_honeypot_list
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/intelowlproject/IntelOwl/edit/master/docs/GreedyBear/Api-docs.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
+</a>
+<a class="md-content__button md-icon" href="https://github.com/intelowlproject/IntelOwl/raw/master/docs/GreedyBear/Api-docs.md" title="View source of this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"></path></svg>
+</a>
+<h1 id="api-documentation">API Documentation</h1>
+<h3 id="enrichment"><code>enrichment</code></h3>
+<div class="doc doc-object doc-function">
+<a id="docs.Submodules.GreedyBear.api.views.enrichment_view"></a>
+<div class="doc doc-contents first">
+<p>Handle enrichment requests for a specific observable (domain or IP address).</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object containing query parameters.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A JSON response indicating whether the observable was found,</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>and if so, the corresponding IOC.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-253">253</a></span>
+<span class="normal"><a href="#__codelineno-0-254">254</a></span>
+<span class="normal"><a href="#__codelineno-0-255">255</a></span>
+<span class="normal"><a href="#__codelineno-0-256">256</a></span>
+<span class="normal"><a href="#__codelineno-0-257">257</a></span>
+<span class="normal"><a href="#__codelineno-0-258">258</a></span>
+<span class="normal"><a href="#__codelineno-0-259">259</a></span>
+<span class="normal"><a href="#__codelineno-0-260">260</a></span>
+<span class="normal"><a href="#__codelineno-0-261">261</a></span>
+<span class="normal"><a href="#__codelineno-0-262">262</a></span>
+<span class="normal"><a href="#__codelineno-0-263">263</a></span>
+<span class="normal"><a href="#__codelineno-0-264">264</a></span>
+<span class="normal"><a href="#__codelineno-0-265">265</a></span>
+<span class="normal"><a href="#__codelineno-0-266">266</a></span>
+<span class="normal"><a href="#__codelineno-0-267">267</a></span>
+<span class="normal"><a href="#__codelineno-0-268">268</a></span>
+<span class="normal"><a href="#__codelineno-0-269">269</a></span>
+<span class="normal"><a href="#__codelineno-0-270">270</a></span>
+<span class="normal"><a href="#__codelineno-0-271">271</a></span>
+<span class="normal"><a href="#__codelineno-0-272">272</a></span>
+<span class="normal"><a href="#__codelineno-0-273">273</a></span>
+<span class="normal"><a href="#__codelineno-0-274">274</a></span>
+<span class="normal"><a href="#__codelineno-0-275">275</a></span>
+<span class="normal"><a href="#__codelineno-0-276">276</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-253"><a id="__codelineno-0-253" name="__codelineno-0-253"></a><span class="nd">@api_view</span><span class="p">([</span><span class="n">GET</span><span class="p">])</span>
+</span><span id="__span-0-254"><a id="__codelineno-0-254" name="__codelineno-0-254"></a><span class="nd">@authentication_classes</span><span class="p">([</span><span class="n">CookieTokenAuthentication</span><span class="p">])</span>
+</span><span id="__span-0-255"><a id="__codelineno-0-255" name="__codelineno-0-255"></a><span class="nd">@permission_classes</span><span class="p">([</span><span class="n">IsAuthenticated</span><span class="p">])</span>
+</span><span id="__span-0-256"><a id="__codelineno-0-256" name="__codelineno-0-256"></a><span class="k">def</span> <span class="nf">enrichment_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span><span id="__span-0-257"><a id="__codelineno-0-257" name="__codelineno-0-257"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-258"><a id="__codelineno-0-258" name="__codelineno-0-258"></a><span class="sd">    Handle enrichment requests for a specific observable (domain or IP address).</span>
+</span><span id="__span-0-259"><a id="__codelineno-0-259" name="__codelineno-0-259"></a>
+</span><span id="__span-0-260"><a id="__codelineno-0-260" name="__codelineno-0-260"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-261"><a id="__codelineno-0-261" name="__codelineno-0-261"></a><span class="sd">        request: The incoming request object containing query parameters.</span>
+</span><span id="__span-0-262"><a id="__codelineno-0-262" name="__codelineno-0-262"></a>
+</span><span id="__span-0-263"><a id="__codelineno-0-263" name="__codelineno-0-263"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-264"><a id="__codelineno-0-264" name="__codelineno-0-264"></a><span class="sd">        Response: A JSON response indicating whether the observable was found,</span>
+</span><span id="__span-0-265"><a id="__codelineno-0-265" name="__codelineno-0-265"></a><span class="sd">        and if so, the corresponding IOC.</span>
+</span><span id="__span-0-266"><a id="__codelineno-0-266" name="__codelineno-0-266"></a><span class="sd">    """</span>
+</span><span id="__span-0-267"><a id="__codelineno-0-267" name="__codelineno-0-267"></a>    <span class="n">observable_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"query"</span><span class="p">)</span>
+</span><span id="__span-0-268"><a id="__codelineno-0-268" name="__codelineno-0-268"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Enrichment view requested for: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">observable_name</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-269"><a id="__codelineno-0-269" name="__codelineno-0-269"></a>    <span class="n">serializer</span> <span class="o">=</span> <span class="n">EnrichmentSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">"request"</span><span class="p">:</span> <span class="n">request</span><span class="p">})</span>
+</span><span id="__span-0-270"><a id="__codelineno-0-270" name="__codelineno-0-270"></a>    <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-271"><a id="__codelineno-0-271" name="__codelineno-0-271"></a>
+</span><span id="__span-0-272"><a id="__codelineno-0-272" name="__codelineno-0-272"></a>    <span class="n">source_ip</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s2">"REMOTE_ADDR"</span><span class="p">])</span>
+</span><span id="__span-0-273"><a id="__codelineno-0-273" name="__codelineno-0-273"></a>    <span class="n">request_source</span> <span class="o">=</span> <span class="n">Statistics</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source_ip</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">ENRICHMENT_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="__span-0-274"><a id="__codelineno-0-274" name="__codelineno-0-274"></a>    <span class="n">request_source</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</span><span id="__span-0-275"><a id="__codelineno-0-275" name="__codelineno-0-275"></a>
+</span><span id="__span-0-276"><a id="__codelineno-0-276" name="__codelineno-0-276"></a>    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_200_OK</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div><h3 id="feeds"><code>feeds</code></h3>
+<div class="doc doc-object doc-function">
+<a id="docs.Submodules.GreedyBear.api.views.feeds"></a>
+<div class="doc doc-contents first">
+<p>Handle requests for IOC feeds with specific parameters and format the response accordingly.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>feed_type</code>
+</td>
+<td>
+<code>str</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Type of feed (e.g., log4j, cowrie, etc.).</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>attack_type</code>
+</td>
+<td>
+<code>str</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Type of attack (e.g., all, specific attack types).</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>age</code>
+</td>
+<td>
+<code>str</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Age of the data to filter (e.g., recent, persistent).</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>format_</code>
+</td>
+<td>
+<code>str</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Desired format of the response (e.g., json, csv, txt).</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The HTTP response with formatted IOC data.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#__codelineno-0-55">55</a></span>
+<span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="nd">@api_view</span><span class="p">([</span><span class="n">GET</span><span class="p">])</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="k">def</span> <span class="nf">feeds</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">feed_type</span><span class="p">,</span> <span class="n">attack_type</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">format_</span><span class="p">):</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">    Handle requests for IOC feeds with specific parameters and format the response accordingly.</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">        request: The incoming request object.</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">        feed_type (str): Type of feed (e.g., log4j, cowrie, etc.).</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        attack_type (str): Type of attack (e.g., all, specific attack types).</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        age (str): Age of the data to filter (e.g., recent, persistent).</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">        format_ (str): Desired format of the response (e.g., json, csv, txt).</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        Response: The HTTP response with formatted IOC data.</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    """</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"request /api/feeds with params: feed type: </span><span class="si">{</span><span class="n">feed_type</span><span class="si">}</span><span class="s2">, "</span> <span class="sa">f</span><span class="s2">"attack_type: </span><span class="si">{</span><span class="n">attack_type</span><span class="si">}</span><span class="s2">, Age: </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">, format: </span><span class="si">{</span><span class="n">format_</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58"></a>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="n">iocs_queryset</span> <span class="o">=</span> <span class="n">get_queryset</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">feed_type</span><span class="p">,</span> <span class="n">attack_type</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">format_</span><span class="p">)</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="k">return</span> <span class="n">feeds_response</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">iocs_queryset</span><span class="p">,</span> <span class="n">feed_type</span><span class="p">,</span> <span class="n">format_</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div><h3 id="feeds_pagination"><code>feeds_pagination</code></h3>
+<div class="doc doc-object doc-function">
+<a id="docs.Submodules.GreedyBear.api.views.feeds_pagination"></a>
+<div class="doc doc-contents first">
+<p>Handle requests for paginated IOC feeds based on query parameters.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The paginated HTTP response with IOC data.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-63">63</a></span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span>
+<span class="normal"><a href="#__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span>
+<span class="normal"><a href="#__codelineno-0-69">69</a></span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span>
+<span class="normal"><a href="#__codelineno-0-71">71</a></span>
+<span class="normal"><a href="#__codelineno-0-72">72</a></span>
+<span class="normal"><a href="#__codelineno-0-73">73</a></span>
+<span class="normal"><a href="#__codelineno-0-74">74</a></span>
+<span class="normal"><a href="#__codelineno-0-75">75</a></span>
+<span class="normal"><a href="#__codelineno-0-76">76</a></span>
+<span class="normal"><a href="#__codelineno-0-77">77</a></span>
+<span class="normal"><a href="#__codelineno-0-78">78</a></span>
+<span class="normal"><a href="#__codelineno-0-79">79</a></span>
+<span class="normal"><a href="#__codelineno-0-80">80</a></span>
+<span class="normal"><a href="#__codelineno-0-81">81</a></span>
+<span class="normal"><a href="#__codelineno-0-82">82</a></span>
+<span class="normal"><a href="#__codelineno-0-83">83</a></span>
+<span class="normal"><a href="#__codelineno-0-84">84</a></span>
+<span class="normal"><a href="#__codelineno-0-85">85</a></span>
+<span class="normal"><a href="#__codelineno-0-86">86</a></span>
+<span class="normal"><a href="#__codelineno-0-87">87</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="nd">@api_view</span><span class="p">([</span><span class="n">GET</span><span class="p">])</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="k">def</span> <span class="nf">feeds_pagination</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">    Handle requests for paginated IOC feeds based on query parameters.</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67"></a>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">        request: The incoming request object.</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70"></a>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">        Response: The paginated HTTP response with IOC data.</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">    """</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74"></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"request /api/feeds with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76"></a>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77"></a>    <span class="n">paginator</span> <span class="o">=</span> <span class="n">CustomPageNumberPagination</span><span class="p">()</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78"></a>    <span class="n">iocs_queryset</span> <span class="o">=</span> <span class="n">get_queryset</span><span class="p">(</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79"></a>        <span class="n">request</span><span class="p">,</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80"></a>        <span class="n">params</span><span class="p">[</span><span class="s2">"feed_type"</span><span class="p">],</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81"></a>        <span class="n">params</span><span class="p">[</span><span class="s2">"attack_type"</span><span class="p">],</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82"></a>        <span class="n">params</span><span class="p">[</span><span class="s2">"age"</span><span class="p">],</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83"></a>        <span class="s2">"json"</span><span class="p">,</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="p">)</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85"></a>    <span class="n">iocs</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">paginate_queryset</span><span class="p">(</span><span class="n">iocs_queryset</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86"></a>    <span class="n">resp_data</span> <span class="o">=</span> <span class="n">feeds_response</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">iocs</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"feed_type"</span><span class="p">],</span> <span class="s2">"json"</span><span class="p">,</span> <span class="n">dict_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87"></a>    <span class="k">return</span> <span class="n">paginator</span><span class="o">.</span><span class="n">get_paginated_response</span><span class="p">(</span><span class="n">resp_data</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div><h3 id="statistics"><code>Statistics</code></h3>
+<div class="doc doc-object doc-class">
+<a id="docs.Submodules.GreedyBear.api.views.StatisticsViewSet"></a>
+<div class="doc doc-contents first">
+<p class="doc doc-class-bases">
+              Bases: <code><span title="rest_framework.viewsets.ViewSet">ViewSet</span></code></p>
+<p>A viewset for viewing and editing statistics related to feeds and enrichment data.</p>
+<p>Provides actions to retrieve statistics about the sources and downloads of feeds,
+as well as statistics on enrichment data.</p>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-279">279</a></span>
+<span class="normal"><a href="#__codelineno-0-280">280</a></span>
+<span class="normal"><a href="#__codelineno-0-281">281</a></span>
+<span class="normal"><a href="#__codelineno-0-282">282</a></span>
+<span class="normal"><a href="#__codelineno-0-283">283</a></span>
+<span class="normal"><a href="#__codelineno-0-284">284</a></span>
+<span class="normal"><a href="#__codelineno-0-285">285</a></span>
+<span class="normal"><a href="#__codelineno-0-286">286</a></span>
+<span class="normal"><a href="#__codelineno-0-287">287</a></span>
+<span class="normal"><a href="#__codelineno-0-288">288</a></span>
+<span class="normal"><a href="#__codelineno-0-289">289</a></span>
+<span class="normal"><a href="#__codelineno-0-290">290</a></span>
+<span class="normal"><a href="#__codelineno-0-291">291</a></span>
+<span class="normal"><a href="#__codelineno-0-292">292</a></span>
+<span class="normal"><a href="#__codelineno-0-293">293</a></span>
+<span class="normal"><a href="#__codelineno-0-294">294</a></span>
+<span class="normal"><a href="#__codelineno-0-295">295</a></span>
+<span class="normal"><a href="#__codelineno-0-296">296</a></span>
+<span class="normal"><a href="#__codelineno-0-297">297</a></span>
+<span class="normal"><a href="#__codelineno-0-298">298</a></span>
+<span class="normal"><a href="#__codelineno-0-299">299</a></span>
+<span class="normal"><a href="#__codelineno-0-300">300</a></span>
+<span class="normal"><a href="#__codelineno-0-301">301</a></span>
+<span class="normal"><a href="#__codelineno-0-302">302</a></span>
+<span class="normal"><a href="#__codelineno-0-303">303</a></span>
+<span class="normal"><a href="#__codelineno-0-304">304</a></span>
+<span class="normal"><a href="#__codelineno-0-305">305</a></span>
+<span class="normal"><a href="#__codelineno-0-306">306</a></span>
+<span class="normal"><a href="#__codelineno-0-307">307</a></span>
+<span class="normal"><a href="#__codelineno-0-308">308</a></span>
+<span class="normal"><a href="#__codelineno-0-309">309</a></span>
+<span class="normal"><a href="#__codelineno-0-310">310</a></span>
+<span class="normal"><a href="#__codelineno-0-311">311</a></span>
+<span class="normal"><a href="#__codelineno-0-312">312</a></span>
+<span class="normal"><a href="#__codelineno-0-313">313</a></span>
+<span class="normal"><a href="#__codelineno-0-314">314</a></span>
+<span class="normal"><a href="#__codelineno-0-315">315</a></span>
+<span class="normal"><a href="#__codelineno-0-316">316</a></span>
+<span class="normal"><a href="#__codelineno-0-317">317</a></span>
+<span class="normal"><a href="#__codelineno-0-318">318</a></span>
+<span class="normal"><a href="#__codelineno-0-319">319</a></span>
+<span class="normal"><a href="#__codelineno-0-320">320</a></span>
+<span class="normal"><a href="#__codelineno-0-321">321</a></span>
+<span class="normal"><a href="#__codelineno-0-322">322</a></span>
+<span class="normal"><a href="#__codelineno-0-323">323</a></span>
+<span class="normal"><a href="#__codelineno-0-324">324</a></span>
+<span class="normal"><a href="#__codelineno-0-325">325</a></span>
+<span class="normal"><a href="#__codelineno-0-326">326</a></span>
+<span class="normal"><a href="#__codelineno-0-327">327</a></span>
+<span class="normal"><a href="#__codelineno-0-328">328</a></span>
+<span class="normal"><a href="#__codelineno-0-329">329</a></span>
+<span class="normal"><a href="#__codelineno-0-330">330</a></span>
+<span class="normal"><a href="#__codelineno-0-331">331</a></span>
+<span class="normal"><a href="#__codelineno-0-332">332</a></span>
+<span class="normal"><a href="#__codelineno-0-333">333</a></span>
+<span class="normal"><a href="#__codelineno-0-334">334</a></span>
+<span class="normal"><a href="#__codelineno-0-335">335</a></span>
+<span class="normal"><a href="#__codelineno-0-336">336</a></span>
+<span class="normal"><a href="#__codelineno-0-337">337</a></span>
+<span class="normal"><a href="#__codelineno-0-338">338</a></span>
+<span class="normal"><a href="#__codelineno-0-339">339</a></span>
+<span class="normal"><a href="#__codelineno-0-340">340</a></span>
+<span class="normal"><a href="#__codelineno-0-341">341</a></span>
+<span class="normal"><a href="#__codelineno-0-342">342</a></span>
+<span class="normal"><a href="#__codelineno-0-343">343</a></span>
+<span class="normal"><a href="#__codelineno-0-344">344</a></span>
+<span class="normal"><a href="#__codelineno-0-345">345</a></span>
+<span class="normal"><a href="#__codelineno-0-346">346</a></span>
+<span class="normal"><a href="#__codelineno-0-347">347</a></span>
+<span class="normal"><a href="#__codelineno-0-348">348</a></span>
+<span class="normal"><a href="#__codelineno-0-349">349</a></span>
+<span class="normal"><a href="#__codelineno-0-350">350</a></span>
+<span class="normal"><a href="#__codelineno-0-351">351</a></span>
+<span class="normal"><a href="#__codelineno-0-352">352</a></span>
+<span class="normal"><a href="#__codelineno-0-353">353</a></span>
+<span class="normal"><a href="#__codelineno-0-354">354</a></span>
+<span class="normal"><a href="#__codelineno-0-355">355</a></span>
+<span class="normal"><a href="#__codelineno-0-356">356</a></span>
+<span class="normal"><a href="#__codelineno-0-357">357</a></span>
+<span class="normal"><a href="#__codelineno-0-358">358</a></span>
+<span class="normal"><a href="#__codelineno-0-359">359</a></span>
+<span class="normal"><a href="#__codelineno-0-360">360</a></span>
+<span class="normal"><a href="#__codelineno-0-361">361</a></span>
+<span class="normal"><a href="#__codelineno-0-362">362</a></span>
+<span class="normal"><a href="#__codelineno-0-363">363</a></span>
+<span class="normal"><a href="#__codelineno-0-364">364</a></span>
+<span class="normal"><a href="#__codelineno-0-365">365</a></span>
+<span class="normal"><a href="#__codelineno-0-366">366</a></span>
+<span class="normal"><a href="#__codelineno-0-367">367</a></span>
+<span class="normal"><a href="#__codelineno-0-368">368</a></span>
+<span class="normal"><a href="#__codelineno-0-369">369</a></span>
+<span class="normal"><a href="#__codelineno-0-370">370</a></span>
+<span class="normal"><a href="#__codelineno-0-371">371</a></span>
+<span class="normal"><a href="#__codelineno-0-372">372</a></span>
+<span class="normal"><a href="#__codelineno-0-373">373</a></span>
+<span class="normal"><a href="#__codelineno-0-374">374</a></span>
+<span class="normal"><a href="#__codelineno-0-375">375</a></span>
+<span class="normal"><a href="#__codelineno-0-376">376</a></span>
+<span class="normal"><a href="#__codelineno-0-377">377</a></span>
+<span class="normal"><a href="#__codelineno-0-378">378</a></span>
+<span class="normal"><a href="#__codelineno-0-379">379</a></span>
+<span class="normal"><a href="#__codelineno-0-380">380</a></span>
+<span class="normal"><a href="#__codelineno-0-381">381</a></span>
+<span class="normal"><a href="#__codelineno-0-382">382</a></span>
+<span class="normal"><a href="#__codelineno-0-383">383</a></span>
+<span class="normal"><a href="#__codelineno-0-384">384</a></span>
+<span class="normal"><a href="#__codelineno-0-385">385</a></span>
+<span class="normal"><a href="#__codelineno-0-386">386</a></span>
+<span class="normal"><a href="#__codelineno-0-387">387</a></span>
+<span class="normal"><a href="#__codelineno-0-388">388</a></span>
+<span class="normal"><a href="#__codelineno-0-389">389</a></span>
+<span class="normal"><a href="#__codelineno-0-390">390</a></span>
+<span class="normal"><a href="#__codelineno-0-391">391</a></span>
+<span class="normal"><a href="#__codelineno-0-392">392</a></span>
+<span class="normal"><a href="#__codelineno-0-393">393</a></span>
+<span class="normal"><a href="#__codelineno-0-394">394</a></span>
+<span class="normal"><a href="#__codelineno-0-395">395</a></span>
+<span class="normal"><a href="#__codelineno-0-396">396</a></span>
+<span class="normal"><a href="#__codelineno-0-397">397</a></span>
+<span class="normal"><a href="#__codelineno-0-398">398</a></span>
+<span class="normal"><a href="#__codelineno-0-399">399</a></span>
+<span class="normal"><a href="#__codelineno-0-400">400</a></span>
+<span class="normal"><a href="#__codelineno-0-401">401</a></span>
+<span class="normal"><a href="#__codelineno-0-402">402</a></span>
+<span class="normal"><a href="#__codelineno-0-403">403</a></span>
+<span class="normal"><a href="#__codelineno-0-404">404</a></span>
+<span class="normal"><a href="#__codelineno-0-405">405</a></span>
+<span class="normal"><a href="#__codelineno-0-406">406</a></span>
+<span class="normal"><a href="#__codelineno-0-407">407</a></span>
+<span class="normal"><a href="#__codelineno-0-408">408</a></span>
+<span class="normal"><a href="#__codelineno-0-409">409</a></span>
+<span class="normal"><a href="#__codelineno-0-410">410</a></span>
+<span class="normal"><a href="#__codelineno-0-411">411</a></span>
+<span class="normal"><a href="#__codelineno-0-412">412</a></span>
+<span class="normal"><a href="#__codelineno-0-413">413</a></span>
+<span class="normal"><a href="#__codelineno-0-414">414</a></span>
+<span class="normal"><a href="#__codelineno-0-415">415</a></span>
+<span class="normal"><a href="#__codelineno-0-416">416</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-279"><a id="__codelineno-0-279" name="__codelineno-0-279"></a><span class="k">class</span> <span class="nc">StatisticsViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ViewSet</span><span class="p">):</span>
+</span><span id="__span-0-280"><a id="__codelineno-0-280" name="__codelineno-0-280"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-281"><a id="__codelineno-0-281" name="__codelineno-0-281"></a><span class="sd">    A viewset for viewing and editing statistics related to feeds and enrichment data.</span>
+</span><span id="__span-0-282"><a id="__codelineno-0-282" name="__codelineno-0-282"></a>
+</span><span id="__span-0-283"><a id="__codelineno-0-283" name="__codelineno-0-283"></a><span class="sd">    Provides actions to retrieve statistics about the sources and downloads of feeds,</span>
+</span><span id="__span-0-284"><a id="__codelineno-0-284" name="__codelineno-0-284"></a><span class="sd">    as well as statistics on enrichment data.</span>
+</span><span id="__span-0-285"><a id="__codelineno-0-285" name="__codelineno-0-285"></a><span class="sd">    """</span>
+</span><span id="__span-0-286"><a id="__codelineno-0-286" name="__codelineno-0-286"></a>
+</span><span id="__span-0-287"><a id="__codelineno-0-287" name="__codelineno-0-287"></a>    <span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"GET"</span><span class="p">])</span>
+</span><span id="__span-0-288"><a id="__codelineno-0-288" name="__codelineno-0-288"></a>    <span class="k">def</span> <span class="nf">feeds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-0-289"><a id="__codelineno-0-289" name="__codelineno-0-289"></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="__span-0-290"><a id="__codelineno-0-290" name="__codelineno-0-290"></a><span class="sd">        Retrieve feed statistics, including the number of sources and downloads.</span>
+</span><span id="__span-0-291"><a id="__codelineno-0-291" name="__codelineno-0-291"></a>
+</span><span id="__span-0-292"><a id="__codelineno-0-292" name="__codelineno-0-292"></a><span class="sd">        Args:</span>
+</span><span id="__span-0-293"><a id="__codelineno-0-293" name="__codelineno-0-293"></a><span class="sd">            request: The incoming request object.</span>
+</span><span id="__span-0-294"><a id="__codelineno-0-294" name="__codelineno-0-294"></a><span class="sd">            pk (str): The type of statistics to retrieve (e.g., "sources", "downloads").</span>
+</span><span id="__span-0-295"><a id="__codelineno-0-295" name="__codelineno-0-295"></a>
+</span><span id="__span-0-296"><a id="__codelineno-0-296" name="__codelineno-0-296"></a><span class="sd">        Returns:</span>
+</span><span id="__span-0-297"><a id="__codelineno-0-297" name="__codelineno-0-297"></a><span class="sd">            Response: A JSON response containing the requested statistics.</span>
+</span><span id="__span-0-298"><a id="__codelineno-0-298" name="__codelineno-0-298"></a><span class="sd">        """</span>
+</span><span id="__span-0-299"><a id="__codelineno-0-299" name="__codelineno-0-299"></a>        <span class="k">if</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"sources"</span><span class="p">:</span>
+</span><span id="__span-0-300"><a id="__codelineno-0-300" name="__codelineno-0-300"></a>            <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-301"><a id="__codelineno-0-301" name="__codelineno-0-301"></a>                <span class="s2">"Sources"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span>
+</span><span id="__span-0-302"><a id="__codelineno-0-302" name="__codelineno-0-302"></a>                    <span class="s2">"source"</span><span class="p">,</span>
+</span><span id="__span-0-303"><a id="__codelineno-0-303" name="__codelineno-0-303"></a>                    <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-304"><a id="__codelineno-0-304" name="__codelineno-0-304"></a>                    <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">FEEDS_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+</span><span id="__span-0-305"><a id="__codelineno-0-305" name="__codelineno-0-305"></a>                <span class="p">)</span>
+</span><span id="__span-0-306"><a id="__codelineno-0-306" name="__codelineno-0-306"></a>            <span class="p">}</span>
+</span><span id="__span-0-307"><a id="__codelineno-0-307" name="__codelineno-0-307"></a>        <span class="k">elif</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"downloads"</span><span class="p">:</span>
+</span><span id="__span-0-308"><a id="__codelineno-0-308" name="__codelineno-0-308"></a>            <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Downloads"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"source"</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">FEEDS_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">))}</span>
+</span><span id="__span-0-309"><a id="__codelineno-0-309" name="__codelineno-0-309"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-310"><a id="__codelineno-0-310" name="__codelineno-0-310"></a>            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"this is impossible. check the code"</span><span class="p">)</span>
+</span><span id="__span-0-311"><a id="__codelineno-0-311" name="__codelineno-0-311"></a>            <span class="k">return</span> <span class="n">HttpResponseServerError</span><span class="p">()</span>
+</span><span id="__span-0-312"><a id="__codelineno-0-312" name="__codelineno-0-312"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__aggregation_response_static_statistics</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</span><span id="__span-0-313"><a id="__codelineno-0-313" name="__codelineno-0-313"></a>
+</span><span id="__span-0-314"><a id="__codelineno-0-314" name="__codelineno-0-314"></a>    <span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"get"</span><span class="p">])</span>
+</span><span id="__span-0-315"><a id="__codelineno-0-315" name="__codelineno-0-315"></a>    <span class="k">def</span> <span class="nf">enrichment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-0-316"><a id="__codelineno-0-316" name="__codelineno-0-316"></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="__span-0-317"><a id="__codelineno-0-317" name="__codelineno-0-317"></a><span class="sd">        Retrieve enrichment statistics, including the number of sources and requests.</span>
+</span><span id="__span-0-318"><a id="__codelineno-0-318" name="__codelineno-0-318"></a>
+</span><span id="__span-0-319"><a id="__codelineno-0-319" name="__codelineno-0-319"></a><span class="sd">        Args:</span>
+</span><span id="__span-0-320"><a id="__codelineno-0-320" name="__codelineno-0-320"></a><span class="sd">            request: The incoming request object.</span>
+</span><span id="__span-0-321"><a id="__codelineno-0-321" name="__codelineno-0-321"></a><span class="sd">            pk (str): The type of statistics to retrieve (e.g., "sources", "requests").</span>
+</span><span id="__span-0-322"><a id="__codelineno-0-322" name="__codelineno-0-322"></a>
+</span><span id="__span-0-323"><a id="__codelineno-0-323" name="__codelineno-0-323"></a><span class="sd">        Returns:</span>
+</span><span id="__span-0-324"><a id="__codelineno-0-324" name="__codelineno-0-324"></a><span class="sd">            Response: A JSON response containing the requested statistics.</span>
+</span><span id="__span-0-325"><a id="__codelineno-0-325" name="__codelineno-0-325"></a><span class="sd">        """</span>
+</span><span id="__span-0-326"><a id="__codelineno-0-326" name="__codelineno-0-326"></a>        <span class="k">if</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"sources"</span><span class="p">:</span>
+</span><span id="__span-0-327"><a id="__codelineno-0-327" name="__codelineno-0-327"></a>            <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-328"><a id="__codelineno-0-328" name="__codelineno-0-328"></a>                <span class="s2">"Sources"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span>
+</span><span id="__span-0-329"><a id="__codelineno-0-329" name="__codelineno-0-329"></a>                    <span class="s2">"source"</span><span class="p">,</span>
+</span><span id="__span-0-330"><a id="__codelineno-0-330" name="__codelineno-0-330"></a>                    <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-331"><a id="__codelineno-0-331" name="__codelineno-0-331"></a>                    <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">ENRICHMENT_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+</span><span id="__span-0-332"><a id="__codelineno-0-332" name="__codelineno-0-332"></a>                <span class="p">)</span>
+</span><span id="__span-0-333"><a id="__codelineno-0-333" name="__codelineno-0-333"></a>            <span class="p">}</span>
+</span><span id="__span-0-334"><a id="__codelineno-0-334" name="__codelineno-0-334"></a>        <span class="k">elif</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"requests"</span><span class="p">:</span>
+</span><span id="__span-0-335"><a id="__codelineno-0-335" name="__codelineno-0-335"></a>            <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Requests"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"source"</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">ENRICHMENT_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">))}</span>
+</span><span id="__span-0-336"><a id="__codelineno-0-336" name="__codelineno-0-336"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-337"><a id="__codelineno-0-337" name="__codelineno-0-337"></a>            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"this is impossible. check the code"</span><span class="p">)</span>
+</span><span id="__span-0-338"><a id="__codelineno-0-338" name="__codelineno-0-338"></a>            <span class="k">return</span> <span class="n">HttpResponseServerError</span><span class="p">()</span>
+</span><span id="__span-0-339"><a id="__codelineno-0-339" name="__codelineno-0-339"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__aggregation_response_static_statistics</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</span><span id="__span-0-340"><a id="__codelineno-0-340" name="__codelineno-0-340"></a>
+</span><span id="__span-0-341"><a id="__codelineno-0-341" name="__codelineno-0-341"></a>    <span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"get"</span><span class="p">])</span>
+</span><span id="__span-0-342"><a id="__codelineno-0-342" name="__codelineno-0-342"></a>    <span class="k">def</span> <span class="nf">feeds_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span><span id="__span-0-343"><a id="__codelineno-0-343" name="__codelineno-0-343"></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="__span-0-344"><a id="__codelineno-0-344" name="__codelineno-0-344"></a><span class="sd">        Retrieve statistics for different types of feeds, including Log4j, Cowrie,</span>
+</span><span id="__span-0-345"><a id="__codelineno-0-345" name="__codelineno-0-345"></a><span class="sd">        and general honeypots.</span>
+</span><span id="__span-0-346"><a id="__codelineno-0-346" name="__codelineno-0-346"></a>
+</span><span id="__span-0-347"><a id="__codelineno-0-347" name="__codelineno-0-347"></a><span class="sd">        Args:</span>
+</span><span id="__span-0-348"><a id="__codelineno-0-348" name="__codelineno-0-348"></a><span class="sd">            request: The incoming request object.</span>
+</span><span id="__span-0-349"><a id="__codelineno-0-349" name="__codelineno-0-349"></a>
+</span><span id="__span-0-350"><a id="__codelineno-0-350" name="__codelineno-0-350"></a><span class="sd">        Returns:</span>
+</span><span id="__span-0-351"><a id="__codelineno-0-351" name="__codelineno-0-351"></a><span class="sd">            Response: A JSON response containing the feed type statistics.</span>
+</span><span id="__span-0-352"><a id="__codelineno-0-352" name="__codelineno-0-352"></a><span class="sd">        """</span>
+</span><span id="__span-0-353"><a id="__codelineno-0-353" name="__codelineno-0-353"></a>        <span class="c1"># FEEDS</span>
+</span><span id="__span-0-354"><a id="__codelineno-0-354" name="__codelineno-0-354"></a>        <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-355"><a id="__codelineno-0-355" name="__codelineno-0-355"></a>            <span class="s2">"Log4j"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">log4j</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+</span><span id="__span-0-356"><a id="__codelineno-0-356" name="__codelineno-0-356"></a>            <span class="s2">"Cowrie"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">cowrie</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+</span><span id="__span-0-357"><a id="__codelineno-0-357" name="__codelineno-0-357"></a>        <span class="p">}</span>
+</span><span id="__span-0-358"><a id="__codelineno-0-358" name="__codelineno-0-358"></a>        <span class="c1"># feed_type for each general honeypot in the list</span>
+</span><span id="__span-0-359"><a id="__codelineno-0-359" name="__codelineno-0-359"></a>        <span class="n">generalHoneypots</span> <span class="o">=</span> <span class="n">GeneralHoneypot</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-360"><a id="__codelineno-0-360" name="__codelineno-0-360"></a>        <span class="k">for</span> <span class="n">hp</span> <span class="ow">in</span> <span class="n">generalHoneypots</span><span class="p">:</span>
+</span><span id="__span-0-361"><a id="__codelineno-0-361" name="__codelineno-0-361"></a>            <span class="n">annotations</span><span class="p">[</span><span class="n">hp</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">Q</span><span class="p">(</span><span class="n">general_honeypot__name__iexact</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
+</span><span id="__span-0-362"><a id="__codelineno-0-362" name="__codelineno-0-362"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__aggregation_response_static_ioc</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</span><span id="__span-0-363"><a id="__codelineno-0-363" name="__codelineno-0-363"></a>
+</span><span id="__span-0-364"><a id="__codelineno-0-364" name="__codelineno-0-364"></a>    <span class="k">def</span> <span class="nf">__aggregation_response_static_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotations</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+</span><span id="__span-0-365"><a id="__codelineno-0-365" name="__codelineno-0-365"></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="__span-0-366"><a id="__codelineno-0-366" name="__codelineno-0-366"></a><span class="sd">        Helper method to generate statistics response based on annotations.</span>
+</span><span id="__span-0-367"><a id="__codelineno-0-367" name="__codelineno-0-367"></a>
+</span><span id="__span-0-368"><a id="__codelineno-0-368" name="__codelineno-0-368"></a><span class="sd">        Args:</span>
+</span><span id="__span-0-369"><a id="__codelineno-0-369" name="__codelineno-0-369"></a><span class="sd">            annotations (dict): Dictionary containing the annotations for the query.</span>
+</span><span id="__span-0-370"><a id="__codelineno-0-370" name="__codelineno-0-370"></a>
+</span><span id="__span-0-371"><a id="__codelineno-0-371" name="__codelineno-0-371"></a><span class="sd">        Returns:</span>
+</span><span id="__span-0-372"><a id="__codelineno-0-372" name="__codelineno-0-372"></a><span class="sd">            Response: A JSON response containing the aggregated statistics.</span>
+</span><span id="__span-0-373"><a id="__codelineno-0-373" name="__codelineno-0-373"></a><span class="sd">        """</span>
+</span><span id="__span-0-374"><a id="__codelineno-0-374" name="__codelineno-0-374"></a>        <span class="n">delta</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parse_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
+</span><span id="__span-0-375"><a id="__codelineno-0-375" name="__codelineno-0-375"></a>        <span class="n">qs</span> <span class="o">=</span> <span class="n">Statistics</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">request_date__gte</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">Trunc</span><span class="p">(</span><span class="s2">"request_date"</span><span class="p">,</span> <span class="n">basis</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">**</span><span class="n">annotations</span><span class="p">)</span>
+</span><span id="__span-0-376"><a id="__codelineno-0-376" name="__codelineno-0-376"></a>        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+</span><span id="__span-0-377"><a id="__codelineno-0-377" name="__codelineno-0-377"></a>
+</span><span id="__span-0-378"><a id="__codelineno-0-378" name="__codelineno-0-378"></a>    <span class="k">def</span> <span class="nf">__aggregation_response_static_ioc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotations</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+</span><span id="__span-0-379"><a id="__codelineno-0-379" name="__codelineno-0-379"></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="__span-0-380"><a id="__codelineno-0-380" name="__codelineno-0-380"></a><span class="sd">        Helper method to generate IOC response based on annotations.</span>
+</span><span id="__span-0-381"><a id="__codelineno-0-381" name="__codelineno-0-381"></a>
+</span><span id="__span-0-382"><a id="__codelineno-0-382" name="__codelineno-0-382"></a><span class="sd">        Args:</span>
+</span><span id="__span-0-383"><a id="__codelineno-0-383" name="__codelineno-0-383"></a><span class="sd">            annotations (dict): Dictionary containing the annotations for the query.</span>
+</span><span id="__span-0-384"><a id="__codelineno-0-384" name="__codelineno-0-384"></a>
+</span><span id="__span-0-385"><a id="__codelineno-0-385" name="__codelineno-0-385"></a><span class="sd">        Returns:</span>
+</span><span id="__span-0-386"><a id="__codelineno-0-386" name="__codelineno-0-386"></a><span class="sd">            Response: A JSON response containing the aggregated IOC data.</span>
+</span><span id="__span-0-387"><a id="__codelineno-0-387" name="__codelineno-0-387"></a><span class="sd">        """</span>
+</span><span id="__span-0-388"><a id="__codelineno-0-388" name="__codelineno-0-388"></a>        <span class="n">delta</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parse_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
+</span><span id="__span-0-389"><a id="__codelineno-0-389" name="__codelineno-0-389"></a>
+</span><span id="__span-0-390"><a id="__codelineno-0-390" name="__codelineno-0-390"></a>        <span class="n">qs</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-0-391"><a id="__codelineno-0-391" name="__codelineno-0-391"></a>            <span class="n">IOC</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">last_seen__gte</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+</span><span id="__span-0-392"><a id="__codelineno-0-392" name="__codelineno-0-392"></a>            <span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">general_honeypot__active</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-0-393"><a id="__codelineno-0-393" name="__codelineno-0-393"></a>            <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">Trunc</span><span class="p">(</span><span class="s2">"last_seen"</span><span class="p">,</span> <span class="n">basis</span><span class="p">))</span>
+</span><span id="__span-0-394"><a id="__codelineno-0-394" name="__codelineno-0-394"></a>            <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span>
+</span><span id="__span-0-395"><a id="__codelineno-0-395" name="__codelineno-0-395"></a>            <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">**</span><span class="n">annotations</span><span class="p">)</span>
+</span><span id="__span-0-396"><a id="__codelineno-0-396" name="__codelineno-0-396"></a>        <span class="p">)</span>
+</span><span id="__span-0-397"><a id="__codelineno-0-397" name="__codelineno-0-397"></a>        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+</span><span id="__span-0-398"><a id="__codelineno-0-398" name="__codelineno-0-398"></a>
+</span><span id="__span-0-399"><a id="__codelineno-0-399" name="__codelineno-0-399"></a>    <span class="nd">@staticmethod</span>
+</span><span id="__span-0-400"><a id="__codelineno-0-400" name="__codelineno-0-400"></a>    <span class="k">def</span> <span class="nf">__parse_range</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span><span id="__span-0-401"><a id="__codelineno-0-401" name="__codelineno-0-401"></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="__span-0-402"><a id="__codelineno-0-402" name="__codelineno-0-402"></a><span class="sd">        Parse the range parameter from the request query string to determine the time range for the query.</span>
+</span><span id="__span-0-403"><a id="__codelineno-0-403" name="__codelineno-0-403"></a>
+</span><span id="__span-0-404"><a id="__codelineno-0-404" name="__codelineno-0-404"></a><span class="sd">        Args:</span>
+</span><span id="__span-0-405"><a id="__codelineno-0-405" name="__codelineno-0-405"></a><span class="sd">            request: The incoming request object.</span>
+</span><span id="__span-0-406"><a id="__codelineno-0-406" name="__codelineno-0-406"></a>
+</span><span id="__span-0-407"><a id="__codelineno-0-407" name="__codelineno-0-407"></a><span class="sd">        Returns:</span>
+</span><span id="__span-0-408"><a id="__codelineno-0-408" name="__codelineno-0-408"></a><span class="sd">            tuple: A tuple containing the delta time and basis for the query range.</span>
+</span><span id="__span-0-409"><a id="__codelineno-0-409" name="__codelineno-0-409"></a><span class="sd">        """</span>
+</span><span id="__span-0-410"><a id="__codelineno-0-410" name="__codelineno-0-410"></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-411"><a id="__codelineno-0-411" name="__codelineno-0-411"></a>            <span class="n">range_str</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s2">"range"</span><span class="p">]</span>
+</span><span id="__span-0-412"><a id="__codelineno-0-412" name="__codelineno-0-412"></a>        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+</span><span id="__span-0-413"><a id="__codelineno-0-413" name="__codelineno-0-413"></a>            <span class="c1"># default</span>
+</span><span id="__span-0-414"><a id="__codelineno-0-414" name="__codelineno-0-414"></a>            <span class="n">range_str</span> <span class="o">=</span> <span class="s2">"7d"</span>
+</span><span id="__span-0-415"><a id="__codelineno-0-415" name="__codelineno-0-415"></a>
+</span><span id="__span-0-416"><a id="__codelineno-0-416" name="__codelineno-0-416"></a>        <span class="k">return</span> <span class="n">parse_humanized_range</span><span class="p">(</span><span class="n">range_str</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__aggregation_response_static_ioc">
+<code class="highlight language-python"><span class="n">__aggregation_response_static_ioc</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Helper method to generate IOC response based on annotations.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>annotations</code>
+</td>
+<td>
+<code>dict</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Dictionary containing the annotations for the query.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+<code><span title="rest_framework.response.Response">Response</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A JSON response containing the aggregated IOC data.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-378">378</a></span>
+<span class="normal"><a href="#__codelineno-0-379">379</a></span>
+<span class="normal"><a href="#__codelineno-0-380">380</a></span>
+<span class="normal"><a href="#__codelineno-0-381">381</a></span>
+<span class="normal"><a href="#__codelineno-0-382">382</a></span>
+<span class="normal"><a href="#__codelineno-0-383">383</a></span>
+<span class="normal"><a href="#__codelineno-0-384">384</a></span>
+<span class="normal"><a href="#__codelineno-0-385">385</a></span>
+<span class="normal"><a href="#__codelineno-0-386">386</a></span>
+<span class="normal"><a href="#__codelineno-0-387">387</a></span>
+<span class="normal"><a href="#__codelineno-0-388">388</a></span>
+<span class="normal"><a href="#__codelineno-0-389">389</a></span>
+<span class="normal"><a href="#__codelineno-0-390">390</a></span>
+<span class="normal"><a href="#__codelineno-0-391">391</a></span>
+<span class="normal"><a href="#__codelineno-0-392">392</a></span>
+<span class="normal"><a href="#__codelineno-0-393">393</a></span>
+<span class="normal"><a href="#__codelineno-0-394">394</a></span>
+<span class="normal"><a href="#__codelineno-0-395">395</a></span>
+<span class="normal"><a href="#__codelineno-0-396">396</a></span>
+<span class="normal"><a href="#__codelineno-0-397">397</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-378"><a id="__codelineno-0-378" name="__codelineno-0-378"></a><span class="k">def</span> <span class="nf">__aggregation_response_static_ioc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotations</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+</span><span id="__span-0-379"><a id="__codelineno-0-379" name="__codelineno-0-379"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-380"><a id="__codelineno-0-380" name="__codelineno-0-380"></a><span class="sd">    Helper method to generate IOC response based on annotations.</span>
+</span><span id="__span-0-381"><a id="__codelineno-0-381" name="__codelineno-0-381"></a>
+</span><span id="__span-0-382"><a id="__codelineno-0-382" name="__codelineno-0-382"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-383"><a id="__codelineno-0-383" name="__codelineno-0-383"></a><span class="sd">        annotations (dict): Dictionary containing the annotations for the query.</span>
+</span><span id="__span-0-384"><a id="__codelineno-0-384" name="__codelineno-0-384"></a>
+</span><span id="__span-0-385"><a id="__codelineno-0-385" name="__codelineno-0-385"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-386"><a id="__codelineno-0-386" name="__codelineno-0-386"></a><span class="sd">        Response: A JSON response containing the aggregated IOC data.</span>
+</span><span id="__span-0-387"><a id="__codelineno-0-387" name="__codelineno-0-387"></a><span class="sd">    """</span>
+</span><span id="__span-0-388"><a id="__codelineno-0-388" name="__codelineno-0-388"></a>    <span class="n">delta</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parse_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
+</span><span id="__span-0-389"><a id="__codelineno-0-389" name="__codelineno-0-389"></a>
+</span><span id="__span-0-390"><a id="__codelineno-0-390" name="__codelineno-0-390"></a>    <span class="n">qs</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-0-391"><a id="__codelineno-0-391" name="__codelineno-0-391"></a>        <span class="n">IOC</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">last_seen__gte</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+</span><span id="__span-0-392"><a id="__codelineno-0-392" name="__codelineno-0-392"></a>        <span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">general_honeypot__active</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-0-393"><a id="__codelineno-0-393" name="__codelineno-0-393"></a>        <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">Trunc</span><span class="p">(</span><span class="s2">"last_seen"</span><span class="p">,</span> <span class="n">basis</span><span class="p">))</span>
+</span><span id="__span-0-394"><a id="__codelineno-0-394" name="__codelineno-0-394"></a>        <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span>
+</span><span id="__span-0-395"><a id="__codelineno-0-395" name="__codelineno-0-395"></a>        <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">**</span><span class="n">annotations</span><span class="p">)</span>
+</span><span id="__span-0-396"><a id="__codelineno-0-396" name="__codelineno-0-396"></a>    <span class="p">)</span>
+</span><span id="__span-0-397"><a id="__codelineno-0-397" name="__codelineno-0-397"></a>    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__aggregation_response_static_statistics">
+<code class="highlight language-python"><span class="n">__aggregation_response_static_statistics</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Helper method to generate statistics response based on annotations.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>annotations</code>
+</td>
+<td>
+<code>dict</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Dictionary containing the annotations for the query.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+<code><span title="rest_framework.response.Response">Response</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A JSON response containing the aggregated statistics.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-364">364</a></span>
+<span class="normal"><a href="#__codelineno-0-365">365</a></span>
+<span class="normal"><a href="#__codelineno-0-366">366</a></span>
+<span class="normal"><a href="#__codelineno-0-367">367</a></span>
+<span class="normal"><a href="#__codelineno-0-368">368</a></span>
+<span class="normal"><a href="#__codelineno-0-369">369</a></span>
+<span class="normal"><a href="#__codelineno-0-370">370</a></span>
+<span class="normal"><a href="#__codelineno-0-371">371</a></span>
+<span class="normal"><a href="#__codelineno-0-372">372</a></span>
+<span class="normal"><a href="#__codelineno-0-373">373</a></span>
+<span class="normal"><a href="#__codelineno-0-374">374</a></span>
+<span class="normal"><a href="#__codelineno-0-375">375</a></span>
+<span class="normal"><a href="#__codelineno-0-376">376</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-364"><a id="__codelineno-0-364" name="__codelineno-0-364"></a><span class="k">def</span> <span class="nf">__aggregation_response_static_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotations</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+</span><span id="__span-0-365"><a id="__codelineno-0-365" name="__codelineno-0-365"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-366"><a id="__codelineno-0-366" name="__codelineno-0-366"></a><span class="sd">    Helper method to generate statistics response based on annotations.</span>
+</span><span id="__span-0-367"><a id="__codelineno-0-367" name="__codelineno-0-367"></a>
+</span><span id="__span-0-368"><a id="__codelineno-0-368" name="__codelineno-0-368"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-369"><a id="__codelineno-0-369" name="__codelineno-0-369"></a><span class="sd">        annotations (dict): Dictionary containing the annotations for the query.</span>
+</span><span id="__span-0-370"><a id="__codelineno-0-370" name="__codelineno-0-370"></a>
+</span><span id="__span-0-371"><a id="__codelineno-0-371" name="__codelineno-0-371"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-372"><a id="__codelineno-0-372" name="__codelineno-0-372"></a><span class="sd">        Response: A JSON response containing the aggregated statistics.</span>
+</span><span id="__span-0-373"><a id="__codelineno-0-373" name="__codelineno-0-373"></a><span class="sd">    """</span>
+</span><span id="__span-0-374"><a id="__codelineno-0-374" name="__codelineno-0-374"></a>    <span class="n">delta</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parse_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
+</span><span id="__span-0-375"><a id="__codelineno-0-375" name="__codelineno-0-375"></a>    <span class="n">qs</span> <span class="o">=</span> <span class="n">Statistics</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">request_date__gte</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">Trunc</span><span class="p">(</span><span class="s2">"request_date"</span><span class="p">,</span> <span class="n">basis</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">**</span><span class="n">annotations</span><span class="p">)</span>
+</span><span id="__span-0-376"><a id="__codelineno-0-376" name="__codelineno-0-376"></a>    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="docs.Submodules.GreedyBear.api.views.StatisticsViewSet.__parse_range">
+<code class="highlight language-python"><span class="n">__parse_range</span><span class="p">(</span><span class="n">request</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Parse the range parameter from the request query string to determine the time range for the query.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>tuple</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A tuple containing the delta time and basis for the query range.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-399">399</a></span>
+<span class="normal"><a href="#__codelineno-0-400">400</a></span>
+<span class="normal"><a href="#__codelineno-0-401">401</a></span>
+<span class="normal"><a href="#__codelineno-0-402">402</a></span>
+<span class="normal"><a href="#__codelineno-0-403">403</a></span>
+<span class="normal"><a href="#__codelineno-0-404">404</a></span>
+<span class="normal"><a href="#__codelineno-0-405">405</a></span>
+<span class="normal"><a href="#__codelineno-0-406">406</a></span>
+<span class="normal"><a href="#__codelineno-0-407">407</a></span>
+<span class="normal"><a href="#__codelineno-0-408">408</a></span>
+<span class="normal"><a href="#__codelineno-0-409">409</a></span>
+<span class="normal"><a href="#__codelineno-0-410">410</a></span>
+<span class="normal"><a href="#__codelineno-0-411">411</a></span>
+<span class="normal"><a href="#__codelineno-0-412">412</a></span>
+<span class="normal"><a href="#__codelineno-0-413">413</a></span>
+<span class="normal"><a href="#__codelineno-0-414">414</a></span>
+<span class="normal"><a href="#__codelineno-0-415">415</a></span>
+<span class="normal"><a href="#__codelineno-0-416">416</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-399"><a id="__codelineno-0-399" name="__codelineno-0-399"></a><span class="nd">@staticmethod</span>
+</span><span id="__span-0-400"><a id="__codelineno-0-400" name="__codelineno-0-400"></a><span class="k">def</span> <span class="nf">__parse_range</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span><span id="__span-0-401"><a id="__codelineno-0-401" name="__codelineno-0-401"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-402"><a id="__codelineno-0-402" name="__codelineno-0-402"></a><span class="sd">    Parse the range parameter from the request query string to determine the time range for the query.</span>
+</span><span id="__span-0-403"><a id="__codelineno-0-403" name="__codelineno-0-403"></a>
+</span><span id="__span-0-404"><a id="__codelineno-0-404" name="__codelineno-0-404"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-405"><a id="__codelineno-0-405" name="__codelineno-0-405"></a><span class="sd">        request: The incoming request object.</span>
+</span><span id="__span-0-406"><a id="__codelineno-0-406" name="__codelineno-0-406"></a>
+</span><span id="__span-0-407"><a id="__codelineno-0-407" name="__codelineno-0-407"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-408"><a id="__codelineno-0-408" name="__codelineno-0-408"></a><span class="sd">        tuple: A tuple containing the delta time and basis for the query range.</span>
+</span><span id="__span-0-409"><a id="__codelineno-0-409" name="__codelineno-0-409"></a><span class="sd">    """</span>
+</span><span id="__span-0-410"><a id="__codelineno-0-410" name="__codelineno-0-410"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-411"><a id="__codelineno-0-411" name="__codelineno-0-411"></a>        <span class="n">range_str</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s2">"range"</span><span class="p">]</span>
+</span><span id="__span-0-412"><a id="__codelineno-0-412" name="__codelineno-0-412"></a>    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+</span><span id="__span-0-413"><a id="__codelineno-0-413" name="__codelineno-0-413"></a>        <span class="c1"># default</span>
+</span><span id="__span-0-414"><a id="__codelineno-0-414" name="__codelineno-0-414"></a>        <span class="n">range_str</span> <span class="o">=</span> <span class="s2">"7d"</span>
+</span><span id="__span-0-415"><a id="__codelineno-0-415" name="__codelineno-0-415"></a>
+</span><span id="__span-0-416"><a id="__codelineno-0-416" name="__codelineno-0-416"></a>    <span class="k">return</span> <span class="n">parse_humanized_range</span><span class="p">(</span><span class="n">range_str</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="docs.Submodules.GreedyBear.api.views.StatisticsViewSet.enrichment">
+<code class="highlight language-python"><span class="n">enrichment</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Retrieve enrichment statistics, including the number of sources and requests.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>pk</code>
+</td>
+<td>
+<code>str</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The type of statistics to retrieve (e.g., "sources", "requests").</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A JSON response containing the requested statistics.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-314">314</a></span>
+<span class="normal"><a href="#__codelineno-0-315">315</a></span>
+<span class="normal"><a href="#__codelineno-0-316">316</a></span>
+<span class="normal"><a href="#__codelineno-0-317">317</a></span>
+<span class="normal"><a href="#__codelineno-0-318">318</a></span>
+<span class="normal"><a href="#__codelineno-0-319">319</a></span>
+<span class="normal"><a href="#__codelineno-0-320">320</a></span>
+<span class="normal"><a href="#__codelineno-0-321">321</a></span>
+<span class="normal"><a href="#__codelineno-0-322">322</a></span>
+<span class="normal"><a href="#__codelineno-0-323">323</a></span>
+<span class="normal"><a href="#__codelineno-0-324">324</a></span>
+<span class="normal"><a href="#__codelineno-0-325">325</a></span>
+<span class="normal"><a href="#__codelineno-0-326">326</a></span>
+<span class="normal"><a href="#__codelineno-0-327">327</a></span>
+<span class="normal"><a href="#__codelineno-0-328">328</a></span>
+<span class="normal"><a href="#__codelineno-0-329">329</a></span>
+<span class="normal"><a href="#__codelineno-0-330">330</a></span>
+<span class="normal"><a href="#__codelineno-0-331">331</a></span>
+<span class="normal"><a href="#__codelineno-0-332">332</a></span>
+<span class="normal"><a href="#__codelineno-0-333">333</a></span>
+<span class="normal"><a href="#__codelineno-0-334">334</a></span>
+<span class="normal"><a href="#__codelineno-0-335">335</a></span>
+<span class="normal"><a href="#__codelineno-0-336">336</a></span>
+<span class="normal"><a href="#__codelineno-0-337">337</a></span>
+<span class="normal"><a href="#__codelineno-0-338">338</a></span>
+<span class="normal"><a href="#__codelineno-0-339">339</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-314"><a id="__codelineno-0-314" name="__codelineno-0-314"></a><span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"get"</span><span class="p">])</span>
+</span><span id="__span-0-315"><a id="__codelineno-0-315" name="__codelineno-0-315"></a><span class="k">def</span> <span class="nf">enrichment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-0-316"><a id="__codelineno-0-316" name="__codelineno-0-316"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-317"><a id="__codelineno-0-317" name="__codelineno-0-317"></a><span class="sd">    Retrieve enrichment statistics, including the number of sources and requests.</span>
+</span><span id="__span-0-318"><a id="__codelineno-0-318" name="__codelineno-0-318"></a>
+</span><span id="__span-0-319"><a id="__codelineno-0-319" name="__codelineno-0-319"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-320"><a id="__codelineno-0-320" name="__codelineno-0-320"></a><span class="sd">        request: The incoming request object.</span>
+</span><span id="__span-0-321"><a id="__codelineno-0-321" name="__codelineno-0-321"></a><span class="sd">        pk (str): The type of statistics to retrieve (e.g., "sources", "requests").</span>
+</span><span id="__span-0-322"><a id="__codelineno-0-322" name="__codelineno-0-322"></a>
+</span><span id="__span-0-323"><a id="__codelineno-0-323" name="__codelineno-0-323"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-324"><a id="__codelineno-0-324" name="__codelineno-0-324"></a><span class="sd">        Response: A JSON response containing the requested statistics.</span>
+</span><span id="__span-0-325"><a id="__codelineno-0-325" name="__codelineno-0-325"></a><span class="sd">    """</span>
+</span><span id="__span-0-326"><a id="__codelineno-0-326" name="__codelineno-0-326"></a>    <span class="k">if</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"sources"</span><span class="p">:</span>
+</span><span id="__span-0-327"><a id="__codelineno-0-327" name="__codelineno-0-327"></a>        <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-328"><a id="__codelineno-0-328" name="__codelineno-0-328"></a>            <span class="s2">"Sources"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span>
+</span><span id="__span-0-329"><a id="__codelineno-0-329" name="__codelineno-0-329"></a>                <span class="s2">"source"</span><span class="p">,</span>
+</span><span id="__span-0-330"><a id="__codelineno-0-330" name="__codelineno-0-330"></a>                <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-331"><a id="__codelineno-0-331" name="__codelineno-0-331"></a>                <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">ENRICHMENT_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+</span><span id="__span-0-332"><a id="__codelineno-0-332" name="__codelineno-0-332"></a>            <span class="p">)</span>
+</span><span id="__span-0-333"><a id="__codelineno-0-333" name="__codelineno-0-333"></a>        <span class="p">}</span>
+</span><span id="__span-0-334"><a id="__codelineno-0-334" name="__codelineno-0-334"></a>    <span class="k">elif</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"requests"</span><span class="p">:</span>
+</span><span id="__span-0-335"><a id="__codelineno-0-335" name="__codelineno-0-335"></a>        <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Requests"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"source"</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">ENRICHMENT_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">))}</span>
+</span><span id="__span-0-336"><a id="__codelineno-0-336" name="__codelineno-0-336"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-337"><a id="__codelineno-0-337" name="__codelineno-0-337"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"this is impossible. check the code"</span><span class="p">)</span>
+</span><span id="__span-0-338"><a id="__codelineno-0-338" name="__codelineno-0-338"></a>        <span class="k">return</span> <span class="n">HttpResponseServerError</span><span class="p">()</span>
+</span><span id="__span-0-339"><a id="__codelineno-0-339" name="__codelineno-0-339"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__aggregation_response_static_statistics</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="docs.Submodules.GreedyBear.api.views.StatisticsViewSet.feeds">
+<code class="highlight language-python"><span class="n">feeds</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Retrieve feed statistics, including the number of sources and downloads.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>pk</code>
+</td>
+<td>
+<code>str</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The type of statistics to retrieve (e.g., "sources", "downloads").</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A JSON response containing the requested statistics.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-287">287</a></span>
+<span class="normal"><a href="#__codelineno-0-288">288</a></span>
+<span class="normal"><a href="#__codelineno-0-289">289</a></span>
+<span class="normal"><a href="#__codelineno-0-290">290</a></span>
+<span class="normal"><a href="#__codelineno-0-291">291</a></span>
+<span class="normal"><a href="#__codelineno-0-292">292</a></span>
+<span class="normal"><a href="#__codelineno-0-293">293</a></span>
+<span class="normal"><a href="#__codelineno-0-294">294</a></span>
+<span class="normal"><a href="#__codelineno-0-295">295</a></span>
+<span class="normal"><a href="#__codelineno-0-296">296</a></span>
+<span class="normal"><a href="#__codelineno-0-297">297</a></span>
+<span class="normal"><a href="#__codelineno-0-298">298</a></span>
+<span class="normal"><a href="#__codelineno-0-299">299</a></span>
+<span class="normal"><a href="#__codelineno-0-300">300</a></span>
+<span class="normal"><a href="#__codelineno-0-301">301</a></span>
+<span class="normal"><a href="#__codelineno-0-302">302</a></span>
+<span class="normal"><a href="#__codelineno-0-303">303</a></span>
+<span class="normal"><a href="#__codelineno-0-304">304</a></span>
+<span class="normal"><a href="#__codelineno-0-305">305</a></span>
+<span class="normal"><a href="#__codelineno-0-306">306</a></span>
+<span class="normal"><a href="#__codelineno-0-307">307</a></span>
+<span class="normal"><a href="#__codelineno-0-308">308</a></span>
+<span class="normal"><a href="#__codelineno-0-309">309</a></span>
+<span class="normal"><a href="#__codelineno-0-310">310</a></span>
+<span class="normal"><a href="#__codelineno-0-311">311</a></span>
+<span class="normal"><a href="#__codelineno-0-312">312</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-287"><a id="__codelineno-0-287" name="__codelineno-0-287"></a><span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"GET"</span><span class="p">])</span>
+</span><span id="__span-0-288"><a id="__codelineno-0-288" name="__codelineno-0-288"></a><span class="k">def</span> <span class="nf">feeds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-0-289"><a id="__codelineno-0-289" name="__codelineno-0-289"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-290"><a id="__codelineno-0-290" name="__codelineno-0-290"></a><span class="sd">    Retrieve feed statistics, including the number of sources and downloads.</span>
+</span><span id="__span-0-291"><a id="__codelineno-0-291" name="__codelineno-0-291"></a>
+</span><span id="__span-0-292"><a id="__codelineno-0-292" name="__codelineno-0-292"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-293"><a id="__codelineno-0-293" name="__codelineno-0-293"></a><span class="sd">        request: The incoming request object.</span>
+</span><span id="__span-0-294"><a id="__codelineno-0-294" name="__codelineno-0-294"></a><span class="sd">        pk (str): The type of statistics to retrieve (e.g., "sources", "downloads").</span>
+</span><span id="__span-0-295"><a id="__codelineno-0-295" name="__codelineno-0-295"></a>
+</span><span id="__span-0-296"><a id="__codelineno-0-296" name="__codelineno-0-296"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-297"><a id="__codelineno-0-297" name="__codelineno-0-297"></a><span class="sd">        Response: A JSON response containing the requested statistics.</span>
+</span><span id="__span-0-298"><a id="__codelineno-0-298" name="__codelineno-0-298"></a><span class="sd">    """</span>
+</span><span id="__span-0-299"><a id="__codelineno-0-299" name="__codelineno-0-299"></a>    <span class="k">if</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"sources"</span><span class="p">:</span>
+</span><span id="__span-0-300"><a id="__codelineno-0-300" name="__codelineno-0-300"></a>        <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-301"><a id="__codelineno-0-301" name="__codelineno-0-301"></a>            <span class="s2">"Sources"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span>
+</span><span id="__span-0-302"><a id="__codelineno-0-302" name="__codelineno-0-302"></a>                <span class="s2">"source"</span><span class="p">,</span>
+</span><span id="__span-0-303"><a id="__codelineno-0-303" name="__codelineno-0-303"></a>                <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-304"><a id="__codelineno-0-304" name="__codelineno-0-304"></a>                <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">FEEDS_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+</span><span id="__span-0-305"><a id="__codelineno-0-305" name="__codelineno-0-305"></a>            <span class="p">)</span>
+</span><span id="__span-0-306"><a id="__codelineno-0-306" name="__codelineno-0-306"></a>        <span class="p">}</span>
+</span><span id="__span-0-307"><a id="__codelineno-0-307" name="__codelineno-0-307"></a>    <span class="k">elif</span> <span class="n">pk</span> <span class="o">==</span> <span class="s2">"downloads"</span><span class="p">:</span>
+</span><span id="__span-0-308"><a id="__codelineno-0-308" name="__codelineno-0-308"></a>        <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Downloads"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"source"</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">viewType</span><span class="o">.</span><span class="n">FEEDS_VIEW</span><span class="o">.</span><span class="n">value</span><span class="p">))}</span>
+</span><span id="__span-0-309"><a id="__codelineno-0-309" name="__codelineno-0-309"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-310"><a id="__codelineno-0-310" name="__codelineno-0-310"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"this is impossible. check the code"</span><span class="p">)</span>
+</span><span id="__span-0-311"><a id="__codelineno-0-311" name="__codelineno-0-311"></a>        <span class="k">return</span> <span class="n">HttpResponseServerError</span><span class="p">()</span>
+</span><span id="__span-0-312"><a id="__codelineno-0-312" name="__codelineno-0-312"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__aggregation_response_static_statistics</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="docs.Submodules.GreedyBear.api.views.StatisticsViewSet.feeds_types">
+<code class="highlight language-python"><span class="n">feeds_types</span><span class="p">(</span><span class="n">request</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Retrieve statistics for different types of feeds, including Log4j, Cowrie,
+and general honeypots.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A JSON response containing the feed type statistics.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-341">341</a></span>
+<span class="normal"><a href="#__codelineno-0-342">342</a></span>
+<span class="normal"><a href="#__codelineno-0-343">343</a></span>
+<span class="normal"><a href="#__codelineno-0-344">344</a></span>
+<span class="normal"><a href="#__codelineno-0-345">345</a></span>
+<span class="normal"><a href="#__codelineno-0-346">346</a></span>
+<span class="normal"><a href="#__codelineno-0-347">347</a></span>
+<span class="normal"><a href="#__codelineno-0-348">348</a></span>
+<span class="normal"><a href="#__codelineno-0-349">349</a></span>
+<span class="normal"><a href="#__codelineno-0-350">350</a></span>
+<span class="normal"><a href="#__codelineno-0-351">351</a></span>
+<span class="normal"><a href="#__codelineno-0-352">352</a></span>
+<span class="normal"><a href="#__codelineno-0-353">353</a></span>
+<span class="normal"><a href="#__codelineno-0-354">354</a></span>
+<span class="normal"><a href="#__codelineno-0-355">355</a></span>
+<span class="normal"><a href="#__codelineno-0-356">356</a></span>
+<span class="normal"><a href="#__codelineno-0-357">357</a></span>
+<span class="normal"><a href="#__codelineno-0-358">358</a></span>
+<span class="normal"><a href="#__codelineno-0-359">359</a></span>
+<span class="normal"><a href="#__codelineno-0-360">360</a></span>
+<span class="normal"><a href="#__codelineno-0-361">361</a></span>
+<span class="normal"><a href="#__codelineno-0-362">362</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-341"><a id="__codelineno-0-341" name="__codelineno-0-341"></a><span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"get"</span><span class="p">])</span>
+</span><span id="__span-0-342"><a id="__codelineno-0-342" name="__codelineno-0-342"></a><span class="k">def</span> <span class="nf">feeds_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span><span id="__span-0-343"><a id="__codelineno-0-343" name="__codelineno-0-343"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-344"><a id="__codelineno-0-344" name="__codelineno-0-344"></a><span class="sd">    Retrieve statistics for different types of feeds, including Log4j, Cowrie,</span>
+</span><span id="__span-0-345"><a id="__codelineno-0-345" name="__codelineno-0-345"></a><span class="sd">    and general honeypots.</span>
+</span><span id="__span-0-346"><a id="__codelineno-0-346" name="__codelineno-0-346"></a>
+</span><span id="__span-0-347"><a id="__codelineno-0-347" name="__codelineno-0-347"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-348"><a id="__codelineno-0-348" name="__codelineno-0-348"></a><span class="sd">        request: The incoming request object.</span>
+</span><span id="__span-0-349"><a id="__codelineno-0-349" name="__codelineno-0-349"></a>
+</span><span id="__span-0-350"><a id="__codelineno-0-350" name="__codelineno-0-350"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-351"><a id="__codelineno-0-351" name="__codelineno-0-351"></a><span class="sd">        Response: A JSON response containing the feed type statistics.</span>
+</span><span id="__span-0-352"><a id="__codelineno-0-352" name="__codelineno-0-352"></a><span class="sd">    """</span>
+</span><span id="__span-0-353"><a id="__codelineno-0-353" name="__codelineno-0-353"></a>    <span class="c1"># FEEDS</span>
+</span><span id="__span-0-354"><a id="__codelineno-0-354" name="__codelineno-0-354"></a>    <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-355"><a id="__codelineno-0-355" name="__codelineno-0-355"></a>        <span class="s2">"Log4j"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">log4j</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+</span><span id="__span-0-356"><a id="__codelineno-0-356" name="__codelineno-0-356"></a>        <span class="s2">"Cowrie"</span><span class="p">:</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">distinct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">cowrie</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+</span><span id="__span-0-357"><a id="__codelineno-0-357" name="__codelineno-0-357"></a>    <span class="p">}</span>
+</span><span id="__span-0-358"><a id="__codelineno-0-358" name="__codelineno-0-358"></a>    <span class="c1"># feed_type for each general honeypot in the list</span>
+</span><span id="__span-0-359"><a id="__codelineno-0-359" name="__codelineno-0-359"></a>    <span class="n">generalHoneypots</span> <span class="o">=</span> <span class="n">GeneralHoneypot</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-360"><a id="__codelineno-0-360" name="__codelineno-0-360"></a>    <span class="k">for</span> <span class="n">hp</span> <span class="ow">in</span> <span class="n">generalHoneypots</span><span class="p">:</span>
+</span><span id="__span-0-361"><a id="__codelineno-0-361" name="__codelineno-0-361"></a>        <span class="n">annotations</span><span class="p">[</span><span class="n">hp</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">Count</span><span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">Q</span><span class="p">(</span><span class="n">general_honeypot__name__iexact</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
+</span><span id="__span-0-362"><a id="__codelineno-0-362" name="__codelineno-0-362"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__aggregation_response_static_ioc</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div><h3 id="general_honeypot_list"><code>general_honeypot_list</code></h3>
+<div class="doc doc-object doc-function">
+<a id="docs.Submodules.GreedyBear.api.views.general_honeypot_list"></a>
+<div class="doc doc-contents first">
+<p>Retrieve a list of all general honeypots, optionally filtering by active status.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>request</code>
+</td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The incoming request object containing query parameters.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Response</code></td> <td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>A JSON response containing the list of general honeypots.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>docs/Submodules/GreedyBear/api/views.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-419">419</a></span>
+<span class="normal"><a href="#__codelineno-0-420">420</a></span>
+<span class="normal"><a href="#__codelineno-0-421">421</a></span>
+<span class="normal"><a href="#__codelineno-0-422">422</a></span>
+<span class="normal"><a href="#__codelineno-0-423">423</a></span>
+<span class="normal"><a href="#__codelineno-0-424">424</a></span>
+<span class="normal"><a href="#__codelineno-0-425">425</a></span>
+<span class="normal"><a href="#__codelineno-0-426">426</a></span>
+<span class="normal"><a href="#__codelineno-0-427">427</a></span>
+<span class="normal"><a href="#__codelineno-0-428">428</a></span>
+<span class="normal"><a href="#__codelineno-0-429">429</a></span>
+<span class="normal"><a href="#__codelineno-0-430">430</a></span>
+<span class="normal"><a href="#__codelineno-0-431">431</a></span>
+<span class="normal"><a href="#__codelineno-0-432">432</a></span>
+<span class="normal"><a href="#__codelineno-0-433">433</a></span>
+<span class="normal"><a href="#__codelineno-0-434">434</a></span>
+<span class="normal"><a href="#__codelineno-0-435">435</a></span>
+<span class="normal"><a href="#__codelineno-0-436">436</a></span>
+<span class="normal"><a href="#__codelineno-0-437">437</a></span>
+<span class="normal"><a href="#__codelineno-0-438">438</a></span>
+<span class="normal"><a href="#__codelineno-0-439">439</a></span>
+<span class="normal"><a href="#__codelineno-0-440">440</a></span>
+<span class="normal"><a href="#__codelineno-0-441">441</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-419"><a id="__codelineno-0-419" name="__codelineno-0-419"></a><span class="nd">@api_view</span><span class="p">([</span><span class="n">GET</span><span class="p">])</span>
+</span><span id="__span-0-420"><a id="__codelineno-0-420" name="__codelineno-0-420"></a><span class="k">def</span> <span class="nf">general_honeypot_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span><span id="__span-0-421"><a id="__codelineno-0-421" name="__codelineno-0-421"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-422"><a id="__codelineno-0-422" name="__codelineno-0-422"></a><span class="sd">    Retrieve a list of all general honeypots, optionally filtering by active status.</span>
+</span><span id="__span-0-423"><a id="__codelineno-0-423" name="__codelineno-0-423"></a>
+</span><span id="__span-0-424"><a id="__codelineno-0-424" name="__codelineno-0-424"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-425"><a id="__codelineno-0-425" name="__codelineno-0-425"></a><span class="sd">        request: The incoming request object containing query parameters.</span>
+</span><span id="__span-0-426"><a id="__codelineno-0-426" name="__codelineno-0-426"></a>
+</span><span id="__span-0-427"><a id="__codelineno-0-427" name="__codelineno-0-427"></a><span class="sd">    Returns:</span>
+</span><span id="__span-0-428"><a id="__codelineno-0-428" name="__codelineno-0-428"></a><span class="sd">        Response: A JSON response containing the list of general honeypots.</span>
+</span><span id="__span-0-429"><a id="__codelineno-0-429" name="__codelineno-0-429"></a><span class="sd">    """</span>
+</span><span id="__span-0-430"><a id="__codelineno-0-430" name="__codelineno-0-430"></a>
+</span><span id="__span-0-431"><a id="__codelineno-0-431" name="__codelineno-0-431"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Requested general honeypots list from </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+</span><span id="__span-0-432"><a id="__codelineno-0-432" name="__codelineno-0-432"></a>    <span class="n">active</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"onlyActive"</span><span class="p">)</span>
+</span><span id="__span-0-433"><a id="__codelineno-0-433" name="__codelineno-0-433"></a>    <span class="n">honeypots</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-434"><a id="__codelineno-0-434" name="__codelineno-0-434"></a>    <span class="n">generalHoneypots</span> <span class="o">=</span> <span class="n">GeneralHoneypot</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span id="__span-0-435"><a id="__codelineno-0-435" name="__codelineno-0-435"></a>    <span class="k">if</span> <span class="n">active</span> <span class="o">==</span> <span class="s2">"true"</span><span class="p">:</span>
+</span><span id="__span-0-436"><a id="__codelineno-0-436" name="__codelineno-0-436"></a>        <span class="n">generalHoneypots</span> <span class="o">=</span> <span class="n">generalHoneypots</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-437"><a id="__codelineno-0-437" name="__codelineno-0-437"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Requested only active general honeypots"</span><span class="p">)</span>
+</span><span id="__span-0-438"><a id="__codelineno-0-438" name="__codelineno-0-438"></a>    <span class="n">honeypots</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">hp</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">hp</span> <span class="ow">in</span> <span class="n">generalHoneypots</span><span class="p">])</span>
+</span><span id="__span-0-439"><a id="__codelineno-0-439" name="__codelineno-0-439"></a>
+</span><span id="__span-0-440"><a id="__codelineno-0-440" name="__codelineno-0-440"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"General honeypots: </span><span class="si">{</span><span class="n">honeypots</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-441"><a id="__codelineno-0-441" name="__codelineno-0-441"></a>    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">honeypots</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Contribute" class="md-footer__link md-footer__link--prev" href="../Contribute/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Contribute
+              </div>
+</div>
+</a>
+<a aria-label="Next: Quickstart" class="md-footer__link md-footer__link--next" href="../../pyintelowl/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                Quickstart
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      © IntelOwl Project
+
+    </div>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/intelowlproject" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://honeynetpublic.slack.com/archives/C01KVGMAKL6" rel="noopener" target="_blank" title="honeynetpublic.slack.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.linkedin.com/company/intelowl" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+<a class="md-social__link" href="https://x.com/intel_owl" rel="noopener" target="_blank" title="x.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.path", "navigation.footer", "navigation.expand", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script>document$.subscribe(() => {
+            window.update_swagger_ui_iframe_height = function (id) {
+                var iFrameID = document.getElementById(id);
+                if (iFrameID) {
+                    full_height = (iFrameID.contentWindow.document.body.scrollHeight + 80) + "px";
+                    iFrameID.height = full_height;
+                    iFrameID.style.height = full_height;
+                }
+            }
+        
+            let iframe_id_list = []
+            var iframes = document.getElementsByClassName("swagger-ui-iframe");
+            for (var i = 0; i < iframes.length; i++) { 
+                iframe_id_list.push(iframes[i].getAttribute("id"))
+            }
+        
+            let ticking = true;
+            
+            document.addEventListener('scroll', function(e) {
+                if (!ticking) {
+                    window.requestAnimationFrame(()=> {
+                        let half_vh = window.innerHeight/2;
+                        for(var i = 0; i < iframe_id_list.length; i++) {
+                            let element = document.getElementById(iframe_id_list[i])
+                            if(element==null){
+                                return
+                            }
+                            let diff = element.getBoundingClientRect().top
+                            if(element.contentWindow.update_top_val){
+                                element.contentWindow.update_top_val(half_vh - diff)
+                            }
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        
+            const dark_scheme_name = "slate"
+            
+            window.scheme = document.body.getAttribute("data-md-color-scheme")
+            const options = {
+                attributeFilter: ['data-md-color-scheme'],
+            };
+            function color_scheme_callback(mutations) {
+                for (let mutation of mutations) {
+                    if (mutation.attributeName === "data-md-color-scheme") {
+                        scheme = document.body.getAttribute("data-md-color-scheme")
+                        var iframe_list = document.getElementsByClassName("swagger-ui-iframe")
+                        for(var i = 0; i < iframe_list.length; i++) {
+                            var ele = iframe_list.item(i);
+                            if (ele) {
+                                if (scheme === dark_scheme_name) {
+                                    ele.contentWindow.enable_dark_mode();
+                                } else {
+                                    ele.contentWindow.disable_dark_mode();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            observer = new MutationObserver(color_scheme_callback);
+            observer.observe(document.body, options);
+            })</script></body>
+</html>
