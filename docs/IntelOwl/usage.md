@@ -284,7 +284,7 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 
 #### Creating Analyzers from the GUI
 
-In some cases, it's enough to provide an URL, a way to authenticate to the service and you are done if the results are available in json. There's no need to write python code for these cases, you need to leverage the "Create analyzer" button that you can find on the top right of the Analyzers table Page. 
+Sometimes, it's enough to provide a URL and a way to authenticate, like an API key, to connect to the service you want to integrate. If the service provides results in JSON format, you will get it in the report. There's no need to write python code for these cases, you need to leverage the "Create analyzer" button that you can find on the top right of the Analyzers table Page. 
 
 ![img.png](./static/analyzer_creation_btn.png)
 
@@ -351,7 +351,7 @@ In the following image you can find an example of an [Investigation](#investigat
 ![img.png](./static/pivot_investigation.png)
 
 3. If you want to create a pivot that will run automatically after certain conditions are triggered, you need to leverage the "Create pivot" button that you can find on the top right of the Pivots table Page.
-This plugin can only run automatically within a playbook so it is important to select the analyzers or connectors after which the pivot will be executed.
+This plugin can only run automatically within a playbook so it is important to select the analyzers or connectors required by your pivot.
 ![img.png](./static/pivot_creation_btn.png)
 ![img.png](./static/pivot_creation_form.png)
 
@@ -428,12 +428,10 @@ If you want to share them to every user in IntelOwl, create them via the Django 
 
 If you want share them to yourself or your organization only, you have 2 options:
 
-- After you have done an analysis, you can save the configuration of the Plugins you executed for re-use with a single click. You need to leverage the "Save as Playbook" button that you can find on the top right of the Job Result Page.
-
+1. After you have done an analysis, you can save the configuration of the Plugins you executed for re-use with a single click. You need to leverage the "Save as Playbook" button that you can find on the top right of the Job Result Page.
   ![img.png](./static/playbook_creation.png)
 
-- If you want to create completely new playbooks, you need to leverage the "Create playbook" button that you can find on the top right of the Playbooks table Page. The form will open with the fields to fill in to create the playbook.
-
+2. If you want to create completely new playbooks, you need to leverage the "Create playbook" button that you can find on the top right of the Playbooks table Page. The form will open with the fields to fill in to create the playbook.
   ![img.png](./static/playbook_creation_form.png)
 
 In both cases, the created Playbook would be available to yourself only. If you want either to share it with your organization, to update it or to delete it, you need to go to the "Plugins" section and enable it manually by clicking the dedicated button.
