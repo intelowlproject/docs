@@ -57,8 +57,6 @@ docker exec -ti greedybear_uwsgi python3 manage.py createsuperuser
 The app administrator can enable/disable the extraction of source IPs for specific honeypots from the Django Admin.
 This is used for honeypots that are not specifically implemented to extract additional information (so not Log4Pot and Cowrie).
 
-If you want to make
-
 ### Environment configuration
 
 In the `env_file`, configure different variables as explained below.
