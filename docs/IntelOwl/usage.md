@@ -511,17 +511,29 @@ There are 2 types of Parameters:
 
 To see the list of these parameters:
 
-- You can view the "Plugin" Section in IntelOwl to have a complete and updated view of all the options available
+- You can view all the parameters relating to each plugin by going to the "Plugins" section and clicking on the "Plugin config" button in the "Actions" column of the table.
+
+  ![img.png](./static/plugin_config_icon.png)
+
+  A section will open showing all the parameters and their values. This section is also divided into 2 subsections: 'User config' and 'Org config' (if the user is part of an organization).
+
+  ![img.png](./static/plugin_config_modal.png)
+
 - You can view the parameters by exploring the Django Admin Interface:
   - `admin/api_app/parameter/`
   - or at the very end of each Plugin configuration like `/admin/analyzers_manager/analyzerconfig/`
 
-You can change the Plugin Parameters at 5 different levels:
+You can change the Plugin Parameters at 4 different levels:
 
-- if you are an IntelOwl superuser, you can go in the Django Admin Interface and change the default values of the parameters for every plugin you like. This option would change the default behavior for every user in the platform.
-- if you are either Owner or Admin of an org, you can customize the default values of the parameters for every member of the organization by leveraging the GUI in the "Organization Config" section. This overrides the previous option.
-- if you are a normal user, you can customize the default values of the parameters for your analysis only by leveraging the GUI in the "Plugin config" section. This overrides the previous option.
-- You can choose to provide runtime configuration when requesting an analysis that will override the previous options. This override is done only for the specific analysis. See <a href="https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#customize-analyzer-execution">Customize analyzer execution at time of request</a>
+1. If you are an IntelOwl superuser, you can go in the Django Admin Interface and change the default values of the parameters for every plugin you like. This option would change the default behavior for every user in the platform. From the GUI it is not possible to modify or delete the default values.
+2. If you are either Owner or Admin of an org, you can customize the values of the parameters for every member of the organization by leveraging the GUI in the "Org config" section. This overrides the previous option.
+
+    Note: Normal users will see the org's configurations as new default configurations in the 'User config' section.
+
+3. If you are a normal user, you can customize the values of the parameters for your analysis only by leveraging the GUI in the "User config" section. This overrides the previous option.
+4. You can choose to provide runtime configuration when requesting an analysis that will override the previous options. This override is done only for the specific analysis. See <a href="https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#customize-analyzer-execution">Customize analyzer execution at time of request</a>
+
+For options 2 and 3: you can delete the custom configurations and restore the default options by clicking the 'delete' button to the right of each parameter.
 
 <div class="admonition note">
 <p class="admonition-title">Playbook Exception</p>
