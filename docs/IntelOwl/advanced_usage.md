@@ -221,6 +221,10 @@ compile with fake data.
 Here is an example of what a phishing investigation looks like started from `PhishingExtractor` playbook: 
 ![img.png](./static/phishing_analysis.png)
 
+##### Infrastructure diagram
+To better understand how this integration works, here is a diagram showing how the components are arranged (at container level) and how they communicate to reach target website.
+![img.png](./static/intel_owl_phishing_analyzers.png)
+
 ## Analyzers with special configuration
 
 Some analyzers could require a special configuration:
@@ -241,13 +245,29 @@ Some analyzers could require a special configuration:
     - The `repositories` values is what will be used to actually run the analysis: if you have added private repositories, remember to add the url in `repositories` too!
   - You can add local rules inside the directory at `/opt/deploy/files_required/yara/YOUR_USERNAME/custom_rules/`. Please remember that these rules are not synced in a cluster deploy: for this reason is advised to upload them on GitHub and use the `repositories` or `private_repositories` attributes.
 
+- `NERD` :
+  - The `nerd_analysis` parameter allows you to customize the level of detail in the analysis response. Available options are:
+    - `basic` (default): Provides a simplified response from the database.
+    - `full`: Includes all available information about the IP from the database.
+    - `fmp`: Returns only the FMP (Future Misbehavior Probability) score.
+    - `rep`: Returns only the reputation score of the IP.
+- `urlDNA.io`:
+  - The `UrlDNA_New_Scan` analyzer offers optional configurations that can be adjusted to achieve more accurate results. Full documentation of these settings is available on the [urlDNA.io API](https://urldna.io/api) page.
+    - `device`: Specifies the device used for the scan. Options are `DESKTOP` or `MOBILE`.
+    - `user_agent`: Defines the browser user agent string used during the scan.
+    - `viewport_width`: Sets the viewport width for the scan.
+    - `viewport_height`: Sets the viewport height for the scan.
+    - `waiting_time`: Determines the waiting time for the page to load during the scan (in seconds).
+    - `private_scan`: When set to `true`, the scan results will not be shared with other `urlDNA.io` users.
+    - `scanned_from`: Allows selecting the country of origin for the scan using a two-letter country code (ISO 3166-1 alpha-2). This feature is available only to `urlDNA.io` Premium Users.
+    
 ## Notifications
 
 Since v4, IntelOwl integrated the notification system from the `certego_saas` package, allowing the admins to create notification that every user will be able to see.
 
 The user would find the Notifications button on the top right of the page:
 
-<img style="border: 0.2px solid black" width=220 height=210 src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/notifications.png">
+<img style="border: 0.2px solid black" width=220 height=210 src="https://raw.githubusercontent.com/intelowlproject/docs/main/docs/IntelOwl/static/notifications.png">
 
 There the user can read notifications provided by either the administrators or the IntelOwl Maintainers.
 

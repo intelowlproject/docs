@@ -209,7 +209,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Mnemonic_PassiveDNS` : Look up a domain or IP using the [Mnemonic PassiveDNS public API](https://docs.mnemonic.no/display/public/API/Passive+DNS+Overview).
 - `MWDB_Get`: [mwdblib](https://mwdb.readthedocs.io/en/latest/) Retrieve malware file analysis by hash from repository maintained by CERT Polska MWDB.
 - `Netlas`: search an IP against [Netlas](https://netlas.io/api)
-- `NERD_analyzer`: scan an IP address against [NERD](https://nerd.cesnet.cz/) database
+- `NERD_analyzer`: search an IP against NERD reputation database [NERD](https://nerd.cesnet.cz/)
 - `ONYPHE`: search an observable in [ONYPHE](https://www.onyphe.io/)
 - `OpenCTI`: scan an observable on an [OpenCTI](https://github.com/OpenCTI-Platform/opencti) instance
 - `OTXQuery`: scan an observable on [Alienvault OTX](https://otx.alienvault.com/)
@@ -234,6 +234,8 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `TorProject`: check if an IP is a Tor Exit Node
 - `Triage_Search`: Search for reports of observables or upload from URL on triage cloud
 - `Tranco`: Check if a domain is in the latest [Tranco](https://tranco-list.eu/) ranking top sites list
+- `UrlDNA_Search`: Look up an IP address, domain, URL, or hash in the [urlDNA.io](https://urldna.io) database to retrieve relevant information.
+- `UrlDNA_New_Scan`: Submit a URL to [urlDNA.io](https://urldna.io) for analysis and retrieve the results.
 - `URLhaus`: Query a domain or URL against [URLhaus](https://urlhaus.abuse.ch/) API.
 - `UrlScan_Search`: Search an IP/domain/url/hash against [URLScan](https://urlscan.io) API
 - `UrlScan_Submit_Result`: Submit & retrieve result of an URL against [URLScan](https://urlscan.io) API
@@ -282,6 +284,17 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 
 [Some analyzers are optional](https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#optional-analyzers) and need to be enabled explicitly.
 
+#### Creating Analyzers from the GUI
+
+Sometimes, it's enough to provide a URL and a way to authenticate, like an API key, to connect to the service you want to integrate. If the service provides results in JSON format, you will get it in the report. There's no need to write python code for these cases, you need to leverage the "Create analyzer" button that you can find on the top right of the Analyzers table Page. 
+
+![img.png](./static/analyzer_creation_btn.png)
+
+The form will open with the fields to fill in to create the analyzer.
+
+![img.png](./static/analyzer_creation.png)
+
+
 ### Connectors
 
 Connectors are designed to run after every successful analysis which makes them suitable for automated threat-sharing. They support integration with other SIEM/SOAR projects, specifically aimed at Threat Sharing Platforms.
@@ -319,12 +332,12 @@ You can build your own custom Pivot with your custom logic with just few lines o
 
 #### Creating Pivots from the GUI
 
-From the GUI, the users can pivot in two ways:
+From the GUI, the users can pivot in 3 ways:
 
-- If a Job executed a [Visualizer](#visualizers), it is possible to select a field extracted and analyze its value by clicking the "Pivot" button (see following image). In this way, the user is able to "jump" from one indicator to another.
+1. If a Job executed a [Visualizer](#visualizers), it is possible to select a field extracted and analyze its value by clicking the "Pivot" button (see following image). In this way, the user is able to "jump" from one indicator to another.
   ![img.png](./static/pivot_job_report.png)
 
-- Starting from an already existing [Investigation](#investigations-framework), it is possible to select a Job block and click the "Pivot" button to analyze the same observable again, usually choosing another [Playbook](#playbooks) (see following image)
+2. Starting from an already existing [Investigation](#investigations-framework), it is possible to select a Job block and click the "Pivot" button to analyze the same observable again, usually choosing another [Playbook](#playbooks) (see following image)
   ![img.png](./static/pivot_investigation_report.png)
 
 In both cases, the user is redirected to the Scan Page that is precompiled with the observable selected. Then the user would be able to select the [Playbook](#playbooks) to execute in the new job.
@@ -338,6 +351,11 @@ In the following image you can find an example of an [Investigation](#investigat
 - leveraging the second way to create a Pivot, the second `test\.com` analysis had been created with a different Playbook.
 
 ![img.png](./static/pivot_investigation.png)
+
+3. If you want to create a pivot that will run automatically after certain conditions are triggered, you need to leverage the "Create pivot" button that you can find on the top right of the Pivots table Page.
+This plugin can only run automatically within a playbook so it is important to select the analyzers or connectors required by your pivot.
+![img.png](./static/pivot_creation_btn.png)
+![img.png](./static/pivot_creation_form.png)
 
 ### Visualizers
 
@@ -410,12 +428,15 @@ You can create new playbooks in different ways, based on the users you want to s
 
 If you want to share them to every user in IntelOwl, create them via the Django Admin interface at `/admin/playbooks_manager/playbookconfig/`.
 
-If you want share them to yourself or your organization only, you need to leverage the "Save as Playbook" button that you can find on the top right of the Job Result Page.
-In this way, after you have done an analysis, you can save the configuration of the Plugins you executed for re-use with a single click.
+If you want share them to yourself or your organization only, you have 2 options:
 
-![img.png](./static/playbook_creation.png)
+1. After you have done an analysis, you can save the configuration of the Plugins you executed for re-use with a single click. You need to leverage the "Save as Playbook" button that you can find on the top right of the Job Result Page.
+  ![img.png](./static/playbook_creation.png)
 
-The created Playbook would be available to yourself only. If you want either to share it with your organization or to delete it, you need to go to the "Plugins" section and enable it manually by clicking the dedicated button.
+2. If you want to create completely new playbooks, you need to leverage the "Create playbook" button that you can find on the top right of the Playbooks table Page. The form will open with the fields to fill in to create the playbook.
+  ![img.png](./static/playbook_creation_form.png)
+
+In both cases, the created Playbook would be available to yourself only. If you want either to share it with your organization, to update it or to delete it, you need to go to the "Plugins" section and enable it manually by clicking the dedicated button.
 
 ![img.png](./static/playbooks_cr.png)
 
@@ -490,17 +511,29 @@ There are 2 types of Parameters:
 
 To see the list of these parameters:
 
-- You can view the "Plugin" Section in IntelOwl to have a complete and updated view of all the options available
+- You can view all the parameters relating to each plugin by going to the "Plugins" section and clicking on the "Plugin config" button in the "Actions" column of the table.
+
+  ![img.png](./static/plugin_config_icon.png)
+
+  A section will open showing all the parameters and their values. This section is also divided into 2 subsections: 'User config' and 'Org config' (if the user is part of an organization).
+
+  ![img.png](./static/plugin_config_modal.png)
+
 - You can view the parameters by exploring the Django Admin Interface:
   - `admin/api_app/parameter/`
   - or at the very end of each Plugin configuration like `/admin/analyzers_manager/analyzerconfig/`
 
-You can change the Plugin Parameters at 5 different levels:
+You can change the Plugin Parameters at 4 different levels:
 
-- if you are an IntelOwl superuser, you can go in the Django Admin Interface and change the default values of the parameters for every plugin you like. This option would change the default behavior for every user in the platform.
-- if you are either Owner or Admin of an org, you can customize the default values of the parameters for every member of the organization by leveraging the GUI in the "Organization Config" section. This overrides the previous option.
-- if you are a normal user, you can customize the default values of the parameters for your analysis only by leveraging the GUI in the "Plugin config" section. This overrides the previous option.
-- You can choose to provide runtime configuration when requesting an analysis that will override the previous options. This override is done only for the specific analysis. See <a href="https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#customize-analyzer-execution">Customize analyzer execution at time of request</a>
+1. If you are an IntelOwl superuser, you can go in the Django Admin Interface and change the default values of the parameters for every plugin you like. This option would change the default behavior for every user in the platform. From the GUI it is not possible to modify or delete the default values.
+2. If you are either Owner or Admin of an org, you can customize the values of the parameters for every member of the organization by leveraging the GUI in the "Org config" section. This overrides the previous option.
+
+    Note: Normal users will see the org's configurations as new default configurations in the 'User config' section.
+
+3. If you are a normal user, you can customize the values of the parameters for your analysis only by leveraging the GUI in the "User config" section. This overrides the previous option.
+4. You can choose to provide runtime configuration when requesting an analysis that will override the previous options. This override is done only for the specific analysis. See <a href="https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#customize-analyzer-execution">Customize analyzer execution at time of request</a>
+
+For options 2 and 3: you can delete the custom configurations and restore the default options by clicking the 'delete' button to the right of each parameter.
 
 <div class="admonition note">
 <p class="admonition-title">Playbook Exception</p>

@@ -5,7 +5,16 @@ For requirements, please refer to [IntelOwl requirements](https://intelowlprojec
 
 Note that GreedyBear _needs_ a running instance of ElasticSearch of a T-POT to function. In `docker/env_file`, set the variable `ELASTIC_ENDPOINT` with the URL of your Elasticsearch T-POT.
 
-If you don't have one, you can make the following changes to make GreeyBear spin up it's own ElasticSearch instance.
+In the T-POT classic installation, ElasticSearch is not exposed externally. If you want your GB instance to connect to it, you must change this and expose it externally.
+
+Yo do that, change the main `docker-compose.yml` of the T-POT in the `elasticsearch` section:
+```code
+    ports:
+      - "64298:9200" # instead of "127.0.0.1:64298:9200"
+```
+Obviously, you should have already configured your T-POT to avoid generic access to ports higher than 64000 (like stated in the [official doc](https://github.com/telekom-security/tpotce/tree/master?tab=readme-ov-file#system-placement))
+
+If you don't have a T-POT, you can make the following changes to make GreeyBear spin up it's own ElasticSearch instance.
 (...Care! This option would require enough RAM to run the additional containers. Suggested is >=16GB):
 
 1. In `docker/env_file`, set the variable `ELASTIC_ENDPOINT` to `http://elasticsearch:9200`.
@@ -28,12 +37,8 @@ cp env_file_template env_file
 cp env_file_postgres_template env_file_postgres
 ```
 
-Now you can start by building the image using docker-compose and run the project.
-
 ```bash
-# build the image locally
-docker-compose build
-
+# The default deployment leverages the official images of GreedyBear available here: https://hub.docker.com/repository/docker/intelowlproject/greedybear
 # start the app
 docker-compose up
 
