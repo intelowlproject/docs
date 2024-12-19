@@ -116,6 +116,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Mobsf`: [MobSF](https://github.com/MobSF/mobsfscan/) is a static analysis tool that can find insecure code patterns in your Android and iOS source code. Supports Java, Kotlin, Android XML, Swift and Objective C Code.
 - `DroidLysis`: [DroidLysis](https://github.com/cryptax/droidlysis) is a pre-analysis tool for Android apps: it performs repetitive and boring tasks we'd typically do at the beginning of any reverse engineering. It disassembles the Android sample, organizes output in directories, and searches for suspicious spots in the code to look at. The output helps the reverse engineer speed up the first few steps of analysis.
 - `Artifacts`: [Artifacts](https://github.com/guelfoweb/artifacts) is a tool that does APK strings analysis. Useful for first analysis.
+- `MobSF_Service`: [MobSF_Service](https://github.com/MobSF/Mobile-Security-Framework-MobSF) can be used for a variety of use cases such as mobile application security, penetration testing, malware analysis, and privacy analysis. 
 
 ###### External services
 

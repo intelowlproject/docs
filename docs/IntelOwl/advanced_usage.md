@@ -260,6 +260,14 @@ Some analyzers could require a special configuration:
     - `waiting_time`: Determines the waiting time for the page to load during the scan (in seconds).
     - `private_scan`: When set to `true`, the scan results will not be shared with other `urlDNA.io` users.
     - `scanned_from`: Allows selecting the country of origin for the scan using a two-letter country code (ISO 3166-1 alpha-2). This feature is available only to `urlDNA.io` Premium Users.
+- `MobSF_Service`: 
+  - The `MobSF_Service` analyzer offers various configurable parameters to optimize the automated scanning of the application as per one's requirement.
+    - `enable_dynamic_analysis`: Set to `True` to enable dynamic analysis though this will increase the scan time.
+    - `timeout`: Request timeout for each API call, configure as per your need. Default value is 30 seconds.
+    - `default_hooks`: Default hooks to pass to mobsf e.g root_bypass, ssl_pinning_bypass, etc.
+    - `auxiliary_hooks`: Auxiliary frida hooks to pass to mobsf.
+    - `frida_code`: Custom Frida code to be executed by mobsf
+    - `activity_duration`: Wait time period for mobsf to collect sufficient info from dynamic activities such as results from`frida_code` before generating report. Default value is 60 seconds. Configure as per your requirements.
     
 ## Notifications
 
