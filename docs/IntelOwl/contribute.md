@@ -481,7 +481,7 @@ def _do_create_data_model(self) -> bool:
 ```
 
 ### Analyzer._create_data_model_mtm
-This is a function that every `Analyzer` can override: this functions returns a dictionary where the values are the objects that will be added in a many to many relationship in the datamodel, and the keys the names of the fields.
+This is a function that every `Analyzer` can override: this function returns a dictionary where the values are the objects that will be added in a many to many relationship in the datamodel, and the keys the names of the fields.
 Let's use the `Yara` Analyzer as an example.
 
 ```python3
