@@ -424,10 +424,13 @@ You can use the django management command `dumpplugin` to automatically create t
 
 Example: `docker exec -ti intelowl_uwsgi python3 manage.py dumpplugin PlaybookConfig <new_analyzer_name>`
 
-## DataModel
-In version XXX of IntelOwl, a new plugin has been added: the `DataModel`.
-Its main functionality is to model an `Analyzer` result to a set of prearranged keys, allowing users to easily search, evaluate and use the analyzer result.
-The author of an `AnalyzerConfig` is able to decide mapping between each field of the `AnalyzerReport` and the corresponding in the `DataModel`.
+## How to create a DataModel
+
+After the successful execution of an `Analyzer`, a `DataModel` will be created only if `_do_create_data_model` returns `True` and at least one of the following conditions is true:
+1. the `mapping_data_model` field is defined in the `AnalyzerConfig`
+2. the `Analyzer` overrides `_update_data_model`
+3. the `Analyzer` overrides `_create_data_model_mtm`
+
 ### AnalyzerConfig.mapping_data_model
 Each `AnalyzerConfig` has now a new field, called `mapping_data_model`:
 this is a dictionary of which the keys represent the path from which retrieve the value in the `AnalyzerReport`,
@@ -450,7 +453,7 @@ report= {
 mapping_data_model={
    "data.urls.url": "external_urls", # unmarshaling of the array is done automatically
    "data.country": "country_code",
-   "$MALICIOUS": "evaluation", # the $ specify that this is a constant
+   "$malicious": "evaluation", # the $ specify that this is a constant
    "data.tags.0": "tags" # we just want the first tag
 }
 ```
@@ -482,24 +485,26 @@ def _do_create_data_model(self) -> bool:
 
 ### Analyzer._create_data_model_mtm
 This is a function that every `Analyzer` can override: this function returns a dictionary where the values are the objects that will be added in a many to many relationship in the datamodel, and the keys the names of the fields.
+This is useful when you want to save part of a report in separate Model and want to reference it with a many to many relationship.
 Let's use the `Yara` Analyzer as an example.
 
 ```python3
 def _create_data_model_mtm(self):
-  from api_app.data_model_manager.models import Signature
+        from api_app.data_model_manager.models import Signature
 
-  signatures = []
-  for signature in self.report.report:
-      url = signature.pop("rule_url", None)
-      sign = Signature.objects.create(
-          provider=Signature.PROVIDERS.YARA.value,
-          signature=signature,
-          url=url,
-          score=1,
-      )
-      signatures.append(sign)
+        signatures = []
+        for yara_signatures in self.report.report.values():
+            for yara_signature in yara_signatures:
+                url = yara_signature.pop("rule_url", None)
+                sign = Signature.objects.create(
+                    provider=Signature.PROVIDERS.YARA.value,
+                    signature=yara_signature,
+                    url=url if url else "",
+                    score=1,
+                )
+                signatures.append(sign)
 
-  return {"signatures": signatures}
+        return {"signatures": signatures}
 
 ```
 Here we are creating many `Signature` objects (using the signatures that matched the sample analyzed) and adding them to the `signatures` field.

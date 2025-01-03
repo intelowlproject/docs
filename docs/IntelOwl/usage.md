@@ -278,6 +278,13 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 
 [Some analyzers are optional](https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#optional-analyzers) and need to be enabled explicitly.
 
+### DataModels
+
+_Available from version > 6.2.0_
+
+The main functionality of a `DataModel` is to model an `Analyzer` result to a set of prearranged keys, allowing users to easily search, evaluate and use the analyzer result.
+The author of an `AnalyzerConfig` is able to decide mapping between each field of the `AnalyzerReport` and the corresponding in the `DataModel`.
+
 ### Connectors
 
 Connectors are designed to run after every successful analysis which makes them suitable for automated threat-sharing. They support integration with other SIEM/SOAR projects, specifically aimed at Threat Sharing Platforms.
