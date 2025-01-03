@@ -467,7 +467,7 @@ If you specify a path that is not present in the `AnalyzerConfig`, a warning wil
 ### Analyzer._do_create_data_model
 This is a function that every `Analyzer` can override: this function returns a boolean and, if `False`, the datamodel will not be created.
 This can be used if the `Analyzers` can succeed without retrieving useful results.
-Let's use as an example `UrlHaus`: if the domain analyzed is not present in its database, the result will be
+Let's use `UrlHaus` as an example : if the domain analyzed is not present in its database, the result will be
 ```python3
 {"query_status": "no_results"}
 ```
