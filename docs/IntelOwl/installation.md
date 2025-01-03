@@ -93,7 +93,6 @@ IntelOwl is composed of various different technologies, namely:
 - Uwsgi: Application Server
 - Daphne: Asgi Server for WebSockets
 - Elastic Search (_optional_): Auto-sync indexing of analysis' results.
-- Kibana (_optional_): GUI for Elastic Search. We provide a saved configuration with dashboards and visualizations.
 - Flower (_optional_): Celery Management Web Interface
 
 All these components are managed via `docker compose`.
@@ -283,13 +282,28 @@ This is a destructive operation but can be useful to start again the project fro
 
 `./start prod down -- -v`
 
+### Get the experimental features in the develop branch
+If you cannot wait for official releases and you want to leverage the most recent features added in the development branch, you can do it!
+
+Follow these steps:
+```bash
+# go to your IntelOwl directory
+cd /home/user/IntelOwl
+# switch to the develop branch
+git checkout develop
+# locally build the development branch
+./start test build
+# run IntelOwl
+./start test up
+```
+
 ## After Deployment
 
 ### Users creation
 
 You may want to run `docker exec -ti intelowl_uwsgi python3 manage.py createsuperuser` after first run to create a superuser.
 Then you can add other users directly from the Django Admin Interface after having logged with the superuser account.
-To manage users, organizations and their visibility please refer to this [section](/Advanced-Usage.md#organizations-and-user-management)
+To manage users, organizations and their visibility please refer to this [section](https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#organizations-and-user-management)
 
 ## Update and Rebuild
 
@@ -421,7 +435,7 @@ So, to migrate to the new major version you would need to delete your DB. To do 
 python3 start.py prod down -v
 ```
 
-Please be aware that, while this can be an important effort to manage, the v4 IntelOwl provides an easier way to add, invite and manage users from the application itself. See [the Organization section](./Advanced-Usage.md#organizations-and-user-management).
+Please be aware that, while this can be an important effort to manage, the v4 IntelOwl provides an easier way to add, invite and manage users from the application itself. See [the Organization section](https://intelowlproject.github.io/docs/IntelOwl/advanced_usage/#organizations-and-user-management).
 
 #### Updating to >=2.0.0 from a 1.x.x version
 
@@ -446,3 +460,14 @@ If you are updating to >[v1.3.0](https://github.com/intelowlproject/IntelOwl/rel
    ```
 
 3. If you see "Update successful!", everything went fine and now you can enjoy the new features!
+
+
+## Releases Schedule
+
+From 2025 onwards, maintainers are adopting a new schedule for future releases containing new features: expect **a new release on every April and October** (like Ubuntu :P).
+
+In this way maintainers aim to provide constant support for the users and expected deadlines to get the new features from the project into the official releases.
+
+Please remember that you can always use the most recent features available in the development branch at anytime! See [this section](#get-the-experimental-features-in-the-develop-branch) for additional details 
+
+Obviously, as always, important bugs and fixes will be handled differently with dedicated patch releases.

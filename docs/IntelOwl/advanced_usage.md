@@ -126,6 +126,16 @@ table, th, td {
     <td><code>PhoneInfoga_scan</code></td>
     <td><a href="https://github.com/sundowndev/phoneinfoga/tree/master">PhoneInfoga</a> is one of the most advanced tools to scan international phone numbers. It allows you to first gather basic information such as country, area, carrier and line type, then use various techniques to try to find the VoIP provider or identify the owner. It works with a collection of scanners that must be configured in order for the tool to be effective. PhoneInfoga doesn't automate everything, it's just there to help investigating on phone numbers. <a href="#phoneinfoga">here</a></td>
   </tr>
+  <tr>
+    <td>Phishing Analyzers</td>
+    <td>
+      <ul>
+        <li><code>Phishing_Extractor</code></li>
+        <li><code>Phishing_Form_Compiler</code></li>
+      </ul>
+    </td>
+    <td>This framework tries to render a potential phishing page and extract useful information from it. Also, if the page contains a form, it tries to submit the form using fake data. The goal is to extract IOCs and check whether the page is real phishing or not.</td>
+  </tr>
 </table>
 
 To enable all the optional analyzers you can add the option `--all_analyzers` when starting the project. Example:
@@ -171,7 +181,7 @@ pyintelowl_client.send_file_analysis_request(..., runtime_configuration=runtime_
 
 #### PhoneInfoga
 
-PhoneInfoga provides several [Scanners](https://sundowndev.github.io/phoneinfoga/getting-started/scanners/) to extract as much information as possible from a given phone number. Those scanners may require authentication, so they're automatically skipped when no authentication credentials are found.
+PhoneInfoga provides several [Scanners](https://sundowndev.github.io/phoneinfoga/getting-started/scanners/) to extract as much information as possible from a given phone number. Those scanners may require authentication, so they are automatically skipped when no authentication credentials are found.
 
 By default the scanner used is `local`.
 Go through this [guide](https://sundowndev.github.io/phoneinfoga/getting-started/scanners/) to initiate other required API keys related to this analyzer.
@@ -193,6 +203,28 @@ Additionally, you can also (optionally) set the `output_type` argument.
 
 - "to decimal": `[{"op": "To Decimal", "args": ["Space", False]}]`
 
+#### Phishing Analyzers
+The framework aims to be extandable and provides two different playbooks connected through a pivot.
+The first playbook, named `PhishingExtractor`, is in charge of extracting useful information from the web page rendered with Selenium-based browser.
+The second playbook is called `PhishingAnalysis` and its main purposes are to extract useful insights on the page itself
+and to try to submit forms with fake data to extract other IOCs.
+
+[XPath](https://www.w3schools.com/xml/xpath_intro.asp) syntax is used to find elements in the page. These selectors are customizable via the plugin's config page.
+The parameter `xpath_form_selector` controls how the form is retrieved from the page and `xpath_js_selector` is used to search
+for JavaScript inside the page.
+
+A mapping is used in order to compile the page with fake data. This is due to the fact that most input tags of type "text"
+do not have a specific role in the page, so there must be some degree of approximation.
+This behaviour is controlled through `*-mapping` parameters. They are a list that must contain the input tag's name to
+compile with fake data.
+
+Here is an example of what a phishing investigation looks like started from `PhishingExtractor` playbook: 
+![img.png](./static/phishing_analysis.png)
+
+##### Infrastructure diagram
+To better understand how this integration works, here is a diagram showing how the components are arranged (at container level) and how they communicate to reach target website.
+![img.png](./static/intel_owl_phishing_analyzers.png)
+
 ## Analyzers with special configuration
 
 Some analyzers could require a special configuration:
@@ -213,13 +245,37 @@ Some analyzers could require a special configuration:
     - The `repositories` values is what will be used to actually run the analysis: if you have added private repositories, remember to add the url in `repositories` too!
   - You can add local rules inside the directory at `/opt/deploy/files_required/yara/YOUR_USERNAME/custom_rules/`. Please remember that these rules are not synced in a cluster deploy: for this reason is advised to upload them on GitHub and use the `repositories` or `private_repositories` attributes.
 
+- `NERD` :
+  - The `nerd_analysis` parameter allows you to customize the level of detail in the analysis response. Available options are:
+    - `basic` (default): Provides a simplified response from the database.
+    - `full`: Includes all available information about the IP from the database.
+    - `fmp`: Returns only the FMP (Future Misbehavior Probability) score.
+    - `rep`: Returns only the reputation score of the IP.
+- `urlDNA.io`:
+  - The `UrlDNA_New_Scan` analyzer offers optional configurations that can be adjusted to achieve more accurate results. Full documentation of these settings is available on the [urlDNA.io API](https://urldna.io/api) page.
+    - `device`: Specifies the device used for the scan. Options are `DESKTOP` or `MOBILE`.
+    - `user_agent`: Defines the browser user agent string used during the scan.
+    - `viewport_width`: Sets the viewport width for the scan.
+    - `viewport_height`: Sets the viewport height for the scan.
+    - `waiting_time`: Determines the waiting time for the page to load during the scan (in seconds).
+    - `private_scan`: When set to `true`, the scan results will not be shared with other `urlDNA.io` users.
+    - `scanned_from`: Allows selecting the country of origin for the scan using a two-letter country code (ISO 3166-1 alpha-2). This feature is available only to `urlDNA.io` Premium Users.
+- `MobSF_Service`: 
+  - The `MobSF_Service` analyzer offers various configurable parameters to optimize the automated scanning of the application as per one's requirement.
+    - `enable_dynamic_analysis`: Set to `True` to enable dynamic analysis though this will increase the scan time.
+    - `timeout`: Request timeout for each API call, configure as per your need. Default value is 30 seconds.
+    - `default_hooks`: Default hooks to pass to mobsf e.g root_bypass, ssl_pinning_bypass, etc.
+    - `auxiliary_hooks`: Auxiliary frida hooks to pass to mobsf.
+    - `frida_code`: Custom Frida code to be executed by mobsf
+    - `activity_duration`: Wait time period for mobsf to collect sufficient info from dynamic activities such as results from`frida_code` before generating report. Default value is 60 seconds. Configure as per your requirements.
+    
 ## Notifications
 
 Since v4, IntelOwl integrated the notification system from the `certego_saas` package, allowing the admins to create notification that every user will be able to see.
 
 The user would find the Notifications button on the top right of the page:
 
-<img style="border: 0.2px solid black" width=220 height=210 src="https://raw.githubusercontent.com/intelowlproject/IntelOwl/master/docs/static/notifications.png">
+<img style="border: 0.2px solid black" width=220 height=210 src="https://raw.githubusercontent.com/intelowlproject/docs/main/docs/IntelOwl/static/notifications.png">
 
 There the user can read notifications provided by either the administrators or the IntelOwl Maintainers.
 
