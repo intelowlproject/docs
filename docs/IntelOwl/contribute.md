@@ -522,7 +522,7 @@ def _update_data_model(self, data_model) -> None:
       data_model.evaluation = evaluation
 ```
 We are setting the field `evaluation` depending on some logic that we constructed, using the data inside the report.
-If the IP has some report but is whitelisted then we set the `evaluation` to `false positive`, otherwise to `malicious`.
+If the IP address has been reported by some AbuseIPDB users but, at the same time, is whitelisted by AbuseIPDB, then we set its `evaluation` to `trusted`. On the contrary, if it's not whitelisted, we set it as `malicious`.
 
 
 ## How to modify a plugin
