@@ -515,7 +515,7 @@ def _update_data_model(self, data_model) -> None:
       self.report: AnalyzerReport
       if self.report.report["isWhitelisted"]:
           evaluation = (
-              self.report.data_model_class.EVALUATIONS.FALSE_POSITIVE.value
+              self.report.data_model_class.EVALUATIONS.TRUSTED.value
           )
       else:
           evaluation = self.report.data_model_class.EVALUATIONS.MALICIOUS.value
