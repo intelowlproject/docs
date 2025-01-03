@@ -454,7 +454,7 @@ mapping_data_model={
    "data.tags.0": "tags" # we just want the first tag
 }
 ```
-With this `AnalyzerReport` and its mapping, we will create a DataModel with this conditions
+With this `AnalyzerReport` and its mapping, we will create a DataModel with these conditions
 ```python3
 # the values are lowercase because everything inside the DataModel is converted to lowercase 
 assert external_urls == ["intelowl.com", "https://intelowl.com"]
