@@ -471,7 +471,7 @@ Let's use as an example `UrlHaus`: if the domain analyzed is not present in its 
 ```python3
 {"query_status": "no_results"}
 ```
-meaning that we can provide use the following code to consider only _real_ results:
+meaning that we can use the following code to consider only _real_ results:
 ```python3
 def _do_create_data_model(self) -> bool:
   return (
