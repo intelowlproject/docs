@@ -505,7 +505,7 @@ def _create_data_model_mtm(self):
 Here we are creating many `Signature` objects (using the signatures that matched the sample analyzed) and adding them to the `signatures` field.
 
 ### Analyzer._update_data_model
-This is the last function that you can override in the `Analyzer` class: this functions returns nothing, and is called after every other check.
+This is the last function that you can override in the `Analyzer` class: this function returns nothing, and is called after every other check.
 This mean that you can use it for more articulate data transformation to parse the `AnalyzerReport` into a `DataModel`.
 Again, let's use an example, this time with the analyzer `AbuseIPDB`.
 ```python3
