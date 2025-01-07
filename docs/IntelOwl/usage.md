@@ -309,7 +309,7 @@ There are three types of `DataModel`:
 
 The `DataModel` will not be created for generic observables.
 
-This feature is still in the development phase. At the moment, the datamodels created are saved in the database, but they are not being used for further operations.
+This feature is still in the development phase. At the moment, the DataModels created are saved in the database, but they are not being used for further operations.
 
 ### Connectors
 
