@@ -309,6 +309,8 @@ There are three types of `DataModel`:
 
 The `DataModel` will not be created for generic observables.
 
+This feature is still in the development phase. At the moment, the datamodels created are saved in the database, but they are not being used for further operations.
+
 ### Connectors
 
 Connectors are designed to run after every successful analysis which makes them suitable for automated threat-sharing. They support integration with other SIEM/SOAR projects, specifically aimed at Threat Sharing Platforms.
