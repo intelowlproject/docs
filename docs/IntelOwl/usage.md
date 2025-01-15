@@ -394,6 +394,12 @@ Ingestors can be _spammy_ so be careful about enabling them.
 
 A very powerful use is case is to **combine Ingestors with Connectors** to automatically extract data from external sources, analyze them with IntelOwl and push them externally to another platform (like MISP or a SIEM)
 
+**Notice**: ingestors are run with robot user that are most likely different from the user you usually use to run analysis.
+This can lead to a permission mismatch when assigning parameter through plugin config via GUI. 
+To solve this mismatch you should go to the "Plugin config" section of the admin page. Here you'll see the value that you assigned to the parameter.
+You should change the "owner" of this configuration to the user that runs the ingestor instead of the one that assigned the value.
+
+
 #### List of pre-built Ingestors
 
 - `ThreatFox`: Retrieves daily ioc from `https://threatfox.abuse.ch/` and analyze them.
