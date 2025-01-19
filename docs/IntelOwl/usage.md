@@ -256,7 +256,8 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `UltraDNS_DNS`: Retrieve current domain resolution with [UltraDNS](https://vercara.com/ultra-dns-public).
 - `UltraDNS_Malicious_Detector`: Scan if a DNS is marked malicious by [UltraDNS](https://vercara.com/ultra-dns-public).
 - `WAD`: [WAD](https://github.com/CERN-CERT/WAD) (Web Application Detector) lets you analyze given URL(s) and detect technologies used by web application behind that URL, from the OS and web server level, to the programming platform and frameworks, as well as server- and client-side applications, tools and libraries.
-  
+- `AbuseWHOIS`: [Abuse_Whois](https://github.com/ninoseki/abuse_whois) is a Sigma and RDAP/Whois based abuse contacts finder.
+
 ##### Generic analyzers (email, phone number, etc.; anything really)
 
 Some analyzers require details other than just IP, URL, Domain, etc. We classified them as `generic` Analyzers. Since the type of field is not known, there is a format for strings to be followed.
