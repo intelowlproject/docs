@@ -298,6 +298,21 @@ The form will open with the fields to fill in to create the analyzer.
 
 ![img.png](./static/analyzer_creation.png)
 
+### DataModels
+
+_Available from version > 6.2.0_
+
+The main functionality of a `DataModel` is to model an `Analyzer` result to a set of prearranged keys, allowing users to easily search, evaluate and use the analyzer result.
+The author of an `AnalyzerConfig` is able to decide mapping between each field of the `AnalyzerReport` and the corresponding in the `DataModel`.
+
+There are three types of `DataModel`:
+1. `DomainDataModel` is the `DataModel` for domains and urls
+2. `IPDataModel` is the `DataModel` for ip addresses
+3. `FileDataModel` is the `DataModel` for files and hashes
+
+The `DataModel` will not be created for generic observables.
+
+This feature is still in the development phase. At the moment, the DataModels created are saved in the database, but they are not being used for further operations.
 
 ### Connectors
 

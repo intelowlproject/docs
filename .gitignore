@@ -1,2 +1,5 @@
 site/
 venv/
+
+# ide
+.idea
