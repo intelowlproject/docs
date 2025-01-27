@@ -438,9 +438,10 @@ After the successful execution of an `Analyzer`, a `DataModel` will be created o
 3. The `Analyzer` overrides `_create_data_model_mtm`
 
 ### AnalyzerConfig.mapping_data_model
-Each `AnalyzerConfig` has now a new field, called `mapping_data_model`:
-this is a dictionary of which the keys represent the path from which retrieve the value in the `AnalyzerReport`,
-and the value the path of the `DataModel`. If you precede the key with the symbol `$` it means that is a constant.
+Each `AnalyzerConfig` has now a new field, called `mapping_data_model`: this is a dictionary whose keys represent the path used to retrieve the value in the `AnalyzerReport`, while its values represent the fields in the `DataModel`.
+
+If you precede the key with the symbol `$` it means that is a constant.
+
 Example:
 ```python3
 report= {
@@ -463,7 +464,8 @@ mapping_data_model={
    "data.tags.0": "tags" # we just want the first tag
 }
 ```
-With this `AnalyzerReport` and its mapping, we will create a DataModel with these conditions
+
+With the previously shown `AnalyzerReport` and its mapping, we will create a DataModel with these conditions
 ```python3
 # the values are lowercase because everything inside the DataModel is converted to lowercase 
 assert external_urls == ["intelowl.com", "https://intelowl.com"]
@@ -473,10 +475,11 @@ assert evaluation == "malicious"
 
 If you specify a path that is not present in the `DataModel`, an error will be added to the job.
 If you specify a path that is not present in the `AnalyzerConfig`, a warning will be added to the job.
+
 ### Analyzer._do_create_data_model
-This is a function that every `Analyzer` can override: this function returns a boolean and, if `False`, the datamodel will not be created.
+This is a function that every `Analyzer` can override: this function returns a boolean and, if `False`, the DataModel will not be created.
 This can be useful when a specific `Analyzer` succeeds without retrieving useful results.
-Let's use `UrlHaus` as an example : if the domain analyzed is not present in its database, the result will be
+Let's use the `UrlHaus` Analyzer as an example : if the domain analyzed is not present in its database, the result will be
 ```python3
 {"query_status": "no_results"}
 ```
@@ -490,7 +493,7 @@ def _do_create_data_model(self) -> bool:
 ```
 
 ### Analyzer._create_data_model_mtm
-This is a function that every `Analyzer` can override: this function returns a dictionary where the values are the objects that will be added in a many to many relationship in the datamodel, and the keys the names of the fields.
+This is a function that every `Analyzer` can override: this function returns a dictionary where the values are the objects that will be added in a many to many relationship in the DataModel, and the keys the names of the fields.
 This is useful when you want to save part of a report in separate Model and want to reference it with a many to many relationship.
 Let's use the `Yara` Analyzer as an example.
 
@@ -518,6 +521,7 @@ Here we are creating many `Signature` objects (using the signatures that matched
 ### Analyzer._update_data_model
 This is the last function that you can override in the `Analyzer` class: this function returns nothing, and is called after every other check.
 This mean that you can use it for more articulate data transformation to parse the `AnalyzerReport` into a `DataModel`.
+
 Again, let's use an example, this time with the analyzer `AbuseIPDB`.
 ```python3
 def _update_data_model(self, data_model) -> None:
