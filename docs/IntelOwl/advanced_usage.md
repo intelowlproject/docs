@@ -136,6 +136,15 @@ table, th, td {
     </td>
     <td>This framework tries to render a potential phishing page and extract useful information from it. Also, if the page contains a form, it tries to submit the form using fake data. The goal is to extract IOCs and check whether the page is real phishing or not.</td>
   </tr>
+  <tr>
+    <td>Nuclei</td>
+    <td>
+      <ul>
+        <li><code>Nuclei Analyzer</code></li>
+      </ul>
+    </td>
+    <td>Nuclei is a fast vulnerability scanner designed to probe modern applications, infrastructure, cloud platforms, and networks, aiding in the identification and mitigation of exploitable vulnerabilities. At its core, Nuclei uses templates—expressed as straightforward YAML files, that delineate methods for detecting, ranking, and addressing specific security flaws.</td>
+  </tr>
 </table>
 
 To enable all the optional analyzers you can add the option `--all_analyzers` when starting the project. Example:
@@ -251,6 +260,28 @@ Some analyzers could require a special configuration:
     - `full`: Includes all available information about the IP from the database.
     - `fmp`: Returns only the FMP (Future Misbehavior Probability) score.
     - `rep`: Returns only the reputation score of the IP.
+- `Nuclei` :
+  - The `template_dirs` parameter accepts a list of template directories that you want to include in your scan. Each directory focuses on specific types of vulnerabilities, exposures, or security checks.
+  Available Template Categories:
+    - `cloud`
+    - `code`
+    - `cves`
+    - `vulnerabilities`
+    - `dns`
+    - `file`
+    - `headless`
+    - `helpers`
+    - `http`
+    - `javascript`
+    - `network`
+    - `passive`
+    - `profiles`
+    - `ssl`
+    - `workflows`
+    - `exposures`
+
+For detailed information about templates, please refer to the [nuclei-templates repository](https://github.com/projectdiscovery/nuclei-templates).
+
 - `urlDNA.io`:
   - The `UrlDNA_New_Scan` analyzer offers optional configurations that can be adjusted to achieve more accurate results. Full documentation of these settings is available on the [urlDNA.io API](https://urldna.io/api) page.
     - `device`: Specifies the device used for the scan. Options are `DESKTOP` or `MOBILE`.

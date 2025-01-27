@@ -211,6 +211,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `MWDB_Get`: [mwdblib](https://mwdb.readthedocs.io/en/latest/) Retrieve malware file analysis by hash from repository maintained by CERT Polska MWDB.
 - `Netlas`: search an IP against [Netlas](https://netlas.io/api)
 - `NERD_analyzer`: search an IP against NERD reputation database [NERD](https://nerd.cesnet.cz/)
+- `Nuclei`: [Nuclei](https://docs.projectdiscovery.io/tools/nuclei/overview) is a fast and customisable vulnerability scanner powered by simple YAML-based templates.
 - `ONYPHE`: search an observable in [ONYPHE](https://www.onyphe.io/)
 - `OpenCTI`: scan an observable on an [OpenCTI](https://github.com/OpenCTI-Platform/opencti) instance
 - `OTXQuery`: scan an observable on [Alienvault OTX](https://otx.alienvault.com/)
