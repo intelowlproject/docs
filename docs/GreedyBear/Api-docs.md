@@ -1,15 +1,21 @@
 # API Documentation
 
-### `enrichment`
-:::docs.Submodules.GreedyBear.api.views.enrichment_view
+### `Enrichment`
+:::docs.Submodules.GreedyBear.api.views.enrichment.enrichment_view
 
-### `feeds`
-:::docs.Submodules.GreedyBear.api.views.feeds
+### `Feeds`
+:::docs.Submodules.GreedyBear.api.views.feeds.feeds
+
+### `Advanced Feeds`
+:::docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced
+
+### `Feeds Pagination`
+:::docs.Submodules.GreedyBear.api.views.feeds.feeds_pagination
 
 ### `general_honeypot_list`
-:::docs.Submodules.GreedyBear.api.views.general_honeypot_list
+:::docs.Submodules.GreedyBear.api.views.general_honeypot.general_honeypot_list
 
 ### `Statistics`
-:::docs.Submodules.GreedyBear.api.views.StatisticsViewSet
+:::docs.Submodules.GreedyBear.api.views.statistics.StatisticsViewSet
 
 

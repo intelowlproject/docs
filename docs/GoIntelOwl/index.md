@@ -42,7 +42,7 @@ $ go get github.com/intelowlproject/go-intelowl
 
 ## Usage
 
-This library was built with ease of use in mind! Here are some quick examples to get you started. If you need more example you can go to the [examples directory](./examples/)
+This library was built with ease of use in mind! Here are some quick examples to get you started.
 
 To start using the go-intelowl library you first need to import it:
 
