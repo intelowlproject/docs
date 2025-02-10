@@ -52,7 +52,7 @@ jobs:
         run: |
           git submodule sync --recursive
           git submodule update --remote --recursive
-          git diff --quiet || echo "Submodules changed" && echo "::set-output name=changed::true"
+          git diff --quiet || echo "Submodules changed" && echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Verify submodule files
         run: |
