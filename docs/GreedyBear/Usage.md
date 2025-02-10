@@ -32,7 +32,7 @@ GreedyBear is created with the aim to collect the information from the TPOTs and
 The feeds are reachable through the following URL:
 
 ```
-https://<greedybear_site>/api/feeds/<feed_type>/<attack_type>/<age>.<format>
+https://<greedybear_site>/api/feeds/<feed_type>/<attack_type>/<age>.<format>?<flags>
 ```
 
 The available feed_type are:
@@ -75,7 +75,35 @@ The available formats are:
 - `csv`: CSV-like file (just one line for each IOC)
 - `json`: JSON file with additional information regarding the IOCs
 
+The available flags are: 
+- `exclude_mass_scanners`: if set, IOCs that are known mass scanners will be excluded from the result
+
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
+
+## Advanced Feeds
+
+For authenticated users, GreedyBear offers an additional API endpoint that provides similar functionality to the Feeds API but with enhanced customization options.
+```
+https://<greedybear_site>/api/feeds/advanced/?<query_params>
+```
+
+The available query parameters are:
+
+- `feed_type`: see [Feeds API](#feeds)
+- `attack_type`: see [Feeds API](#feeds)
+- `max_age`: Maximum number of days since last occurrence. (default: 3)
+- `min_days_seen`: Minimum number of days on which an IOC must have been seen. (default: 1)
+- `include_reputation`: `;`-separated list of reputation values to include, e.g. `known attacker` or `known attacker;` to include IOCs without reputation. (default: include all)
+- `exclude_reputation`: `;`-separated list of reputation values to exclude, e.g. `mass scanner` or `mass scanner;bot, crawler`. (default: exclude none)
+- `feed_size`: Number of IOC items to return. (default: 5000)
+- `ordering`: Field to order results by, with optional `-` prefix for descending. (default: `-last_seen`)
+- `verbose`: `true` to include IOC properties that contain a lot of data, e.g. the list of days it was seen. (default: `false`)
+- `paginate`: `true` to paginate results. This forces the json format. (default: `false`)
+- `format`: see [Feeds API](#feeds) (default: `json`)
+
+Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
+
+This "Advanced Feeds" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
 
 ## Enrichment
 
