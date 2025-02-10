@@ -78,7 +78,7 @@ The available formats are:
 The available flags are: 
 - `exclude_mass_scanners`: if set, IOCs that are known mass scanners will be excluded from the result
 
-Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
+Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/#docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced) or the to get all the details about how to use the available APIs.
 
 ## Advanced Feeds
 
