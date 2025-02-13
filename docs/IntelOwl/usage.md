@@ -117,6 +117,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `DroidLysis`: [DroidLysis](https://github.com/cryptax/droidlysis) is a pre-analysis tool for Android apps: it performs repetitive and boring tasks we'd typically do at the beginning of any reverse engineering. It disassembles the Android sample, organizes output in directories, and searches for suspicious spots in the code to look at. The output helps the reverse engineer speed up the first few steps of analysis.
 - `Artifacts`: [Artifacts](https://github.com/guelfoweb/artifacts) is a tool that does APK strings analysis. Useful for first analysis.
 - `MobSF_Service`: [MobSF_Service](https://github.com/MobSF/Mobile-Security-Framework-MobSF) can be used for a variety of use cases such as mobile application security, penetration testing, malware analysis, and privacy analysis. 
+- **`Debloat`**: [Debloat](https://github.com/Squiblydoo/debloat) is a file analyzer integrated into IntelOwl that leverages the Debloat tool (available as a pip library) to preprocess large files. It removes unnecessary data and optimizes oversized or non-standard files for subsequent malware analysis. This helps ensure that files too large or not accepted by conventional malware analysis services can be effectively processed. The analyzer is free to use and does not require an API key.
 
 ###### External services
 
