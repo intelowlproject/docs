@@ -41,3 +41,5 @@ Feel free to ask everything it comes to your mind about the project to the autho
 Matteo Lodi ([Twitter](https://twitter.com/matte_lodi)).
 
 We also have a dedicated twitter account for the project: [@intel_owl](https://twitter.com/intel_owl).
+
+Please contact us if you want to get access to the [IntelOwl Demo](https://intelowl.honeynet.org/) hosted by The Honeynet Project.
