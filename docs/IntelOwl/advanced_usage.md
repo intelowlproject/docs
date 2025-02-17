@@ -78,9 +78,11 @@ table, th, td {
       <li><code>Strings_Info</code></li>
       <li><code>ClamAV</code></li>
       <li><code>APKiD</code></li>
-      <li><code>Thug_URL_Info</code>,
-      <code>Thug_HTML_Info</code></li>
+      <li><code>Droidlysis</code></li>
+      <li><code>MobSF</code></li>
+      <li><code>APK_Artifacts</code></li>
       <li><code>BoxJS</code></li>
+      <li><code>GoReSym</code></li>
       <li><code>Qiling_Windows</code>,
       <code>Qiling_Windows_Shellcode</code>,
       <code>Qiling_Linux</code>,
@@ -90,13 +92,16 @@ table, th, td {
     <td>
     <ul>
       <li>PEFrame performs static analysis on Portable Executable malware and malicious MS Office documents</li>
-      <li>Capa detects capabilities in executable files</li>
+      <li>CAPA detects capabilities in executable files</li>
       <li>FLOSS automatically deobfuscate strings from malware binaries</li>
       <li>String_Info_Classic extracts human-readable strings where as ML version of it ranks them</li>
       <li>ClamAV antivirus engine scans files for trojans, viruses, malwares using a multi-threaded daemon</li>
       <li>APKiD identifies many compilers, packers, obfuscators, and other weird stuff from an APK or DEX file.</li>
-      <li>Thug performs hybrid dynamic/static analysis on a URL or HTML page.</li>
+      <li>Droidlysis is a pre-analysis tool for Android apps</li>
+      <li>MobSF is a static analysis tool that can find insecure code patterns in your Android and iOS source code</li>
+      <li>APK_Artifacts is a tool that does APK strings analysis. Useful for first analysis.</li>
       <li>Box-JS is a tool for studying JavaScript malware</li>
+      <li>GoReSym is a Go symbol parser that extracts program metadata, function metadata , filename and line number metadata, and embedded structures and types.</li>
       <li>Qiling is a tool for emulating the execution of a binary file or a shellcode.
      It requires the configuration of its rootfs, and the optional configuration of profiles.
      The rootfs can be copied from the <a href="https://github.com/qilingframework/qiling/tree/master/examples/rootfs"> Qiling project</a>: please remember that Windows dll <b> must</b> be manually added for license reasons.
@@ -135,6 +140,25 @@ table, th, td {
       </ul>
     </td>
     <td>This framework tries to render a potential phishing page and extract useful information from it. Also, if the page contains a form, it tries to submit the form using fake data. The goal is to extract IOCs and check whether the page is real phishing or not.</td>
+  </tr>
+  <tr>
+    <td>Thug</td>
+    <td>
+      <ul>
+        <li><code>Thug_URL_Info</code></li>
+        <li><code>Thug_HTML_Info</code></li>
+      </ul>
+    </td>
+    <td>Python low-interaction honeyclient. Thug performs hybrid dynamic/static analysis on a URL or HTML page.</td>
+  </tr>
+  <tr>
+    <td>Nuclei analyzer</td>
+    <td>
+      <ul>
+        <li><code>Nuclei</code></li>
+      </ul>
+    </td>
+    <td>Nuclei is a fast, customizable vulnerability scanner that leverages YAML-based templates to detect, rank, and address security flaws. It operates using structured templates that define specific security checks.</td>
   </tr>
 </table>
 
