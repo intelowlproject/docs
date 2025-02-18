@@ -142,7 +142,7 @@ table, th, td {
     <td>This framework tries to render a potential phishing page and extract useful information from it. Also, if the page contains a form, it tries to submit the form using fake data. The goal is to extract IOCs and check whether the page is real phishing or not.</td>
   </tr>
   <tr>
-    <td>Thug</td>
+    <td>Thug (AMD64 only)</td>
     <td>
       <ul>
         <li><code>Thug_URL_Info</code></li>
