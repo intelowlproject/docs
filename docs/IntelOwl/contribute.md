@@ -332,7 +332,7 @@ To do so, some utility classes have been made:
   <tr>
     <td class="tg-7n4c">VisualizablePage</td>
     <td class="tg-0pky">A single page of the final report, made of different <span style="font-weight:bold">levels</span>. Each page added is represented as a new tab in frontend.</td>
-    <td class="tg-c3ow"><img alt="Visualizable Page example" src="./docs/IntelOwl/static/visualizablePage_example.png"></td>
+    <td class="tg-c3ow"><img alt="Visualizable Page example" src="../static/visualizablePage_example.png"></td>
   </tr>
   <tr>
     <td class="tg-7n4c">VisualizableLevel</td>
