@@ -151,6 +151,8 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `DNStwist`: Scan a url/domain to find potentially malicious permutations via dns fuzzing. [dnstwist repo](https://github.com/elceef/dnstwist)
 - `Thug_URL_Info`: Perform hybrid dynamic/static analysis on a URL using [Thug low-interaction honeyclient](https://thug-honeyclient.readthedocs.io/)
 - `AILTypoSquatting`:[AILTypoSquatting](https://github.com/typosquatter/ail-typo-squatting) is a Python library to generate list of potential typo squatting domains with domain name permutation engine to feed AIL and other systems.
+- `Nuclei`: [Nuclei](https://docs.projectdiscovery.io/tools/nuclei/overview) is a fast and customisable vulnerability scanner powered by simple YAML-based templates.
+- `WAD`: [WAD](https://github.com/CERN-CERT/WAD) (Web Application Detector) lets you analyze given URL(s) and detect technologies used by web application behind that URL, from the OS and web server level, to the programming platform and frameworks, as well as server- and client-side applications, tools and libraries.
 
 ###### External services
 
@@ -255,7 +257,6 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Vulners`: [Vulners](vulners.com) is the most complete and the only fully correlated security intelligence database, which goes through constant updates and links 200+ data sources in a unified machine-readable format. It contains 8 mln+ entries, including CVEs, advisories, exploits, and IoCs — everything you need to stay abreast on the latest security threats.
 - `UltraDNS_DNS`: Retrieve current domain resolution with [UltraDNS](https://vercara.com/ultra-dns-public).
 - `UltraDNS_Malicious_Detector`: Scan if a DNS is marked malicious by [UltraDNS](https://vercara.com/ultra-dns-public).
-- `WAD`: [WAD](https://github.com/CERN-CERT/WAD) (Web Application Detector) lets you analyze given URL(s) and detect technologies used by web application behind that URL, from the OS and web server level, to the programming platform and frameworks, as well as server- and client-side applications, tools and libraries.
   
 ##### Generic analyzers (email, phone number, etc.; anything really)
 
@@ -264,6 +265,7 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 ###### Internal tools
 
 - `CyberChef`: Run a query on a [CyberChef server](https://github.com/gchq/CyberChef-server) using pre-defined or custom recipes.
+- `PhoneInfoga` : [PhoneInfoga](https://sundowndev.github.io/phoneinfoga/) is one of the most advanced tools to scan international phone numbers.
 
 ###### External services
 
@@ -280,7 +282,6 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 - `VirusTotal_v3_Intelligence_Search`: Perform advanced queries with [VirusTotal Intelligence](https://developers.virustotal.com/reference/intelligence-search) (requires paid plan)
 - `WiGLE`: Maps and database of 802.11 wireless networks, with statistics, submitted by wardrivers, netstumblers, and net huggers.
 - `YARAify_Generics`: lookup a YARA rule (default), ClamAV rule, imphash, TLSH, telfhash or icon_dash in [YARAify](https://yaraify.abuse.ch/)
-- `PhoneInfoga` : [PhoneInfoga](https://sundowndev.github.io/phoneinfoga/) is one of the most advanced tools to scan international phone numbers.
 - `HudsonRock`: [Hudson Rock](https://cavalier.hudsonrock.com/docs) provides its clients the ability to query a database of over 27,541,128 computers which were compromised through global info-stealer campaigns performed by threat actors.
 - `NIST_CVE_DB`: [NIST_CVE_DB](https://nvd.nist.gov/developers/start-here) provides the details of supplied CVE Id.
 
