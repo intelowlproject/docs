@@ -433,6 +433,7 @@ Example: `docker exec -ti intelowl_uwsgi python3 manage.py dumpplugin PlaybookCo
 ## How to create a DataModel
 
 After the successful execution of an `Analyzer`, a `DataModel` will be created only if `_do_create_data_model` returns `True` and at least one of the following conditions is true:
+
 1. The `mapping_data_model` field is defined in the `AnalyzerConfig`
 2. The `Analyzer` overrides `_update_data_model`
 3. The `Analyzer` overrides `_create_data_model_mtm`
