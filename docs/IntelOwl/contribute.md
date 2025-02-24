@@ -227,6 +227,20 @@ After having written the new python module, you have to remember to:
    12. ~Run hash type: required if `run hash` is `True`
    13. ~Not supported filetypes: required if `type` is `file` and `supported filetypes` is empty
 
+#### Integrating analyzers for local queries
+
+If the analyzer you wish to integrate downloads an external database for local queries, it should be integrated following these steps:
+
+- In the `update` method, call the `update_internal_data` method. This creates or updates an `AnalyzerSourceFile`
+- Add a new `SupportModel` for the analyzer in the `api_app/analyzers_manager/models/support_models.py`
+- In the `update_support_model` method, parse the file stored in the `AnalyzerSourceFile` and update the data by calling the `generate` method of the new `SupportModel`
+- In the `run` method, query the database using the new `SupportModel`
+
+You may want to look at a few existing examples:
+
+- [tor.py](https://github.com/intelowlproject/IntelOwl/blob/develop/api_app/analyzers_manager/observable_analyzers/tor.py)
+- [maxmind.py](https://github.com/intelowlproject/IntelOwl/blob/develop/api_app/analyzers_manager/observable_analyzers/maxmind.py), if you need to override the base methods
+
 #### Integrating a docker based analyzer
 
 If the analyzer you wish to integrate doesn't exist as a public API or python package, it should be integrated with its own docker image
