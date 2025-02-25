@@ -13,7 +13,7 @@
 :::docs.Submodules.GreedyBear.api.views.feeds.feeds_pagination
 
 ### `Command Sequence`
-:::docs.Submodules.GreedyBear.api.views.command_sequence_view.command_sequence_view
+:::docs.Submodules.GreedyBear.api.views.command_sequence.command_sequence_view
 
 ### `general_honeypot_list`
 :::docs.Submodules.GreedyBear.api.views.general_honeypot.general_honeypot_list
