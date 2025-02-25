@@ -1,30 +1,5 @@
 # Usage
 
-## User management
-
-### Registration
-
-Since Greedybear v1.1.0 we added a Registration Page that can be used to manage Registration requests when providing GreedyBear as a Service.
-
-After an user registration, an email is sent to the user to verify their email address. If necessary, there are buttons on the login page to resend the verification email and to reset the password.
-
-Once the user has verified their email, they would be manually vetted before being allowed to use the GreedyBear platform. The registration requests would be handled in the Django Admin page by admins.
-If you have GreedyBear deployed on an AWS instance you can use the SES service.
-
-In a development environment the emails that would be sent are written to the standard output.
-
-
-### Amazon SES
-
-If you like, you could use Amazon SES for sending automated emails.
-
-First, you need to configure the environment variable `AWS_SES` to `True` to enable it.
-Then you have to add some credentials for AWS: if you have GreedyBear deployed on the AWS infrastructure, you can use IAM credentials:
-to allow that just set `AWS_IAM_ACCESS` to `True`. If that is not the case, you have to set both `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-
-Additionally, if you are not using the default AWS region of us-east-1, you need to specify your `AWS_REGION`.
-You can customize the AWS Region location of you services by changing the environment variable `AWS_REGION`. Default is `eu-central-1`.
-
 ## Feeds
 
 GreedyBear is created with the aim to collect the information from the TPOTs and generate some actionable feeds, so that they can be easily accessible and act as valuable information to prevent and detect attacks.
@@ -136,13 +111,43 @@ https://<greedybear_site>/api/command_sequence?query=<observable>
 ```
 
 The available query parameters are:
+
 - query (required): either an IP address or a SHA-256 hash of a command or a sequence of commands to search for
 - include_similar (optional): when present, returns related command sequences from the same cluster
 
 Notes:
+
 - When generating a SHA-256 hash to query a multi-line command sequence, ensure you join all command lines with a newline character (`\n`) before calculating the hash. This matches our internal hashing method which uses Python's `"\n".join(sequence)` function.
 - For the `include_similar` parameter to work, `CLUSTER_COWRIE_COMMAND_SEQUENCES` must be enabled in the `env_file`. 
 
 This "Command Sequence" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
 
 If you would like to leverage this API without the need of writing even a line of code and together with a lot of other awesome tools, consider using [IntelOwl](https://github.com/intelowlproject/IntelOwl).
+
+
+## User management
+
+### Registration
+
+_WARNING_ This functionality has been removed from the v.1.5.0 onwards because it was not used. In case you need it, please ask it and we re-add it to the project.
+
+Since Greedybear v1.1.0 we added a Registration Page that can be used to manage Registration requests when providing GreedyBear as a Service.
+
+After an user registration, an email is sent to the user to verify their email address. If necessary, there are buttons on the login page to resend the verification email and to reset the password.
+
+Once the user has verified their email, they would be manually vetted before being allowed to use the GreedyBear platform. The registration requests would be handled in the Django Admin page by admins.
+If you have GreedyBear deployed on an AWS instance you can use the SES service.
+
+In a development environment the emails that would be sent are written to the standard output.
+
+
+### Amazon SES
+
+If you like, you could use Amazon SES for sending automated emails.
+
+First, you need to configure the environment variable `AWS_SES` to `True` to enable it.
+Then you have to add some credentials for AWS: if you have GreedyBear deployed on the AWS infrastructure, you can use IAM credentials:
+to allow that just set `AWS_IAM_ACCESS` to `True`. If that is not the case, you have to set both `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+
+Additionally, if you are not using the default AWS region of us-east-1, you need to specify your `AWS_REGION`.
+You can customize the AWS Region location of you services by changing the environment variable `AWS_REGION`. Default is `eu-central-1`.
