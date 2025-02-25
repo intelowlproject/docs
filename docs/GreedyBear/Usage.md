@@ -126,3 +126,23 @@ https://<greedybear_site>/api/enrichment?query=<observable>
 This "Enrichment" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
 
 If you would like to leverage this API without the need of writing even a line of code and together with a lot of other awesome tools, consider using [IntelOwl](https://github.com/intelowlproject/IntelOwl).
+
+## Command Sequence
+
+This API provides information about command sequences detected by the [Cowrie](https://github.com/cowrie/cowrie) honeypot, allowing retrieval by either IP address or command sequence hash.
+
+```
+https://<greedybear_site>/api/command_sequence?query=<observable>
+```
+
+The available query parameters are:
+- query (required): either an IP address or a SHA-256 hash of a command or a sequence of commands to search for
+- include_similar (optional): when present, returns related command sequences from the same cluster
+
+Notes:
+- When generating a SHA-256 hash to query a multi-line command sequence, ensure you join all command lines with a newline character (`\n`) before calculating the hash. This matches our internal hashing method which uses Python's `"\n".join(sequence)` function.
+- For the `include_similar` parameter to work, `CLUSTER_COWRIE_COMMAND_SEQUENCES` must be enabled in the `env_file`. 
+
+This "Command Sequence" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
+
+If you would like to leverage this API without the need of writing even a line of code and together with a lot of other awesome tools, consider using [IntelOwl](https://github.com/intelowlproject/IntelOwl).
