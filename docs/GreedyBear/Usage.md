@@ -32,7 +32,7 @@ GreedyBear is created with the aim to collect the information from the TPOTs and
 The feeds are reachable through the following URL:
 
 ```
-https://<greedybear_site>/api/feeds/<feed_type>/<attack_type>/<age>.<format>?<flags>
+https://<greedybear_site>/api/feeds/<feed_type>/<attack_type>/<prioritize>.<format>?<flags>
 ```
 
 The available feed_type are:
@@ -64,10 +64,12 @@ The available attack_type are:
 - `payload_request`: IP addresses and domains extracted from payloads that would have been executed after a speficic attack would have been successful
 - `all`: get all types at once
 
-The available age are:
+The available prioritization mechanisms are:
 
 - `recent`: most recent IOCs seen in the last 3 days
 - `persistent`: these IOCs are the ones that were seen regularly by the honeypots. This feeds will start empty once no prior data was collected and will become bigger over time.
+- `likely_to_recur`: these IOCs are most likely to hit the honeypots again during the next day
+- `most_expected_hits`: these IOCs are expected to be responsible for the most hits during the next day
 
 The available formats are:
 
@@ -76,7 +78,15 @@ The available formats are:
 - `json`: JSON file with additional information regarding the IOCs
 
 The available flags are: 
+
 - `exclude_mass_scanners`: if set, IOCs that are known mass scanners will be excluded from the result
+
+The `json` result includes two predictive scores:
+
+- `recurrence_probability` (0.0-1.0): Indicates the likelihood that an IOC will reappear within the next 24 hours. Higher values suggest greater persistence of the threat.
+- `expected_interactions` (0+): Estimates the number of honeypot interactions anticipated from the IOC in the next 24 hours, indicating potential activity level.
+
+These predictions are based on historical interaction patterns and are updated once a day, shortly after midnight UTC. They are the foundation of the `likely_to_recur` and `most_expected_hits` prioritization mechanisms.
 
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/#docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced) or the to get all the details about how to use the available APIs.
 
