@@ -26,7 +26,6 @@ The available feed_type are:
   - `citrixhoneypot`
   - `mailoney`
   - `ipphoney`
-  - `ddospot`
   - `elasticpot`
   - `dicompot`
   - `redishoneypot`

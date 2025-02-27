@@ -7,7 +7,7 @@ Note that GreedyBear _needs_ a running instance of ElasticSearch of a T-POT to f
 
 In the T-POT classic installation, ElasticSearch is not exposed externally. If you want your GB instance to connect to it, you must change this and expose it externally.
 
-Yo do that, change the main `docker-compose.yml` of the T-POT in the `elasticsearch` section:
+To do that, change the main `docker-compose.yml` of the T-POT in the `elasticsearch` section:
 ```code
     ports:
       - "64298:9200" # instead of "127.0.0.1:64298:9200"
