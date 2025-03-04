@@ -83,7 +83,7 @@ The available query parameters are:
 - `ordering`: Field to order results by, with optional `-` prefix for descending. (default: `-last_seen`)
 - `verbose`: `true` to include IOC properties that contain a lot of data, e.g. the list of days it was seen. (default: `false`)
 - `paginate`: `true` to paginate results. This forces the json format. (default: `false`)
-- `format`: see [Feeds API](#feeds) (default: `json`)
+- `format_`: see [Feeds API](#feeds) (default: `json`)
 
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
 
