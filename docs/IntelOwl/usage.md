@@ -259,6 +259,8 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `UltraDNS_Malicious_Detector`: Scan if a DNS is marked malicious by [UltraDNS](https://vercara.com/ultra-dns-public).
 - `IPQuery`: [IPQuery](https://ipquery.io/) aims to provide a straightforward and simplistic API for working with IP addresses.
 - `Mullvad_DNS`: [Mullvad_DNS](https://github.com/mullvad/dns-blocklists) is an analyzer that queries Mullvad's DNS-over-HTTPS service (using the "base" endpoint) to check a domain's DNS records. It supports two modes: `query`: returns raw DNS answer data. `malicious`: interprets an NXDOMAIN (rcode==3) as the domain being blocked (i.e., malicious).
+
+_Available from version > 6.3.1_
 - `BBOT`: [BBOT](https://github.com/blacklanternsecurity/bbot) (Bighuge BLS Open Threat) domain/URL scanner that leverages BBOT's Python library to perform scans with configurable modules and presets.
   
 ##### Generic analyzers (email, phone number, etc.; anything really)
