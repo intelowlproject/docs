@@ -290,6 +290,7 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 - `YARAify_Generics`: lookup a YARA rule (default), ClamAV rule, imphash, TLSH, telfhash or icon_dash in [YARAify](https://yaraify.abuse.ch/)
 - `HudsonRock`: [Hudson Rock](https://cavalier.hudsonrock.com/docs) provides its clients the ability to query a database of over 27,541,128 computers which were compromised through global info-stealer campaigns performed by threat actors.
 - `NIST_CVE_DB`: [NIST_CVE_DB](https://nvd.nist.gov/developers/start-here) provides the details of supplied CVE Id.
+- `Phunter`: [Phunter Analyzer](https://github.com/N0rz3/Phunter) is an OSINT tool for finding information about a phone number.
 
 ##### Optional analyzers
 
