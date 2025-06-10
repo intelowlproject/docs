@@ -428,6 +428,8 @@ You should change the "owner" of this configuration to the user that runs the in
 - `ThreatFox`: Retrieves daily ioc from `https://threatfox.abuse.ch/` and analyze them.
 - `MalwareBazaar`: Retrieves hourly samples from `https://bazaar.abuse.ch/` and analyze them.
 - `VirusTotal`: Perform intelligence queries at hourly intervals from `https://www.virustotal.com/` (premium api key required), then retrieves the samples and analyzes them.
+- `Malshare`: Retrieve Samples from Malshare and analyze them in IntelOwl.
+- `GreedyBear`: Retrieve IP addresses from the [Threat Intel Platform for T-POTs](https://github.com/intelowlproject/GreedyBear) and analyze them
 
 ### Playbooks
 
