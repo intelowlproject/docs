@@ -712,3 +712,59 @@ If you want to remove a Job, you can click on the Job block and click "Remove br
 ### Example output of a complex investigation
 
 ![investigation_screen.png](./static/investigation_screen.png)
+
+## Analyzables (Artifacts)
+
+With IntelOwl v6.4.0 we introduced the Analyzables.
+
+An analyzable is the representation of an observable or a file, and is therefore a unique object that can be analyzed multiple times for different evaluations. This means that each job is linked to only one analyzable, but an analyzable can have multiple jobs linked to it.
+
+Note: In the GUI, analyzables are called "artifacts".
+
+### Verify the existence of one or more analyzables
+
+You can go to the 'Artifacts' section and search for the existence of an analyzable. The table below shows the results, including the latest evaluation, if any (for more information about evaluation see the [Engine](#engine) section). If the analyzable does not exist, the 'not found' tag will be displayed.
+
+![img.png](./static/artifacts.png)
+
+## User Events
+
+With IntelOwl v6.4.0 we introduced the user events.
+
+User events allow users to generate reports about analyzables: indicating additional information or a custom evaluation.
+
+User events types:
+
+1. `Analyzable event`: the report entered refers to a single analyzable.
+2. `Ip wildcard event`: the report entered refers to a network. For each new analysis of IPs included in the network,  the report will also be added to the new IP.
+3. `Domain wildcard event`: the report entered refers to a domain wildcard. For each new analysis of domain that matches the wildcard, the report will also be added to the new domain.
+
+### Add a new evaluation
+
+If you want to add a new evaluation (both for existing and non-existing analyzables), you can click the "New evaluation" button that you can find on the top right of the History Page (evaluations tabs). The form will open with the fields to fill in to add the evaluation.
+
+When you enter an analyzable or wildcard, the correct type is automatically calculated. If a wildcard is entered, the number of existing analyzables that match is displayed.
+
+![img.png](./static/user_event_modal.png)
+
+### Add a new evaluation for multiple analyzables
+
+If you want to add a new evaluation for multiple analyzables, you can use the same form above by adding more "artifacts" fields using the button '+'.
+
+![img.png](./static/multiple_analyzables_evaluation.png)
+
+You can automatically populate the "artifacts" field of the form by selecting all the required columns in the results table of the Artifacts page and then clicking the "Your evaluation" button.
+
+![img.png](./static/artifacts_your_evaluation.png)
+
+## Engine
+
+With IntelOwl v6.4.0 we introduced the engine.
+
+Engine combines analyzer’s Data Models and User Reports to provide an evaluation of the analysis.
+
+The result of this combination is also a [Data Model](#datamodels) and it can be found in the "Data Model" tab in the raw report of each job:
+![img.png](./static/job_data_model.png)
+
+A preview of the evaluation, reliability and tags can also be seen in the investigation overview:
+![img.png](./static/investigation_engine.png)
