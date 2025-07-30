@@ -736,8 +736,8 @@ User events allow users to generate reports about analyzables: indicating additi
 User events types:
 
 1. `Analyzable event`: the report entered refers to a single analyzable.
-2. `Ip wildcard event`: the report entered refers to a network. For each new analysis of IPs included in the network,  the report will also be added to the new IP.
-3. `Domain wildcard event`: the report entered refers to a domain wildcard. For each new analysis of domain that matches the wildcard, the report will also be added to the new domain.
+2. `Ip wildcard event`: the report entered refers to a network. The report will impact both existing analyzables and new analyzables with IPs included in the network.
+3. `Domain wildcard event`: the report entered refers to a domain wildcard. The report will impact both existing analyzables and new analyzables for a domain that matches the wildcard.
 
 ### Add a new evaluation
 
