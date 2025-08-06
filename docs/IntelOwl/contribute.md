@@ -4,7 +4,6 @@ There are a lot of different ways you could choose to contribute to the IntelOwl
 
 - main repository: [IntelOwl](https://github.com/intelowlproject/IntelOwl)
 
-- official Python client: [pyintelowl](https://github.com/intelowlproject/pyintelowl).
 
 - official GO client: [go-intelowl](https://github.com/intelowlproject/go-intelowl).
 
@@ -211,7 +210,33 @@ You may want to look at a few existing examples to start to build a new one, suc
 After having written the new python module, you have to remember to:
 
 1. Put the module in the `file_analyzers` or `observable_analyzers` directory based on what it can analyze
-2. Remember to use `_monkeypatch()` in its class to create automated tests for the new analyzer. This is a trick to have tests in the same class of its analyzer.
+2. **Write Unit Tests for the Analyzer**
+   - Monkeypatch-based tests are no longer used.
+   - Instead, write a unit test class that inherits from `BaseAnalyzerTest` located at:
+     ```
+     tests/api_app/analyzers_manager/unit_tests/[observable_analyzers|file_analyzers]/base_test_class.py
+     ```
+   - Place your test file under the appropriate directory (`observable_analyzers` or `file_analyzers`).
+   - Example structure:
+     ```
+     tests/
+     └── api_app/
+         └── analyzers_manager/
+             └── unit_tests/
+                 ├── observable_analyzers/
+                 │   ├── test_mynewanalyzer.py
+                 │   └── base_test_class.py
+                 └── file_analyzers/
+                     ├── ...
+     ```
+
+   - Your test case should:
+     - Set `analyzer_class = YourAnalyzerClass`
+     - Implement `get_mocked_response()` using `unittest.mock.patch` to mock external calls
+     - Optionally implement `get_extra_config()` to provide additional runtime config
+    
+   - **For reference**, you can find numerous analyzer test examples already implemented under `tests/api_app/analyzers_manager/unit_tests/observable_analyzers/` and `file_analyzers/`.
+
 3. Create the configuration inside django admin in `Analyzers_manager/AnalyzerConfigs` (\* = mandatory, ~ = mandatory on conditions)
    1. \*Name: specific name of the configuration
    2. \*Python module: <module_name>.<class_name>
