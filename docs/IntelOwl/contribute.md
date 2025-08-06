@@ -4,6 +4,7 @@ There are a lot of different ways you could choose to contribute to the IntelOwl
 
 - main repository: [IntelOwl](https://github.com/intelowlproject/IntelOwl)
 
+- official Python client: [pyintelowl](https://github.com/intelowlproject/pyintelowl).
 
 - official GO client: [go-intelowl](https://github.com/intelowlproject/go-intelowl).
 
