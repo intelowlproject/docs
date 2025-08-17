@@ -213,7 +213,9 @@ After having written the new python module, you have to remember to:
 1. Put the module in the `file_analyzers` or `observable_analyzers` directory based on what it can analyze
 2. **Write Unit Tests for the Analyzer**
    - Monkeypatch-based tests are no longer used.
-   - Instead, write a unit test class that inherits from `BaseAnalyzerTest` located at:
+   - All analyzers are now tested using pure unit tests that focus only on the business logic. This ensures that our tests are fast, deterministic, and independent of external services.
+   - To make writing tests easier, base test classes are available for both observable analyzers and file analyzers. These base classes handle all common setup and mocking, so you only need to define analyzer-specific behavior.
+`BaseAnalyzerTest` located at:
      ```
      tests/api_app/analyzers_manager/unit_tests/[observable_analyzers|file_analyzers]/base_test_class.py
      ```
@@ -232,11 +234,16 @@ After having written the new python module, you have to remember to:
      ```
 
    - Your test case should:
-     - Set `analyzer_class = YourAnalyzerClass`
-     - Implement `get_mocked_response()` using `unittest.mock.patch` to mock external calls
-     - Optionally implement `get_extra_config()` to provide additional runtime config
+     - Each analyzer test class should inherit from the base test class provided in the same directory.
+     - Define which analyzer is under test by assigning it to analyzer_class - Set `analyzer_class = YourAnalyzerClass`
+     - Override `get_mocked_response()` to simulate the data your analyzer would normally produce. All external dependencies (e.g., API calls, file I/O, subprocesses) must be mocked — no real external calls should happen. 
+     This method should return a list of all applied patches, ensuring that every external call used by the analyzer is properly mocked.
+     - Optionally override `get_extra_config()` to provide additional runtime config that are not already defined inside the base test class.
     
    - **For reference**, you can find numerous analyzer test examples already implemented under `tests/api_app/analyzers_manager/unit_tests/observable_analyzers/` and `file_analyzers/`.
+
+    
+  > Note: If your analyzer is Docker-based, you can refer to tests/api_app/analyzers_manager/unit_tests/file_analyzers/test_suricate.py for an example of how such analyzers are tested.
 
 3. Create the configuration inside django admin in `Analyzers_manager/AnalyzerConfigs` (\* = mandatory, ~ = mandatory on conditions)
    1. \*Name: specific name of the configuration
