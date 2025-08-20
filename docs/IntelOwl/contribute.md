@@ -711,7 +711,7 @@ To test a plugin in real environment, i.e. without mocked data, we suggest that 
 Meaning that you have your plugin configured, you have selected a correct observable/file to analyze,
 and the final report shown in the GUI of IntelOwl is exactly what you wanted.
 
-### Running Tests for a Specific Analyzer  
+##### Running Tests for a Specific Analyzer  
 
 To test a particular analyzer, locate its corresponding unittest file inside: tests/api_app/analyzers_manager/unit_tests/[observable_analyzers / file_analyzers]
 
