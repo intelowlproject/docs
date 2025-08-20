@@ -661,11 +661,11 @@ Follow these guides to understand how to start to contribute to them while devel
 
 ## How to test the application
 
-IntelOwl makes use of the django testing framework and the `unittest` library for unit testing of the API endpoints and End-to-End testing of the analyzers and connectors.
+IntelOwl makes use of the django testing framework and the `unittest` library for unit testing of the API endpoints and End-to-End testing of the analyzers and connectors. 
 
 ### Configuration
 
-- In the encrypted folder `tests/test_files.zip` (password: "intelowl") there are some files that you can use for testing purposes.
+- In the encrypted folder `tests/test_files.zip` (password: "intelowl") there are some files that you can use for testing purposes. The async_tests/ dir has mainly transactional test cases as they are run separately from other unit tests.
 
 - With the following environment variables you can customize your tests:
 
@@ -710,6 +710,17 @@ $ docker exec intelowl_uwsgi python3 manage.py test
 To test a plugin in real environment, i.e. without mocked data, we suggest that you use the GUI of IntelOwl directly.
 Meaning that you have your plugin configured, you have selected a correct observable/file to analyze,
 and the final report shown in the GUI of IntelOwl is exactly what you wanted.
+
+### Running Tests for a Specific Analyzer  
+
+To test a particular analyzer, locate its corresponding unittest file inside: tests/api_app/analyzers_manager/unit_tests/[observable_analyzers / file_analyzers]
+
+
+Once you’ve identified the test file, you can run it individually with:  
+
+```bash
+ docker exec -ti intelowl_uwsgi python manage.py test tests.api_app.analyzers_manager.unit_tests.observable_analyzers.<test_file>
+```
 
 ##### Run tests available in a particular file
 
