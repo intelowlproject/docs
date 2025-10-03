@@ -53,7 +53,8 @@ The available formats are:
 
 The available flags are: 
 
-- `exclude_mass_scanners`: if set, IOCs that are known mass scanners will be excluded from the result
+- `include_mass_scanners`: if set, IOCs that are known mass scanners will be included in the result
+- `include_tor_exit_nodes`: if set, IOCs that are known tor exit nodes will be included in the result
 
 The `json` result includes two predictive scores:
 
