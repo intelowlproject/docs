@@ -21,6 +21,7 @@ nav:
   - GreedyBear:
       - Introduction: "GreedyBear/Introduction.md"
       - Installation: "GreedyBear/Installation.md"
+      - Upgrade to 2.x: "GreedyBear/UpgradeToV2.md"
       - Usage: "GreedyBear/Usage.md"
       - Contribute: "GreedyBear/Contribute.md"
       - API docs: "GreedyBear/Api-docs.md"
