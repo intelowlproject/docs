@@ -18,7 +18,7 @@ For the upgrade from GreedyBear 1.x to 2.x manual intervention is required, beca
 9. Delete the PostgreSQL 13 data volume: `docker volume rm greedybear_postgres_data`
 10. Start an intermediary PostgreSQL 18 container: `docker run -d --name greedybear_postgres -v greedybear_postgres_data:/var/lib/postgresql/data/ --env-file env_file_postgres library/postgres:18-alpine`
 11. Wait a few seconds for the container to be ready, then restore the database: `cat greedybear_dump.sql | docker exec -i greedybear_postgres psql -U user -d greedybear_db`
-12 . Stop the intermediary container: `docker container stop greedybear_postgres`
+12. Stop the intermediary container: `docker container stop greedybear_postgres`
 13. Remove the intermediary container: `docker container rm greedybear_postgres`
 14. Return to the root folder: `cd ..`
 15. Update GreedyBear to version 2.x following your standard update procedure
