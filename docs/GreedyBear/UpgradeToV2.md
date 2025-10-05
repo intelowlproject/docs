@@ -27,6 +27,6 @@ For the upgrade from GreedyBear 1.x to 2.x manual intervention is required, beca
 ## Verification & Cleanup
 - After completing the upgrade, verify that all containers are running: `docker compose ps`
 - Check if GreedyBear is accessible, functioning correctly and still contains your data
-- Delete the backup file: rm docker/greedybear_dump.sql
+- Delete the backup file: `rm docker/greedybear_dump.sql`
 
 
