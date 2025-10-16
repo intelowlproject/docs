@@ -211,7 +211,40 @@ You may want to look at a few existing examples to start to build a new one, suc
 After having written the new python module, you have to remember to:
 
 1. Put the module in the `file_analyzers` or `observable_analyzers` directory based on what it can analyze
-2. Remember to use `_monkeypatch()` in its class to create automated tests for the new analyzer. This is a trick to have tests in the same class of its analyzer.
+2. **Write Unit Tests for the Analyzer**
+   - Monkeypatch-based tests are no longer used.
+   - All analyzers are now tested using pure unit tests that focus only on the business logic. This ensures that our tests are fast, deterministic, and independent of external services.
+   - To make writing tests easier, base test classes are available for both observable analyzers and file analyzers. These base classes handle all common setup and mocking, so you only need to define analyzer-specific behavior.
+`BaseAnalyzerTest` located at:
+     ```
+     tests/api_app/analyzers_manager/unit_tests/[observable_analyzers|file_analyzers]/base_test_class.py
+     ```
+   - Place your test file under the appropriate directory (`observable_analyzers` or `file_analyzers`).
+   - Example structure:
+     ```
+     tests/
+     └── api_app/
+         └── analyzers_manager/
+             └── unit_tests/
+                 ├── observable_analyzers/
+                 │   ├── test_mynewanalyzer.py
+                 │   └── base_test_class.py
+                 └── file_analyzers/
+                     ├── ...
+     ```
+
+   - Your test case should:
+     - Each analyzer test class should inherit from the base test class provided in the same directory.
+     - Define which analyzer is under test by assigning it to analyzer_class - Set `analyzer_class = YourAnalyzerClass`
+     - Override `get_mocked_response()` to simulate the data your analyzer would normally produce. All external dependencies (e.g., API calls, file I/O, subprocesses) must be mocked — no real external calls should happen. 
+     This method should return a list of all applied patches, ensuring that every external call used by the analyzer is properly mocked.
+     - Optionally override `get_extra_config()` to provide additional runtime config that are not already defined inside the base test class.
+    
+   - **For reference**, you can find numerous analyzer test examples already implemented under `tests/api_app/analyzers_manager/unit_tests/observable_analyzers/` and `file_analyzers/`.
+
+    
+  > Note: If your analyzer is Docker-based, you can refer to tests/api_app/analyzers_manager/unit_tests/file_analyzers/test_suricate.py for an example of how such analyzers are tested.
+
 3. Create the configuration inside django admin in `Analyzers_manager/AnalyzerConfigs` (\* = mandatory, ~ = mandatory on conditions)
    1. \*Name: specific name of the configuration
    2. \*Python module: <module_name>.<class_name>
@@ -628,11 +661,11 @@ Follow these guides to understand how to start to contribute to them while devel
 
 ## How to test the application
 
-IntelOwl makes use of the django testing framework and the `unittest` library for unit testing of the API endpoints and End-to-End testing of the analyzers and connectors.
+IntelOwl makes use of the django testing framework and the `unittest` library for unit testing of the API endpoints and End-to-End testing of the analyzers and connectors. 
 
 ### Configuration
 
-- In the encrypted folder `tests/test_files.zip` (password: "intelowl") there are some files that you can use for testing purposes.
+- In the encrypted folder `tests/test_files.zip` (password: "intelowl") there are some files that you can use for testing purposes. The async_tests/ dir has mainly transactional test cases as they are run separately from other unit tests.
 
 - With the following environment variables you can customize your tests:
 
@@ -677,6 +710,17 @@ $ docker exec intelowl_uwsgi python3 manage.py test
 To test a plugin in real environment, i.e. without mocked data, we suggest that you use the GUI of IntelOwl directly.
 Meaning that you have your plugin configured, you have selected a correct observable/file to analyze,
 and the final report shown in the GUI of IntelOwl is exactly what you wanted.
+
+##### Running Tests for a Specific Analyzer  
+
+To test a particular analyzer, locate its corresponding unittest file inside: tests/api_app/analyzers_manager/unit_tests/[observable_analyzers / file_analyzers]
+
+
+Once you’ve identified the test file, you can run it individually with:  
+
+```bash
+ docker exec -ti intelowl_uwsgi python manage.py test tests.api_app.analyzers_manager.unit_tests.observable_analyzers.<test_file>
+```
 
 ##### Run tests available in a particular file
 
