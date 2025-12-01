@@ -78,12 +78,12 @@ In the `env_file`, configure different variables as explained below.
 - `DEFAULT_SLACK_CHANNEL`: ID of the Slack channel you want to post the message to
 
 ## ElasticSearch compatibility.
-Greedybear leverages a [python client](https://elasticsearch-dsl.readthedocs.io/en/latest/) for interacting with ElasticSearch which requires to be at the exact major version of the related T-POT ElasticSearch instance.
+Greedybear leverages a [python client](https://elasticsearch-py.readthedocs.io/en/v8.19.1/) for interacting with ElasticSearch which requires to be at the exact major version of the related T-POT ElasticSearch instance.
 This means that there could problems if those versions do not match.
 
-The actual version of the client installed is the 8.15.0 which allows to run TPOT version from 22.04.0 to 24.04.0 without any problems (and some later ones...we regularly check T-POT releases but we could miss one or two here.)
+The current version of the client installed is the 8.19.1 which allows to run TPOT version from 22.04.0 to 24.04.1 without any problems (and some later ones...we regularly check T-POT releases but we could miss one or two here.)
 
-If you want to have compatibility with previous versions, you need to change the `elasticsearch-dsl` version [here](https://github.com/intelowlproject/GreedyBear/blob/main/requirements/project-requirements.txt) and [re-build](https://intelowlproject.github.io/docs/GreedyBear/Installation/#rebuilding-the-project-creating-custom-docker-build) locally the project.
+If you want to have compatibility with previous versions, you need to change the `elasticsearch8` version [here](https://github.com/intelowlproject/GreedyBear/blob/main/requirements/project-requirements.txt) and [re-build](https://intelowlproject.github.io/docs/GreedyBear/Installation/#rebuilding-the-project-creating-custom-docker-build) locally the project.
 
 ## Update and Re-build
 
