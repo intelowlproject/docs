@@ -1,6 +1,6 @@
 # Usage
 
-## Feeds
+## Feeds API
 
 GreedyBear is created with the aim to collect the information from the TPOTs and generate some actionable feeds, so that they can be easily accessible and act as valuable information to prevent and detect attacks.
 
@@ -65,7 +65,7 @@ These predictions are based on historical interaction patterns and are updated o
 
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/#docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced) or the to get all the details about how to use the available APIs.
 
-## Advanced Feeds
+## Advanced Feeds API
 
 For authenticated users, GreedyBear offers an additional API endpoint that provides similar functionality to the Feeds API but with enhanced customization options.
 ```
@@ -90,7 +90,7 @@ Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/
 
 This "Advanced Feeds" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
 
-## Enrichment
+## Enrichment API
 
 GreedyBear provides an easy-to-query API to get the information available in GB regarding the queried observable (domain or IP address).
 
@@ -102,27 +102,110 @@ This "Enrichment" API is protected through authentication. Please reach out [Mat
 
 If you would like to leverage this API without the need of writing even a line of code and together with a lot of other awesome tools, consider using [IntelOwl](https://github.com/intelowlproject/IntelOwl).
 
-## Command Sequence
 
-This API provides information about command sequences detected by the [Cowrie](https://github.com/cowrie/cowrie) honeypot, allowing retrieval by either IP address or command sequence hash.
+## Cowrie Session API
 
+For authenticated users, GreedyBear offers an API to retrieve session data from the [Cowrie](https://github.com/cowrie/cowrie) honeypot including command sequences, credentials, and session details. Queries can be performed using either an IP address to find all sessions from that source, or a SHA-256 hash to find sessions containing a specific command sequence.
+
+You can query this API endpoint using the following URL:
 ```
-https://<greedybear_site>/api/command_sequence?query=<observable>
+https://<greedybear_site>/api/cowrie_session?query=<observable>
 ```
 
-The available query parameters are:
+### Authentication
+This API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API on the [Honeynet instance](https://greedybear.honeynet.org/) of GreedyBear.
 
-- query (required): either an IP address or a SHA-256 hash of a command or a sequence of commands to search for
-- include_similar (optional): when present, returns related command sequences from the same cluster
+### Query Parameters
+- *query* (required): The search term, can be either an IP address or the SHA-256 hash of a command sequence. When generating a SHA-256 hash to query a multi-line command sequence, ensure you join all command lines with a newline character (`\n`) before calculating the hash. This matches our internal hashing method which uses Python's `"\n".join(sequence)` function.
+- *include_similar* (optional): When `true`, the result is expanded to include all sessions that executed command sequences belonging to the same cluster(s) as command sequences found in the initial query result. Requires CLUSTER_COWRIE_COMMAND_SEQUENCES enabled iin the `env_file`. 
+- *include_credentials* (optional): When `true`, the response includes all credentials used across matching Cowrie sessions. Credentials are delivered in the `username | password` format.
+- *include_session_data* (optional): When `true`, the response includes detailed information about matching Cowrie sessions.
 
-Notes:
+### Responses
+- Response (200): JSON object containing:
+    - query (str): The original query parameter
+    - commands (list[str]): Unique command sequences (newline-delimited strings)
+    - sources (list[str]): Unique source IP addresses
+    - credentials (list[str], optional): Unique credentials if include_credentials=true
+    - sessions (list[object], optional): Session details if include_session_data=true
+        - time (datetime): Session start time
+        - duration (float): Session duration in seconds
+        - source (str): Source IP address
+        - interactions (int): Number of interactions in session
+        - credentials (list[str]): Credentials used in this session
+        - commands (str): Command sequence executed (newline-delimited)
+- Response (400): Bad Request - Missing or invalid query parameter
+- Response (404): Not Found - No matching sessions found
 
-- When generating a SHA-256 hash to query a multi-line command sequence, ensure you join all command lines with a newline character (`\n`) before calculating the hash. This matches our internal hashing method which uses Python's `"\n".join(sequence)` function.
-- For the `include_similar` parameter to work, `CLUSTER_COWRIE_COMMAND_SEQUENCES` must be enabled in the `env_file`. 
 
-This "Command Sequence" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
+### Examples
 
-If you would like to leverage this API without the need of writing even a line of code and together with a lot of other awesome tools, consider using [IntelOwl](https://github.com/intelowlproject/IntelOwl).
+#### Example 1: Query an IP Address with Credentials
+**Request:**
+```
+GET /api/cowrie_session?query=60.188.124.194&include_credentials=true
+```
+
+**Response:**
+```json
+{
+  "license": "https://github.com/honeynet/GreedyBear/blob/main/FEEDS_LICENSE.md",
+  "query": "60.188.124.194",
+  "commands": [
+    "uname -a"
+  ],
+  "sources": [
+    "60.188.124.194"
+  ],
+  "credentials": [
+    "ADMIN | #K2_7f@c048Z",
+    "albert | admin",
+    //...
+    "zccloud | d5EJQLN0nid8B6HXHHxP"
+  ]
+}
+```
+#### Example 2: Query a Command Sequence Hash: 
+**Request:**
+```
+GET /api/cowrie_session?query=28ba533b0f3c4df63d6b4a5ead73860697bdf735bb353e4ca928474889eb8a15
+```
+
+**Response:**
+```json
+{
+  "query": "28ba533b0f3c4df63d6b4a5ead73860697bdf735bb353e4ca928474889eb8a15",
+  "commands": [
+    "uname -a"
+  ],
+  "sources": [
+    "60.188.124.194"
+  ]
+}
+```
+#### Example 3: Query an IP Address with Similar Sessions: 
+**Request:**
+```
+/api/cowrie_session?query=60.188.124.194&include_similar=true
+```
+
+**Response:**
+```json
+{
+  "query": "60.188.124.194",
+  "commands": [
+    "uname -a",
+    "uname -s -m"
+  ],
+  "sources": [
+    "60.188.124.194",
+    "103.106.104.87",
+    "183.204.86.10",
+    "221.203.35.59"
+  ]
+}
+```
+
 
 
 ## User management
