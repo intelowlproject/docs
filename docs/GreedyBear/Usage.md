@@ -123,17 +123,20 @@ This API is protected through authentication. Please reach out [Matteo Lodi](htt
 
 ### Responses
 - Response (200): JSON object containing:
-    - query (str): The original query parameter
-    - commands (list[str]): Unique command sequences (newline-delimited strings)
-    - sources (list[str]): Unique source IP addresses
-    - credentials (list[str], optional): Unique credentials if include_credentials=true
-    - sessions (list[object], optional): Session details if include_session_data=true
-        - time (datetime): Session start time
-        - duration (float): Session duration in seconds
-        - source (str): Source IP address
-        - interactions (int): Number of interactions in session
-        - credentials (list[str]): Credentials used in this session
-        - commands (str): Command sequence executed (newline-delimited)
+
+  - query (str): The original query parameter
+  - commands (list[str]): Unique command sequences (newline-delimited strings)
+  - sources (list[str]): Unique source IP addresses
+  - credentials (list[str], optional): Unique credentials if include_credentials=true
+  - sessions (list[object], optional): Session details if include_session_data=true
+
+    - time (datetime): Session start time
+    - duration (float): Session duration in seconds
+    - source (str): Source IP address
+    - interactions (int): Number of interactions in session
+    - credentials (list[str]): Credentials used in this session
+    - commands (str): Command sequence executed (newline-delimited)
+
 - Response (400): Bad Request - Missing or invalid query parameter
 - Response (404): Not Found - No matching sessions found
 
