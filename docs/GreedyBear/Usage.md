@@ -189,7 +189,7 @@ GET /api/cowrie_session?query=28ba533b0f3c4df63d6b4a5ead73860697bdf735bb353e4ca9
 #### Example 3: Query an IP Address with Similar Sessions: 
 **Request:**
 ```
-/api/cowrie_session?query=60.188.124.194&include_similar=true
+GET /api/cowrie_session?query=60.188.124.194&include_similar=true
 ```
 
 **Response:**
