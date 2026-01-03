@@ -34,6 +34,8 @@
 ### `FeedsRequestSerializer`
 :::docs.Submodules.GreedyBear.api.serializers.FeedsRequestSerializer
 
+_Note: Enhanced with additional filter fields (ioc_type, etc.) in version > 2.4.0_
+
 ### `FeedsResponseSerializer`
 :::docs.Submodules.GreedyBear.api.serializers.FeedsResponseSerializer
 
