@@ -22,7 +22,19 @@ For this reason it is important to follow some easy rules based on a simple but 
 
 ## Code Style
 
-Keeping to a consistent code style throughout the project makes it easier to contribute and collaborate. We make use of [`psf/black`](https://github.com/psf/black) and [isort](https://pycqa.github.io/isort/) for code formatting and [`flake8`](https://flake8.pycqa.org) for style guides.
+Keeping to a consistent code style throughout the project makes it easier to contribute and collaborate. We use [Ruff](https://docs.astral.sh/ruff/) as our all-in-one linter and formatter, which provides:
+
+- **Code Formatting**: Replaces `black` with fast, compatible formatting
+- **Import Sorting**: Replaces `isort` with automatic import organization
+- **Linting**: Replaces `flake8` with 100+ rule sets including:
+  - pycodestyle (E/W) - PEP 8 style enforcement
+  - pep8-naming (N) - Naming convention checks
+  - pyupgrade (UP) - Modern Python syntax suggestions
+  - flake8-bugbear (B) - Common bug detection
+  - flake8-comprehensions (C4) - List/dict comprehension improvements
+  - flake8-django (DJ) - Django-specific best practices
+
+Ruff is significantly faster than the previous toolchain while maintaining compatibility with existing code style.
 
 ## How to start (Setup project and development instance)
 
@@ -41,6 +53,18 @@ source venv/bin/activate
 # from the project base directory
 pip install pre-commit
 pre-commit install -c .github/.pre-commit-config.yaml
+```
+
+Once configured, Ruff will automatically run on every commit. If you want to manually run Ruff before committing, you can use:
+
+```bash
+# Format and fix auto-fixable issues
+pre-commit run ruff --all-files
+
+# Or run Ruff directly (requires: pip install ruff)
+ruff check .           # Check for linting issues
+ruff check . --fix     # Auto-fix issues
+ruff format .          # Format code
 ```
 
 Remember that whenever you make changes, you need to rebuild the docker image to see the reflected changes.
