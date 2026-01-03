@@ -42,6 +42,8 @@ _Note: Enhanced with additional filter fields (ioc_type, etc.) in version > 2.4.
 ### `IOCSerializer`
 :::docs.Submodules.GreedyBear.api.serializers.IOCSerializer
 
+_Note: Includes FireHol categories field in version > 2.4.0_
+
 ### `GeneralHoneypotSerializer`
 :::docs.Submodules.GreedyBear.api.serializers.GeneralHoneypotSerializer
 

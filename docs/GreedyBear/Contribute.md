@@ -34,8 +34,6 @@ Keeping to a consistent code style throughout the project makes it easier to con
   - flake8-comprehensions (C4) - List/dict comprehension improvements
   - flake8-django (DJ) - Django-specific best practices
 
-Ruff is significantly faster than the previous toolchain while maintaining compatibility with existing code style.
-
 ## How to start (Setup project and development instance)
 
 To start with the development setup, make sure you go through all the steps in [Installation Guide](https://intelowlproject.github.io/docs/GreedyBear/Installation/) and properly installed it.
