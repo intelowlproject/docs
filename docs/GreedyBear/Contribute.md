@@ -20,6 +20,8 @@ For this reason it is important to follow some easy rules based on a simple but 
 
 - When creating a PR, please read through the sections that you will find in the PR template and compile it appropriately. If you do not, your PR can be rejected. This is a form of respect to the maintainers.
 
+- Use AI tools appropriately. If we find that you abuse those tools and you just copy/paste without even checking what you are pushing in a PR, we will automatically reject your PR and your future PRs. This is a form of respect to the maintainers.
+
 ## Code Style
 
 Keeping to a consistent code style throughout the project makes it easier to contribute and collaborate. We use [Ruff](https://docs.astral.sh/ruff/) as our all-in-one linter and formatter, which provides:
@@ -57,7 +59,7 @@ Once configured, Ruff will automatically run on every commit. If you want to man
 
 ```bash
 # Format and fix auto-fixable issues
-pre-commit run ruff --all-files
+pre-commit run ruff --all-files -c .github/.pre-commit-config.yaml
 
 # Or run Ruff directly (requires: pip install ruff)
 ruff check .           # Check for linting issues
