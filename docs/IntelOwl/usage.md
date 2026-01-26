@@ -281,6 +281,8 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 - `Dehashed_Search`: Query any observable/keyword against https://dehashed.com's search API.
 - `EmailRep`: search an email address on [emailrep.io](https://emailrep.io)
 - `HaveIBeenPwned`: [HaveIBeenPwned](https://haveibeenpwned.com/API/v3) checks if an email address has been involved in a data breach
+- `HibpBreaches` : Checks email addresses and domains for data breaches using [HaveIBeenPwned](https://haveibeenpwned.com/API/v3) public API endpoints. Requires API key (test key available). Domain results are limited without paid verification.
+- `HibpPasswords` : Checks if a password has been exposed using [HaveIBeenPwned](https://haveibeenpwned.com/API/v3#PwnedPasswords) k-anonymity range search (SHA-1 prefix only). No API key required.
 - `IntelX_Intelligent_Search`: [IntelligenceX](https://intelx.io/) is a search engine and data archive. Fetches emails, urls, domains associated with an observable or a generic string.
 - `IntelX_Phonebook`: [IntelligenceX](https://intelx.io/) is a search engine and data archive. Fetches emails, urls, domains associated with an observable or a generic string.
 - `IPQS_Fraud_And_Risk_Scoring`: Scan an Observable against [IPQualityscore](https://www.ipqualityscore.com/)
