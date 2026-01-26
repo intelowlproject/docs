@@ -284,6 +284,11 @@ Some analyzers could require a special configuration:
     - `waiting_time`: Determines the waiting time for the page to load during the scan (in seconds).
     - `private_scan`: When set to `true`, the scan results will not be shared with other `urlDNA.io` users.
     - `scanned_from`: Allows selecting the country of origin for the scan using a two-letter country code (ISO 3166-1 alpha-2). This feature is available only to `urlDNA.io` Premium Users.
+- `HibpBreaches` and `HibpPasswords` (HaveIBeenPwned family):
+  - Both use the [HaveIBeenPwned API](https://haveibeenpwned.com/API/v3). HibpBreaches requires an API key (use dummy `00000000000000000000000000000000` for testing); HibpPasswords needs none.
+  - HibpBreaches supports email (generic) and domain; domain uses public endpoint (limited results — no leaked emails without paid verification).
+  - Optional params for HibpBreaches: `truncate_response` (less data), `include_unverified` (show unverified breaches).
+  - HibpPasswords uses privacy-safe k-anonymity (SHA-1 prefix only; full password never sent).
 - `MobSF_Service`: 
   - The `MobSF_Service` analyzer offers various configurable parameters to optimize the automated scanning of the application as per one's requirement.
     - `enable_dynamic_analysis`: Set to `True` to enable dynamic analysis though this will increase the scan time.
