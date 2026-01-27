@@ -90,6 +90,43 @@ Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/
 
 This "Advanced Feeds" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
 
+### ASN Aggregated Feeds API
+
+For authenticated users, GreedyBear offers an API endpoint that aggregates IOC data by ASN (Autonomous System Number).
+```
+https://<greedybear_site>/api/feeds/asn/?<query_params>
+```
+
+### Query Parameters
+- `feed_type` (optional): See [Feeds API](#feeds) for valid feed types. Default: `all`.
+- `attack_type` (optional): See [Feeds API](#feeds) for valid attack types. Default: `all`.
+- `max_age` (optional): Maximum age of IOCs in days. Default: 3.
+- `min_days_seen` (optional): Minimum days an IOC must have been observed. Default: 1.
+- `exclude_reputation` (optional): `;`-separated reputations to exclude (e.g., `mass scanner`). Default: none.
+- `ordering` (optional): Aggregation ordering field (e.g., `total_attack_count`, `asn`). Default: `-ioc_count`.
+- `asn` (optional): Filter results to a specific ASN.
+
+### Responses
+- Response (200): JSON array of ASN aggregation objects. Each object containing:
+
+  - `asn` (int): ASN number.
+  - `ioc_count` (int): Number of IOCs for this ASN.
+  - `total_attack_count` (int): Sum of attack_count for all IOCs.
+  - `total_interaction_count` (int): Sum of interaction_count for all IOCs.
+  - `total_login_attempts` (int): Sum of login_attempts for all IOCs.
+  - `honeypots` (list[str]): Sorted list of unique honeypots that observed these IOCs.
+  - `expected_ioc_count` (float): Sum of `recurrence_probability` for all IOCs, rounded to 4 decimals.
+  - `expected_interactions` (float): Sum of `expected_interactions` for all IOCs, rounded to 4 decimals.
+  - `first_seen` (datetime): Earliest `first_seen` timestamp among IOCs.
+  - `last_seen` (datetime): Latest `last_seen` timestamp among IOCs.
+
+- Response (400): Bad Request - Missing or invalid query parameter.
+
+Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
+
+This "ASN Aggregated Feeds" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gaining access to this API.
+
+
 ## Enrichment API
 
 GreedyBear provides an easy-to-query API to get the information available in GB regarding the queried observable (domain or IP address).
