@@ -91,6 +91,7 @@ Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/
 This "Advanced Feeds" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
 
 ### ASN Aggregated Feeds API
+_Available from version >= 3.0.0_
 
 For authenticated users, GreedyBear offers an API endpoint that aggregates IOC data by ASN (Autonomous System Number).
 ```
