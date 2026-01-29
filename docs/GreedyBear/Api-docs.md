@@ -11,6 +11,9 @@
 ### `Advanced Feeds`
 :::docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced
 
+### `ASN Aggregated Feeds`
+:::docs.Submodules.GreedyBear.api.views.feeds.feeds_asn
+
 ### `Feeds Pagination`
 :::docs.Submodules.GreedyBear.api.views.feeds.feeds_pagination
 
