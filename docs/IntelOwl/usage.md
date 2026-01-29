@@ -129,6 +129,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `HashLookupServer_Get_File`: check if a md5 or sha1 is available in the database of [known file hosted by CIRCL](https://github.com/adulau/hashlookup-server)
 - `HybridAnalysis_Get_File`: check file hash on [HybridAnalysis](https://www.hybrid-analysis.com/) sandbox reports
 - `Intezer_Scan`: scan a file on [Intezer](https://analyze.intezer.com/?utm_source=IntelOwl). Register for a free community account [here](https://analyze.intezer.com/sign-in?utm_source=IntelOwl). With TLP `CLEAR`, in case the hash is not found, you would send the file to the service.
+- `IPQS_Malware_File_Scanner`: Analyze a file with [IPQualityscore](https://www.ipqualityscore.com/file-malware-scanner)
 - `Malpedia_Scan`: scan a binary or a zip file (pwd:infected) against all the yara rules available in [Malpedia](https://malpedia.caad.fkie.fraunhofer.de/)
 - `MalwareBazaar_Get_File`: Check if a particular malware sample is known to [MalwareBazaar](https://bazaar.abuse.ch/)
 - `MISPFIRST_Check_Hash`: check a file hash on the [FIRST MISP](https://misp.first.org/) instance
@@ -195,6 +196,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `HybridAnalysis_Get_Observable`: search an observable in the [HybridAnalysis](https://www.hybrid-analysis.com/) sandbox reports
 - `IP2WHOIS`: [API Docs](https://www.ip2location.io/ip2whois-documentation) IP2Location.io IP2WHOIS Domain WHOIS API helps users to obtain domain information and WHOIS record by using a domain name.
 - `IPQS_Fraud_And_Risk_Scoring`: Scan an Observable against [IPQualityscore](https://www.ipqualityscore.com/)
+- `IPQS_URL_File_Scanner`: Scan URLs for Malware & Phishing Links using [IPQualityscore](https://www.ipqualityscore.com/threat-feeds/malicious-url-scanner)
 - `InQuest_DFI`: Deep File Inspection by [InQuest Labs](https://labs.inquest.net/dfi)
 - `InQuest_IOCdb`: Indicators of Compromise Database by [InQuest Labs](https://labs.inquest.net/iocdb)
 - `InQuest_REPdb`: Search in [InQuest Lab's](https://labs.inquest.net/repdb) Reputation Database
