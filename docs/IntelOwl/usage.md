@@ -173,8 +173,8 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Crowdsec`: check if an IP was reported on [Crowdsec](https://www.crowdsec.net/) Smoke Dataset
 - `Cymru_Hash_Registry_Get_Observable`: Check if a particular hash is available in the malware hash registry of [Team Cymru](https://team-cymru.com/community-services/mhr/)
 - `DNSDB`: scan an observable against the [Passive DNS Farsight Database](https://www.farsightsecurity.com/solutions/dnsdb/) (support both v1 and v2 versions)
-- `DNS0_EU`: Retrieve current domain resolution with DNS0.eu DoH (DNS over HTTPS)
-- `DNS0_EU_Malicious_Detector`: Check if a domain or an url is marked as malicious in DNS0.eu database ([Zero](https://www.dns0.eu/zero) service)
+- `DNS4EU`: Retrieve current domain resolution with [DNS4EU](https://www.joindns4.eu/) DoH (DNS over HTTPS)
+- `DNS4EU_Malicious_Detector`: Check if a domain or an url is marked as malicious in [DNS4EU](https://www.joindns4.eu/) database.
 - `DocGuard_Get`: check if an hash was analyzed on DocGuard. [DocGuard](https://www.docguard.io)
 - `DShield`: Service Provided by [DShield](https://www.dshield.org/) to get useful information about IP addresses
 - `Feodo_Tracker`: [Feodo Tracker](https://feodotracker.abuse.ch/) offers various blocklists, helping network owners to protect their users from Dridex and Emotet/Heodo.
