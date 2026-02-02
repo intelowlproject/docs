@@ -168,6 +168,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `CIRCLPassiveDNS`: scan an observable against the CIRCL Passive DNS DB
 - `CIRCLPassiveSSL`: scan an observable against the CIRCL Passive SSL DB
 - `Classic_DNS`: Retrieve current domain resolution with default DNS
+- `CleanBrowsing_Malicious_Detector`: Uses [CleanBrowsing DoH](https://cleanbrowsing.org/filters/#step3) to check if domain is related to phishing, spam or malware.
 - `CloudFlare_DNS`: Retrieve current domain resolution with CloudFlare DoH (DNS over HTTPS)
 - `CloudFlare_Malicious_Detector`: Leverages CloudFlare DoH to check if a domain is related to malware
 - `Crowdsec`: check if an IP was reported on [Crowdsec](https://www.crowdsec.net/) Smoke Dataset
