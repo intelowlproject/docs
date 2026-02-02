@@ -49,6 +49,7 @@ These predictions are based on historical interaction patterns and are updated o
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/#docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced) or the to get all the details about how to use the available APIs.
 
 ## Advanced Feeds API
+_Available from version >= 1.4.0_
 
 For authenticated users, GreedyBear offers an additional API endpoint that provides similar functionality to the Feeds API but with enhanced customization options.
 ```
@@ -125,6 +126,7 @@ If you would like to leverage this API without the need of writing even a line o
 
 
 ## Cowrie Session API
+_Available from version >= 2.1.0_
 
 For authenticated users, GreedyBear offers an API to retrieve session data from the [Cowrie](https://github.com/cowrie/cowrie) honeypot including command sequences, credentials, and session details. Queries can be performed using either an IP address to find all sessions from that source, or a SHA-256 hash to find sessions containing a specific command sequence.
 
