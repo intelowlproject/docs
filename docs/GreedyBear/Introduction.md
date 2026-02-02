@@ -8,7 +8,7 @@ The project goal is to extract data of the attacks detected by a [TPOT](https://
 
 ## Public feeds
 
-There are public feeds provided by The Honeynet Project in this site: greedybear.honeynet.org. [Example](https://greedybear.honeynet.org/api/feeds/log4j/all/recent.txt)
+There are public feeds provided by The Honeynet Project in this site: greedybear.honeynet.org. [Example](https://greedybear.honeynet.org/api/feeds/cowrie/all/recent.txt)
 
 To check all the available feeds, Please refer to our [usage guide](https://intelowlproject.github.io/docs/GreedyBear/Usage/)
 
