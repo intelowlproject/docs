@@ -12,30 +12,13 @@ https://<greedybear_site>/api/feeds/<feed_type>/<attack_type>/<prioritize>.<form
 
 The available feed_type are:
 
-- `log4j`: attacks detected from the Log4pot.
-- `cowrie`: attacks detected from the Cowrie Honeypot.
+- `<honeypot_name>`: attacks detected from a specific type of honeypot; for example `cowrie`
 - `all`: get all types at once
-- The following honeypot feeds exist (for extraction of (only) the source IPs):
-  - `heralding`
-  - `ciscoasa`
-  - `honeytrap`
-  - `dionaea`
-  - `conpot`
-  - `adbhoney`
-  - `tanner`
-  - `citrixhoneypot`
-  - `mailoney`
-  - `ipphoney`
-  - `elasticpot`
-  - `dicompot`
-  - `redishoneypot`
-  - `sentrypeer`
-  - `glutton`
 
 The available attack_type are:
 
 - `scanner`: IP addresses captured by the honeypots while performing attacks
-- `payload_request`: IP addresses and domains extracted from payloads that would have been executed after a speficic attack would have been successful
+- `payload_request`: IP addresses and domains extracted from payloads that would have been executed after a speficic attack would have been successful. This will currently only return requests recorded by the Cowrie honeypot. 
 - `all`: get all types at once
 
 The available prioritization mechanisms are:
