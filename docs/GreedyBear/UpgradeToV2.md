@@ -1,5 +1,7 @@
-# Upgrade GreedyBear 1.x to 2.x
-For the upgrade from GreedyBear 1.x to 2.x manual intervention is required, because the underlying PostgreSQL version changed from 13 to 18. If you follow this guide carefully, you should not lose any data in the process. However, it is **strongly recommended** to backup your system before performing the update.
+# Upgrade from GreedyBear 1.x
+For the upgrade from GreedyBear 1.x manual intervention is required, because the underlying PostgreSQL version changed from 13 to 18. This guide applies whether you are upgrading to 2.x, 3.x, or any later version — the process is the same. It is recommended to always upgrade directly to the most current version.
+
+If you follow this guide carefully, you should not lose any data in the process. However, it is **strongly recommended** to backup your system before performing the update.
 
 ## Prerequisites
 - GreedyBear 1.x running with PostgreSQL 13
@@ -21,8 +23,8 @@ For the upgrade from GreedyBear 1.x to 2.x manual intervention is required, beca
 12. Stop the intermediary container: `docker container stop greedybear_postgres`
 13. Remove the intermediary container: `docker container rm greedybear_postgres`
 14. Return to the root folder: `cd ..`
-15. Update GreedyBear to version 2.x following your standard update procedure
-16. Start GreedyBear 2.x: `docker compose up`
+15. Update GreedyBear to the latest version following your standard update procedure
+16. Start GreedyBear: `docker compose up`
 
 ## Verification & Cleanup
 - After completing the upgrade, verify that all containers are running: `docker compose ps`
