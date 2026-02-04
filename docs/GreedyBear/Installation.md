@@ -109,5 +109,5 @@ $ docker-compose up # restart the GreedyBear application
 
 <div class="admonition warning">
 <p class="admonition-title">Note</p>
-A bug was introduced in GreedyBear version 2.0.0 and fixed in version 3.0.1. If you are running any version between 2.0.0 and 3.0.0 and pull the latest PostgreSQL Docker container, you will end up with an empty database. To fix this, update GreedyBear to version 3.0.1 or later, and your historic data will be visible again. For further information, please refer to this [issue](https://github.com/intelowlproject/GreedyBear/issues/766). 
+A bug was introduced in GreedyBear version 2.0.0 and fixed in version 3.0.1. If you are running any version between 2.0.0 and 3.0.0 and pull the latest PostgreSQL Docker container, you will end up with an empty database. To fix this, update GreedyBear to version 3.0.1 or later, and your historic data will be visible again. For further information, please refer to this <a href="https://github.com/intelowlproject/GreedyBear/issues/766">issue</a>. 
 </div>
