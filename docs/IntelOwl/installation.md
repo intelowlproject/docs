@@ -356,6 +356,74 @@ Maintainers strive to keep the upgrade between major version easy but it's not a
 Below you can find the additional process required to upgrade from each major versions.
 </div>
 
+#### Updating to >=7.0.0 from a 6.x.x version
+
+*Note: Version 7.0.0 is not yet officially released; this guide is provided for the upcoming major update.*
+
+IntelOwl v7.0.0 updated the base PostgreSQL image from version 16 to version 18. This change is a breaking change for the database data. You have two choices:
+
+- **Choice 1: Start from scratch**: Remove your actual database volumes and start from scratch with a new one.
+- **Choice 2: Migrate your data**: Follow the migration procedure below to move your data from PostgreSQL 16 (v6.x.x) to PostgreSQL 18 (v7.0.0).
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+CARE! We are providing this database migration procedure to help the users to migrate to a new PostgreSQL version.
+
+Upgrading PostgreSQL is outside the scope of the IntelOwl project so we do not guarantee that everything will work as intended.
+
+In case of doubt, please check the official PostgreSQL documentation.
+
+Upgrade at your own risk.
+
+</div>
+
+The database migration procedure is as follows:
+
+1. Ensure IntelOwl version 6.x.x is up and running.
+2. Bring down the application:
+   ```bash
+   ./start prod down
+   ```
+3. Go to the docker folder: `cd docker`
+4. Start a temporary PostgreSQL 16 container with your old data:
+   ```bash
+   docker run -d --name intelowl_postgres_16 -v <OLD_POSTGRES_VOLUME>:/var/lib/postgresql/data/ --env-file env_file_postgres library/postgres:16-alpine
+   ```
+   *Note: `<OLD_POSTGRES_VOLUME>` is usually `intelowl_postgres_data` or `postgres_data` depending on your Docker project name.*
+5. Dump the entire database:
+   ```bash
+   docker exec -t intelowl_postgres_16 pg_dump -U <POSTGRES_USER> -d <POSTGRES_DB> --no-owner > /tmp/intelowl_v6_dump.sql
+   ```
+   *Replace `<POSTGRES_USER>` and `<POSTGRES_DB>` with your actual values from `env_file_postgres`.*
+6. Stop and remove the temporary container:
+   ```bash
+   docker container stop intelowl_postgres_16
+   docker container rm intelowl_postgres_16
+   ```
+7. Start a temporary PostgreSQL 18 container using the new volume name:
+   ```bash
+   docker run -d --name intelowl_postgres_18 -v intelowl_postgres_data_v18:/var/lib/postgresql/data/ --env-file env_file_postgres library/postgres:18-alpine
+   ```
+8. Restore the data:
+   ```bash
+   cat /tmp/intelowl_v6_dump.sql | docker exec -i intelowl_postgres_18 psql -U <POSTGRES_USER> -d <POSTGRES_DB>
+   ```
+9. Stop and remove the temporary container:
+    ```bash
+    docker container stop intelowl_postgres_18
+    docker container rm intelowl_postgres_18
+    ```
+10. Update your IntelOwl repository to the latest version (v7.0.0).
+11. Bring the application back up:
+    ```bash
+    ./start prod up
+    ```
+12. (Optional) Once you have verified that everything works properly, you can remove the old PostgreSQL volume.
+    **Warning**: This will permanently delete your original data/backup.
+    ```bash
+    docker volume rm <OLD_POSTGRES_VOLUME>
+    ```
+
 #### Updating to >=6.0.0 from a 5.x.x version
 
 IntelOwl v6 introduced some major changes regarding how the project is started.
