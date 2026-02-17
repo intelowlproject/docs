@@ -330,7 +330,7 @@ $ ./start prod up # restart the IntelOwl application
 
 IntelOwl includes a built-in automatic update checker that periodically compares your running version against the latest GitHub release. When a newer version is detected, a notification banner is shown on the Home page of the GUI — no manual checking required.
 
-- A **weekly Celery Beat task** queries the GitHub Releases API automatically.
+- A **weekly cronjob** queries the GitHub Releases API automatically.
 - If an update is available, admins see a banner: *"A new system update is available. Current: X.Y.Z → Latest: A.B.C"*
 - Notifications are sent only once per new version to avoid duplicates.
 
