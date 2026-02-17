@@ -326,6 +326,25 @@ $ ./start prod down # kill and destroy the currently running IntelOwl containers
 $ ./start prod up # restart the IntelOwl application
 ```
 
+### Update Checker
+
+IntelOwl includes a built-in automatic update checker that periodically compares your running version against the latest GitHub release. When a newer version is detected, a notification banner is shown on the Home page of the GUI — no manual checking required.
+
+- A **weekly Celery Beat task** queries the GitHub Releases API automatically.
+- If an update is available, admins see a banner: *"A new system update is available. Current: X.Y.Z → Latest: A.B.C"*
+- Notifications are sent only once per new version to avoid duplicates.
+
+You can also trigger a manual check at any time:
+
+```bash
+docker exec -ti intelowl_uwsgi python3 manage.py check_updates
+```
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+The update checker uses the <code>UPDATE_CHECK_URL</code> setting, which defaults to the official IntelOwl GitHub Releases API. You can override this in <code>docker/env_file_app</code> if you use a private fork or mirror.
+</div>
+
 <div class="admonition warning">
 <p class="admonition-title">Note</p>
 After an upgrade, sometimes a database error in Celery Containers could happen. That could be related to new DB migrations which are not applied by the main Uwsgi Container yet. Do not worry. Wait few seconds for the Uwsgi container to start correctly, then put down the application again and restart it. The problem should be solved. If not, please feel free to open an issue on Github
