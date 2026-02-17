@@ -31,4 +31,7 @@ If you follow this guide carefully, you should not lose any data in the process.
 - Check if GreedyBear is accessible, functioning correctly and still contains your data
 - Delete the backup file: `rm docker/greedybear_dump.sql`
 
-
+<div class="admonition warning">
+<p class="admonition-title">Note</p>
+Since version 3.0.0 we expect users to use docker compose v2 syntax, that is using `docker compose` instead of `docker-compose`. 
+</div>

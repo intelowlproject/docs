@@ -1,67 +1,44 @@
 # Installation
 
 ## Requirements
-For requirements, please refer to [IntelOwl requirements](https://intelowlproject.github.io/docs/IntelOwl/installation/#requirements) which are the same
+- Hardware (minimum): 2 CPU, 4 GB RAM (16 GB if using a local Elasticsearch instance), 20 GB Disk
+- Operating system: a current version of Ubuntu or Debian (recommended); Fedora Centos RHEL, Alma Linux, Rocky Linux and OpenSUSE _should_ also work
+- Software: git
 
-Note that GreedyBear _needs_ a running instance of ElasticSearch of a T-POT to function. In `docker/env_file`, set the variable `ELASTIC_ENDPOINT` with the URL of your Elasticsearch T-POT.
+Note that GreedyBear _needs_ a running instance of Elasticsearch from a T-Pot to function. In `docker/env_file`, set the variable `ELASTIC_ENDPOINT` with the URL of your Elasticsearch T-Pot.
 
-In the T-POT classic installation, ElasticSearch is not exposed externally. If you want your GB instance to connect to it, you must change this and expose it externally.
+In the T-Pot classic installation, Elasticsearch is not exposed externally. If you want your GreedyBear instance to connect to it, you must change this and expose it externally.
 
-To do that, change the main `docker-compose.yml` of the T-POT in the `elasticsearch` section:
+To do that, change the main `docker-compose.yml` of the T-Pot in the `elasticsearch` section:
 ```code
     ports:
       - "64298:9200" # instead of "127.0.0.1:64298:9200"
 ```
-Obviously, you should have already configured your T-POT to avoid generic access to ports higher than 64000 (like stated in the [official doc](https://github.com/telekom-security/tpotce/tree/master?tab=readme-ov-file#system-placement))
 
-If you don't have a T-POT, you can make the following changes to make GreeyBear spin up it's own ElasticSearch instance.
-(...Care! This option would require enough RAM to run the additional containers. Suggested is >=16GB):
-
-1. In `docker/env_file`, set the variable `ELASTIC_ENDPOINT` to `http://elasticsearch:9200`.
-2. Add `:docker/elasticsearch.yml` to the last defined `COMPOSE_FILE` variable or uncomment the `# local development with elasticsearch container` block in `.env` file.
+Obviously, you should have already configured your T-Pot to avoid generic access to ports higher than 64000 (like stated in the [official doc](https://github.com/telekom-security/tpotce/tree/master?tab=readme-ov-file#system-placement))
 
 
-## Installation steps
+## Installation
 
-Start by cloning the project
+Start by cloning the project:
 
 ```bash
-# clone the Greedybear project repository
-git clone https://github.com/honeynet/GreedyBear
+# clone the GreedyBear project repository
+git clone https://github.com/intelowlproject/GreedyBear
 cd GreedyBear/
-
-# construct environment files from templates
-cp .env_template .env
-cd docker/
-cp env_file_template env_file
-cp env_file_postgres_template env_file_postgres
 ```
+
+Initialize GreedyBear. This process checks system requirements, installs the required packages, checks out the appropriate git branch, and generates environment files:
 
 ```bash
-# The default deployment leverages the official images of GreedyBear available here: https://hub.docker.com/repository/docker/intelowlproject/greedybear
-# start the app
-docker-compose up
-
-# now the app is running on http://localhost:80
-
-# shut down the application
-docker-compose down
+# Production environment with external T-Pot Elasticsearch
+./gbctl init --elastic-endpoint http://tpot-host:64298
 ```
 
-_Note:_ To create a superuser run the following:
 
-```bash
-docker exec -ti greedybear_uwsgi python3 manage.py createsuperuser
-```
+### Configuration
 
-The app administrator can enable/disable the extraction of source IPs for specific honeypots from the Django Admin.
-This is used for honeypots that are not specifically implemented to extract additional information (so not Log4Pot and Cowrie).
-
-### Environment configuration
-
-In the `env_file`, configure different variables as explained below.
-
-**Required** variable to set:
+After the initialization has finished, your GreedyBear instance is already runnable. However you should consider checking and filling the `docker/env_file`, which contains all important configuration options for the GreedyBear instance. We recommend to populate at least the Email settings:
 
 - `DEFAULT_FROM_EMAIL`: email address used for automated correspondence from the site manager (example: `noreply@mydomain.com`)
 - `DEFAULT_EMAIL`: email address used for correspondence with users (example: `info@mydomain.com`)
@@ -72,40 +49,79 @@ In the `env_file`, configure different variables as explained below.
 - `EMAIL_USE_TLS`: whether to use an explicit TLS (secure) connection when talking to the SMTP server, generally used on port 587.
 - `EMAIL_USE_SSL`: whether to use an implicit TLS (secure) connection when talking to the SMTP server, generally used on port 465.
 
-**Optional configuration**:
-
+### Monitoring Configuration
+To receive messages about errors occurring at the instance, it is also recommended to use one of the monitoring options:
 - `SLACK_TOKEN`: Slack token of your Slack application that will be used to send/receive notifications
 - `DEFAULT_SLACK_CHANNEL`: ID of the Slack channel you want to post the message to
+- `NTFY_URL`: URL of a ntfy topic to receive error alerts
 
-## ElasticSearch compatibility.
-Greedybear leverages a [python client](https://elasticsearch-py.readthedocs.io/en/v9.2.1/) for interacting with ElasticSearch which requires to be at the exact major version of the related T-POT ElasticSearch instance.
-This means that there could problems if those versions do not match.
+## Start the Application
 
-The current version of the client installed is the 9.2.1 which allows to run TPOT version >= 24.04.1 without any problems (we regularly check T-POT releases but we could miss one or two here).
+```bash
+# Start all services
+./gbctl up
+```
 
-If you want to have compatibility with previous versions, you need to change `elasticsearch` to `elasticsearch8` with an appropriate version [here](https://github.com/intelowlproject/GreedyBear/blob/main/requirements/project-requirements.txt), adjust the imports [here](https://github.com/intelowlproject/GreedyBear/blob/main/greedybear/cronjobs/repositories/elastic.py) and [here](https://github.com/intelowlproject/GreedyBear/blob/main/greedybear/settings.py), and [re-build](https://intelowlproject.github.io/docs/GreedyBear/Installation/#rebuilding-the-project-creating-custom-docker-build) the project locally.
+Now the app is running on http://localhost:80 . You can always check its status or take a look at the logs:
+
+
+```bash
+# Check the status of relevant containers
+./gbctl health
+# Check the docker logs
+./gbctl logs
+# Check the application logs
+./gbctl logs app
+```
+
+Next, create a Django superuser. The Django superuser can enable/disable the extraction of source IPs for specific honeypots from the Django Admin Interface.
+
+```bash
+# Create a Django superuser
+./gbctl create-admin
+```
+
+To shut down the application, run:
+```bash
+# Stop all services
+./gbctl down
+```
+
+## Elasticsearch Compatibility
+GreedyBear leverages a [python client](https://elasticsearch-py.readthedocs.io/en/v9.3.0) for interacting with Elasticsearch which requires to be at the exact major version of the related T-Pot Elasticsearch instance.
+This means that there could be problems if those versions do not match.
+
+The current version of the client installed is the 9.3.0 which allows running T-Pot version >= 24.04.1 without any problems (we regularly check T-Pot releases but we could miss one or two here).
+
 
 ## Update and Re-build
 
 ### Rebuilding the project / Creating custom docker build
 
-If you make some code changes and you like to rebuild the project, follow these steps:
+If you make some code changes and you like to rebuild the project, make sure that your `.env` file has a `COMPOSE_FILE` variable which mounts the `docker/local.override.yml` compose file. You can also run `./gbctl init --dev` to achieve this. With the `docker/local.override.yml` mounted, run:
 
-1. Be sure that your `.env` file has a `COMPOSE_FILE` variable which mounts the `docker/local.override.yml` compose file.
-2. `docker-compose build` to build the new docker image.
-3. Start the containers with `docker-compose up`.
+```bash
+./gbctl build # Build the new docker image
+./gbctl up # Start all services
+```
 
 ### Update to the most recent version
 
-To update the project with the most recent available code you have to follow these steps:
+Since GreedyBear version 3.1.0 you can update your instance by running in your GreedyBear directory:
+```bash
+./gbctl update
+```
+
+To update manually you have to follow these steps:
 
 ```bash
-$ cd <your_greedy_bear_directory> # go into the project directory
 $ git pull # pull new repository changes
-$ docker pull intelowlproject/greedybear:prod # pull new docker images
-$ docker-compose down # stop and destroy the currently running GreedyBear containers
-$ docker-compose up # restart the GreedyBear application
+$ docker compose pull # pull new docker images
+$ docker compose down # stop and destroy the currently running GreedyBear containers
+$ docker compose up # restart the GreedyBear application
 ```
+
+
 
 <div class="admonition warning">
 <p class="admonition-title">Note</p>
