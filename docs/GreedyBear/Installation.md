@@ -51,6 +51,7 @@ After the initialization has finished, your GreedyBear instance is already runna
 
 ### Monitoring Configuration
 To receive messages about errors occurring at the instance, it is also recommended to use one of the monitoring options:
+
 - `SLACK_TOKEN`: Slack token of your Slack application that will be used to send/receive notifications
 - `DEFAULT_SLACK_CHANNEL`: ID of the Slack channel you want to post the message to
 - `NTFY_URL`: URL of a ntfy topic to receive error alerts
