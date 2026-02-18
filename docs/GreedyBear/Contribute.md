@@ -40,6 +40,14 @@ Keeping to a consistent code style throughout the project makes it easier to con
 
 To start with the development setup, make sure you go through all the steps in [Installation Guide](https://intelowlproject.github.io/docs/GreedyBear/Installation/) and properly installed it.
 
+If you don't have a T-Pot, you can make GreedyBear spin up it's own local ElasticSearch instance.
+(**Note**: This option would require enough RAM to run the additional containers. Suggested is >=16GB).
+
+```bash
+# Development with local Elasticsearch
+./gbctl init --dev --elastic-local
+```
+
 Please create a new branch based on the **develop** branch that contains the most recent changes. This is mandatory.
 
 `git checkout -b myfeature develop`
@@ -89,7 +97,7 @@ DANGEROUSLY_DISABLE_HOST_CHECK=true npm start
 Most of the time you would need to test the changes you made together with the backend. In that case, you would need to run the backend locally too:
 
 ```commandline
-docker-compose up
+docker compose up
 ```
 
 #### Certego-UI
