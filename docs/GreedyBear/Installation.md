@@ -3,7 +3,7 @@
 ## Requirements
 - Hardware (minimum): 2 CPU, 4 GB RAM (16 GB if using a local Elasticsearch instance), 20 GB Disk
 - Operating system: a current version of Ubuntu or Debian (recommended); Fedora Centos RHEL, Alma Linux, Rocky Linux and OpenSUSE _should_ also work
-- Software: git
+- Software: sudo, git
 
 Note that GreedyBear _needs_ a running instance of Elasticsearch from a T-Pot to function. In `docker/env_file`, set the variable `ELASTIC_ENDPOINT` with the URL of your Elasticsearch T-Pot.
 
