@@ -5,8 +5,9 @@ site_author: "IntelOwl Project"
 copyright: |
   &copy; IntelOwl Project
 
-repo_name: intelowlproject/IntelOwl
-repo_url: https://github.com/intelowlproject/IntelOwl
+repo_name: intelowlproject/docs
+repo_url: https://github.com/intelowlproject/docs
+edit_uri: edit/main/docs/
 
 nav:
   - Home: "index.md"
