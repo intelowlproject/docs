@@ -7,6 +7,7 @@ copyright: |
 
 repo_name: intelowlproject/IntelOwl
 repo_url: https://github.com/intelowlproject/IntelOwl
+edit_uri: ""
 
 nav:
   - Home: "index.md"
