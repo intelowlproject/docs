@@ -165,7 +165,7 @@ This API is protected through authentication. Please reach out [Matteo Lodi](htt
 
 
 ## Health API
-_Available from version >= 3.1.0_
+_Available from version >= 3.2.0_
 
 GreedyBear provides a Health API endpoint that allows administrators to monitor the system status and retrieve aggregated statistics.
 
