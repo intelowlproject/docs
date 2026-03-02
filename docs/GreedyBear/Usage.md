@@ -44,6 +44,12 @@ The `json` result includes two predictive scores:
 - `recurrence_probability` (0.0-1.0): Indicates the likelihood that an IOC will reappear within the next 24 hours. Higher values suggest greater persistence of the threat.
 - `expected_interactions` (0+): Estimates the number of honeypot interactions anticipated from the IOC in the next 24 hours, indicating potential activity level.
 
+The response includes a new field:
+  
+_Available from version >= 3.2.0_
+
+- `attacker_country`: The country associated with the attacking IP address.
+
 These predictions are based on historical interaction patterns and are updated once a day, shortly after midnight UTC. They are the foundation of the `likely_to_recur` and `most_expected_hits` prioritization mechanisms.
 
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/#docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced) or the to get all the details about how to use the available APIs.
@@ -69,6 +75,12 @@ The available query parameters are:
 - `verbose`: `true` to include IOC properties that contain a lot of data, e.g. the list of days it was seen. (default: `false`)
 - `paginate`: `true` to paginate results. This forces the json format. (default: `false`)
 - `format_`: see [Feeds API](#feeds) (default: `json`)
+
+The response includes a new field:
+
+_Available from version >= 3.2.0_
+
+- `attacker_country`: The country associated with the attacking IP address.
 
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
 
