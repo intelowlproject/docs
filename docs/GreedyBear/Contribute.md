@@ -77,9 +77,6 @@ ruff format .          # Format code
 
 Remember that whenever you make changes, you need to rebuild the docker image to see the reflected changes.
 
-```bash
-docker exec -it greedybear_uwsgi python manage.py spectacular --file docs/source/schema.yml && make html
-```
 
 ### Frontend
 
