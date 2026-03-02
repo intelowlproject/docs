@@ -42,6 +42,8 @@ _Note: Enhanced with additional filter fields (ioc_type, etc.) in version > 2.4.
 ### `FeedsResponseSerializer`
 :::docs.Submodules.GreedyBear.api.serializers.FeedsResponseSerializer
 
+_Note: Inludes attacker_country field in version >= 3.2.0
+
 ### `IOCSerializer`
 :::docs.Submodules.GreedyBear.api.serializers.IOCSerializer
 
