@@ -1,0 +1,87 @@
+x-no-healthcheck: &no-healthcheck
+  healthcheck:
+    disable: true
+
+services:
+  postgres:
+    image: library/postgres:18-alpine
+    container_name: greedybear_postgres
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    env_file:
+      - ./env_file_postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]  
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  uwsgi:
+    image: intelowlproject/greedybear:prod
+    container_name: greedybear_uwsgi
+    restart: unless-stopped
+    volumes:
+      - ../configuration/uwsgi/greedybear.ini:/etc/uwsgi/sites/greedybear.ini
+      - generic_logs:/var/log/greedybear
+      - static_content:/opt/deploy/greedybear/static
+    entrypoint:
+      - ./docker/entrypoint_uwsgi.sh
+    expose:
+      - "8001"
+      - "1717"
+    env_file:
+      - env_file
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 8001 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
+  nginx:
+    image: intelowlproject/greedybear_nginx:prod
+    container_name: greedybear_nginx
+    restart: unless-stopped
+    volumes:
+      - ../configuration/nginx/http.conf:/etc/nginx/conf.d/default.conf
+      - ../configuration/nginx/errors.conf:/etc/nginx/errors.conf
+      - ../configuration/nginx/locations.conf:/etc/nginx/locations.conf
+      - nginx_logs:/var/log/nginx
+      - static_content:/var/www/static
+    ports:
+      - "80:80"
+    depends_on:
+      - uwsgi
+
+
+
+  qcluster:
+    image: intelowlproject/greedybear:prod
+    container_name: greedybear_qcluster
+    restart: unless-stopped
+    stop_grace_period: 3m
+    command: sh -c "python manage.py setup_schedules && exec python manage.py qcluster"
+    volumes:
+      - generic_logs:/var/log/greedybear
+      - mlmodels:/opt/deploy/greedybear/mlmodels
+    env_file:
+      - env_file
+    depends_on:
+      postgres:
+        condition: service_healthy
+      uwsgi:
+        condition: service_healthy
+    user: "2000:82"
+    <<: *no-healthcheck
+
+volumes:
+  postgres_data:
+  nginx_logs:
+  generic_logs:
+  static_content:
+  mlmodels:
