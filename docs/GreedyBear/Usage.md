@@ -176,6 +176,50 @@ This API is protected through authentication. Please reach out [Matteo Lodi](htt
 - Response (404): Not Found - No matching sessions found
 
 
+## Health API
+_Available from version >= 3.2.0_
+
+GreedyBear provides a Health API endpoint that allows administrators to monitor the system status and retrieve aggregated statistics.
+
+The endpoint is reachable through the following URL:
+
+```
+https://<greedybear_site>/api/health/
+```
+
+### Authentication
+This API is accessible **only to admin users**.
+
+### System Status
+The response includes a `system` section with:
+
+* `database`: `up`, `down`, or `degraded`
+* `qcluster`: `up`, `idle`, or `down`
+* `elasticsearch`: `up`, `down`, or `not configured`
+* `uptime_seconds`: total application uptime in seconds
+
+### Overview
+If the database is operational, the response also includes an `overview` section containing:
+
+* `iocs`: total and new (last 24h) IOCs
+* `sessions`: total and last 24h Cowrie sessions
+* `honeypots`: total and active honeypots
+* `threat_lists`: counts of firehol, mass scanners, and tor exit nodes
+* `jobs`: scheduled jobs and job statistics from Django-Q
+
+If the database is `down` or `degraded`, the `overview` section will be empty.
+
+### Responses
+* **Response (200)**: JSON object containing:
+
+  * `system` (object): System health information
+  * `overview` (object): Aggregated statistics (empty if DB is down/degraded)
+
+* **Response (401)**: Unauthorized – Authentication required
+
+* **Response (403)**: Forbidden – Admin privileges required
+
+
 ### Examples
 
 #### Example 1: Query an IP Address with Credentials
