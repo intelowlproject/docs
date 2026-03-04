@@ -56,6 +56,12 @@ To receive messages about errors occurring at the instance, it is also recommend
 - `DEFAULT_SLACK_CHANNEL`: ID of the Slack channel you want to post the message to
 - `NTFY_URL`: URL of a ntfy topic to receive error alerts
 
+### Enrichment Configuration
+To enable fetching of data from third-party services like AbuseIPDB and ThreatFox to enrich IOCs, you may need to configure specific API keys:
+
+- `ABUSEIPDB_API_KEY`: API key for validating IPs against AbuseIPDB and annotating them with an `abuse_confidence_score` and country data.
+- `THREATFOX_API_KEY`: API key for fetching the latest IOCs from ThreatFox.
+
 ## Start the Application
 
 ```bash
