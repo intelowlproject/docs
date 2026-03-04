@@ -30,9 +30,9 @@ The available prioritization mechanisms are:
 
 The available formats are:
 
-- `txt`: plain text (just one line for each IOC)
-- `csv`: CSV-like file (just one line for each IOC)
-- `json`: JSON file with additional information regarding the IOCs
+- `txt`: plain text (just one line for each IOC, tags are not included)
+- `csv`: CSV-like file (just one line for each IOC, tags are not included)
+- `json`: JSON file with additional information regarding the IOCs (including tags when available)
 
 The available flags are: 
 
@@ -44,20 +44,19 @@ The `json` result includes two predictive scores:
 - `recurrence_probability` (0.0-1.0): Indicates the likelihood that an IOC will reappear within the next 24 hours. Higher values suggest greater persistence of the threat.
 - `expected_interactions` (0+): Estimates the number of honeypot interactions anticipated from the IOC in the next 24 hours, indicating potential activity level.
 
-The response includes a new field:
-  
-_Available from version >= 3.2.0_
-
-- `attacker_country`: The country associated with the attacking IP address.
-
 These predictions are based on historical interaction patterns and are updated once a day, shortly after midnight UTC. They are the foundation of the `likely_to_recur` and `most_expected_hits` prioritization mechanisms.
+
+Additional fields available in the response:
+
+- `attacker_country` _(from version >= 3.2.0)_: The country associated with the attacking IP address.
+- `tags` _(from version >= 3.3.0)_: A list of tags attached to the IOC, each containing `key`, `value`, and `source`. (Only included when `format=json`).
 
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/#docs.Submodules.GreedyBear.api.views.feeds.feeds_advanced) or the to get all the details about how to use the available APIs.
 
 ## Advanced Feeds API
 _Available from version >= 1.4.0_
 
-For authenticated users, GreedyBear offers an additional API endpoint that provides similar functionality to the Feeds API but with enhanced customization options.
+For authenticated users, GreedyBear offers an additional API endpoint that provides similar functionality to the Feeds API but with enhanced customization options like filtering by tags.
 ```
 https://<greedybear_site>/api/feeds/advanced/?<query_params>
 ```
@@ -75,12 +74,13 @@ The available query parameters are:
 - `verbose`: `true` to include IOC properties that contain a lot of data, e.g. the list of days it was seen. (default: `false`)
 - `paginate`: `true` to paginate results. This forces the json format. (default: `false`)
 - `format_`: see [Feeds API](#feeds) (default: `json`)
+- `tag_key`: Filter by a specific tag key (e.g., `abuse_confidence_score`). _(from version >= 3.3.0)_
+- `tag_value`: Filter by a specific tag value (e.g., `100`). Works best in combination with `tag_key`. _(from version >= 3.3.0)_
 
-The response includes a new field:
+Additional fields available in the response:
 
-_Available from version >= 3.2.0_
-
-- `attacker_country`: The country associated with the attacking IP address.
+- `attacker_country` _(from version >= 3.2.0)_: The country associated with the attacking IP address.
+- `tags` _(from version >= 3.3.0)_: A list of tags attached to the IOC, each containing `key`, `value`, and `source`. (Only included when `format=json`).
 
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
 
