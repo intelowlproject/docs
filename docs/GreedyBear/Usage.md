@@ -66,6 +66,10 @@ The available query parameters are:
 
 - `feed_type`: see [Feeds API](#feeds)
 - `attack_type`: see [Feeds API](#feeds)
+- `asn`: Filter IOCs by their Autonomous System Number. (_Available from version >= 3.3.0_)
+- `port`: Filter IOCs that have attacked a specific destination port. (_Available from version >= 3.3.0_)
+- `min_score`: Filter IOCs by a minimum recurrence probability score (0.0 to 1.0). (_Available from version >= 3.3.0_)
+- `start_date` / `end_date`: Filter IOCs seen within a specific date range (format: `YYYY-MM-DD`). (_Available from version >= 3.3.0_)
 - `max_age`: Maximum number of days since last occurrence. (default: 3)
 - `min_days_seen`: Minimum number of days on which an IOC must have been seen. (default: 1)
 - `include_reputation`: `;`-separated list of reputation values to include, e.g. `known attacker` or `known attacker;` to include IOCs without reputation. (default: include all)
@@ -74,7 +78,7 @@ The available query parameters are:
 - `ordering`: Field to order results by, with optional `-` prefix for descending. (default: `-last_seen`)
 - `verbose`: `true` to include IOC properties that contain a lot of data, e.g. the list of days it was seen. (default: `false`)
 - `paginate`: `true` to paginate results. This forces the json format. (default: `false`)
-- `format_`: see [Feeds API](#feeds) (default: `json`)
+- `format_`: see [Feeds API](#feeds) (default: `json`). From version >= 3.3.0, additionally supports `stix21` for STIX 2.1 Bundle exports.
 
 The response includes a new field:
 
@@ -85,6 +89,15 @@ _Available from version >= 3.2.0_
 Check the [API specification](https://intelowlproject.github.io/docs/GreedyBear/Api-docs/) or the to get all the details about how to use the available APIs.
 
 This "Advanced Feeds" API is protected through authentication. Please reach out [Matteo Lodi](https://twitter.com/matte_lodi) or another member of [The Honeynet Project](https://twitter.com/ProjectHoneynet) if you are interested in gain access to this API.
+
+### Shareable Feeds API
+_Available from version >= 3.3.0_
+
+For authenticated users, GreedyBear allows sharing customized feeds via a signed token, which can be consumed publicly without an account.
+
+- **`/api/feeds/share` (GET)**: Accepts the same query parameters as the Advanced Feeds API. Returns a JSON response containing a public `url` to consume the feed and a `revoke_url`.
+- **`/api/feeds/consume/<token>` (GET)**: A strictly rate-limited public endpoint that allows anyone to consume the pre-configured feed using the generated token.
+- **`/api/feeds/revoke/<token>` (GET)**: Instantly invalidates the share token. This endpoint can be clicked or opened directly in the browser to revoke. Only the original creator of the token (or staff) can perform this action.
 
 ### ASN Aggregated Feeds API
 _Available from version >= 3.0.0_
