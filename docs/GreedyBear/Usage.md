@@ -95,6 +95,7 @@ https://<greedybear_site>/api/feeds/asn/?<query_params>
 - Response (200): JSON array of ASN aggregation objects. Each object containing:
 
   - `asn` (int): ASN number.
+  - `as_name` (str)`: Autonomous System Name
   - `ioc_count` (int): Number of IOCs for this ASN.
   - `total_attack_count` (int): Sum of attack_count for all IOCs.
   - `total_interaction_count` (int): Sum of interaction_count for all IOCs.
