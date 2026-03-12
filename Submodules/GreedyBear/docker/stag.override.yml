@@ -1,0 +1,9 @@
+services:
+  uwsgi:
+    image: intelowlproject/greedybear:stag
+
+  nginx:
+    image: intelowlproject/greedybear_nginx:stag
+
+  qcluster:
+    image: intelowlproject/greedybear:stag

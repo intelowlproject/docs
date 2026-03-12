@@ -1,0 +1,76 @@
+# Required Secrets
+ENVIRONMENT=production
+DJANGO_SECRET=
+DB_HOST=postgres
+DB_PORT=5432
+DB_USER=user
+DB_PASSWORD=password
+
+# used for automated correspondence from the site manager
+DEFAULT_FROM_EMAIL=
+# used for correspondence with users
+DEFAULT_EMAIL=
+
+# SMTP backend
+EMAIL_HOST= 
+EMAIL_HOST_USER= 
+EMAIL_HOST_PASSWORD= 
+EMAIL_PORT=
+EMAIL_USE_TLS=False
+EMAIL_USE_SSL=False
+
+# AWS
+## S3 storage
+AWS_IAM_ACCESS=False
+### to use if no IAM credentials are provided
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+## region
+AWS_REGION=eu-central-1
+## to use for sending mail with SES
+AWS_SES=False
+
+ELASTIC_ENDPOINT=
+
+SLACK_TOKEN=
+DEFAULT_SLACK_CHANNEL=
+
+NTFY_URL=
+# Url of the ntfy topic to recieve error alerts
+# Example: https://ntfy.sh/your_topic
+
+STAGE="production"
+DEBUG=False
+MOCK_CONNECTIONS=False
+
+# True for public deployment, False for internal deployment
+PUBLIC_DEPLOYMENT=False
+
+# Interval for the honeypot data extraction in minutes (only choose divisors of 60)
+EXTRACTION_INTERVAL=10
+
+# Lookback time for the first extraction run in minutes (default: 1 day)
+INITIAL_EXTRACTION_TIMESPAN = 1440
+
+# Set True to cluster command sequences recorded by Cowrie once a day
+# This might be computationaly expensive on large Databases
+CLUSTER_COWRIE_COMMAND_SEQUENCES=False
+
+# Days to keep unseen IOCs before deletion
+IOC_RETENTION = 3650
+
+# Days to keep Cowrie honeypot sessions with login attempts before deletion
+# Sessions without login attempts are deleted after 30 days regardless of this setting
+COWRIE_SESSION_RETENTION = 365
+
+# Days to keep unseen command sequences before deletion
+COMMAND_SEQUENCE_RETENTION = 365
+
+# ThreatFox API key.
+# Once added, your payload request domains will be submitted to ThreatFox
+THREATFOX_API_KEY =
+
+# Optional feed license URL to include in API responses
+# If not set, no license information will be included in feeds
+# Example: https://github.com/honeynet/GreedyBear/blob/main/FEEDS_LICENSE.md
+FEEDS_LICENSE=
