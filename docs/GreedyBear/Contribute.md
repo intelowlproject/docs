@@ -164,7 +164,7 @@ Once done that, you won't have to think about linters anymore.
 ##### Run all tests
 
 ```commandline
-docker exec greedybear_uwsgi python3 manage.py test
+docker exec greedybear_app python3 manage.py test
 ```
 
 #### Frontend
