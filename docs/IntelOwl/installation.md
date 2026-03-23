@@ -55,6 +55,30 @@ sudo docker exec -ti intelowl_uwsgi python3 manage.py createsuperuser
 # Have fun!
 ```
 
+### Windows / WSL2 Fallback
+> ⚠️ **DISCLAIMER:** Windows is not officially supported by the core team. This is a community-provided fallback.
+
+If you are running Docker Desktop on Windows, the `initialize.sh` and `start` scripts may fail due to bash/sudo requirements. You can bypass the wrapper scripts and manually spin up the project using the raw compose command:
+
+```bash
+# clone the IntelOwl project repository
+git clone https://github.com/intelowlproject/IntelOwl
+cd IntelOwl/
+
+# Manually copy the environment templates
+cp docker/env_file_app_template docker/env_file_app
+cp docker/env_file_postgres_template docker/env_file_postgres
+
+# Run the raw docker compose command
+docker compose --project-directory docker -f docker/default.yml -f docker/postgres.override.yml -f docker/redis.override.yml -f docker/nginx.override.yml -p intelowl up -d
+
+# create a super user (Docker Desktop on Windows does not require sudo)
+docker exec -ti intelowl_uwsgi python3 manage.py createsuperuser
+
+# now you can login with the created user from http://localhost:80/login
+
+# Have fun!
+```
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 The first time you start IntelOwl, a lot of database migrations are being applied. This requires some time. If you get 500 status code errors in the GUI, just wait few minutes and then refresh the page.
