@@ -52,6 +52,8 @@ Please create a new branch based on the **develop** branch that contains the mos
 
 `git checkout -b myfeature develop`
 
+Install the python project manager [uv](https://docs.astral.sh/uv/).
+
 Then we strongly suggest to configure [pre-commit](https://github.com/pre-commit/pre-commit) to force linters on every commits you perform:
 
 ```bash
