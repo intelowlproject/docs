@@ -55,24 +55,20 @@ Please create a new branch based on the **develop** branch that contains the mos
 Then we strongly suggest to configure [pre-commit](https://github.com/pre-commit/pre-commit) to force linters on every commits you perform:
 
 ```bash
-# create virtualenv to host pre-commit installation
-python3 -m venv venv
-source venv/bin/activate
 # from the project base directory
-pip install pre-commit
-pre-commit install -c .github/.pre-commit-config.yaml
+uvx pre-commit install -c .github/.pre-commit-config.yaml
 ```
 
 Once configured, Ruff will automatically run on every commit. If you want to manually run Ruff before committing, you can use:
 
 ```bash
 # Format and fix auto-fixable issues
-pre-commit run ruff --all-files -c .github/.pre-commit-config.yaml
+uvx pre-commit run ruff --all-files -c .github/.pre-commit-config.yaml
 
-# Or run Ruff directly (requires: pip install ruff)
-ruff check .           # Check for linting issues
-ruff check . --fix     # Auto-fix issues
-ruff format .          # Format code
+# Or run Ruff directly
+uvx ruff check .           # Check for linting issues
+uvx ruff check . --fix     # Auto-fix issues
+uvx ruff format .          # Format code
 ```
 
 Remember that whenever you make changes, you need to rebuild the docker image to see the reflected changes.
@@ -155,8 +151,7 @@ Also remember to pull the most recent changes available in the **develop** branc
 You have to install `pre-commit` to have your code adjusted and fixed with the available linters:
 
 ```commandline
-pip install pre-commit
-pre-commit install -c .github/.pre-commit-config.yaml
+uvx pre-commit install -c .github/.pre-commit-config.yaml
 ```
 
 Once done that, you won't have to think about linters anymore.
