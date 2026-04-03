@@ -29,6 +29,9 @@
 ### `Statistics`
 :::docs.Submodules.GreedyBear.api.views.statistics.StatisticsViewSet
 
+### `Health`
+:::docs.Submodules.GreedyBear.api.views.health.health_view
+
 ## Serializers
 
 ### `EnrichmentSerializer`
