@@ -269,6 +269,32 @@ docker compose --project-directory docker -f docker/default.yml -f docker/postgr
 ```
 </div>
 
+### Chatbot (Ollama)
+
+IntelOwl ships an optional, locally-hosted LLM chatbot (see the [Chatbot](./chatbot.md) user guide).
+It is disabled by default and enabled with the `--ollama` flag, which adds the
+`docker/ollama.override.yml` compose file. That file starts two extra containers:
+
+- **`ollama`** — the local LLM runtime (image `ollama/ollama:0.30.7`), reachable in-cluster at
+  `http://ollama:11434`; no data ever leaves the deployment.
+- **`celery_worker_chatbot`** — a dedicated Celery worker for the chatbot queue, so chatbot tasks
+  stay isolated from the main analyzer/connector workers.
+
+```bash
+./start prod up --ollama
+```
+
+On first start the Ollama entrypoint **pulls the configured model** (`OLLAMA_MODEL`, default
+`qwen2.5:3b`); the first pull downloads a few GB and can take several minutes — the chatbot reports
+itself unavailable until it completes.
+
+**Hardware.** The default `qwen2.5:3b` is chosen to run on **CPU** with usable latency, so no GPU is
+required. Ensure the host has enough free RAM for the model (a few GB for the 3B default; more for
+larger models). **GPU passthrough is not yet supported** out of the box (tracked in
+[issue #3717](https://github.com/intelowlproject/IntelOwl/issues/3717)). For model selection,
+context window and packaging see the [Fine-tuning & Prompting](./chatbot_tuning.md) guide; for the
+chatbot environment variables see the [advanced configuration](./advanced_configuration.md#chatbot).
+
 ### Stop
 
 To stop the application you have to:
