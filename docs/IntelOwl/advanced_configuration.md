@@ -280,6 +280,30 @@ FLOWER_PWD
 
 or change the `.htpasswd` file that is created in the `docker` directory in the `intelowl_flower` container.
 
+## Chatbot
+
+_Available from version >= 6.7.0_
+
+The optional LLM chatbot (enabled with the `--ollama` flag, see
+[installation](./installation.md#chatbot-ollama)) is configured through the following variables, set
+like every other secret in `docker/env_file_app`. All have sensible defaults; override them only if
+needed.
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `OLLAMA_BASE_URL` | `http://ollama:11434` | URL of the Ollama runtime. |
+| `OLLAMA_MODEL` | `qwen2.5:3b` | Model the agent uses; must support Ollama tool calling (see [Fine-tuning & Prompting](./chatbot_tuning.md)). |
+| `CHATBOT_MESSAGE_RETENTION_DAYS` | `90` | Conversations idle for this many days are pruned by a daily task. |
+| `CHATBOT_RATE_LIMIT` | `5` | Max messages a user may send per window (REST and WebSocket share the bucket). |
+| `CHATBOT_RATE_LIMIT_WINDOW` | `60` | Rate-limit window, in seconds. |
+| `CHATBOT_PENDING_ACTION_TTL` | `600` | Lifetime, in seconds, of a previewed-analysis confirmation before it expires. |
+
+**CPU / GPU.** The chatbot runs on CPU by default and the `qwen2.5:3b` default is sized for that. GPU
+passthrough is not yet supported (tracked in
+[issue #3717](https://github.com/intelowlproject/IntelOwl/issues/3717)). For changing the model, the
+context window, or packaging a custom model, see the
+[Fine-tuning & Prompting](./chatbot_tuning.md) guide.
+
 ## Manual Usage
 
 The `./start` script essentially acts as a wrapper over Docker Compose, performing additional checks.

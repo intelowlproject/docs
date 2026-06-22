@@ -17,6 +17,8 @@ nav:
       - Advanced Configuration: "IntelOwl/advanced_configuration.md"
       - Usage: "IntelOwl/usage.md"
       - Advanced Usage: "IntelOwl/advanced_usage.md"
+      - Chatbot: "IntelOwl/chatbot.md"
+      - "Chatbot: Fine-tuning & Prompting": "IntelOwl/chatbot_tuning.md"
       - Contribute: "IntelOwl/contribute.md"
       - API docs: "IntelOwl/api_docs.md"
   - PyIntelOwl:

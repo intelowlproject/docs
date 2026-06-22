@@ -576,6 +576,101 @@ We are setting the field `evaluation` depending on some logic that we constructe
 If the IP address has been reported by some AbuseIPDB users but, at the same time, is whitelisted by AbuseIPDB, then we set its `evaluation` to `trusted`. On the contrary, if it's not whitelisted, we set it as `malicious`.
 
 
+## How to add a chatbot tool
+
+The optional [chatbot](./chatbot.md) is a LangChain tool-calling agent. Its capabilities are plain
+Python "tools": each wraps an IntelOwl query and is exposed to the model. Adding a capability means
+adding a tool. The agent lives in `api_app/chatbot_manager/agent/`; the tools live in
+`api_app/chatbot_manager/agent/tools/` — **one file per tool**.
+
+### 1. Write the tool
+
+Create `api_app/chatbot_manager/agent/tools/<your_tool>.py`. A tool is a factory that **closes over
+the requesting `user`** and returns a LangChain `@tool`-decorated function. Closing over the user is
+what enforces multi-tenancy: every queryset is scoped to that user, and the model can never widen it.
+
+```python
+from langchain_core.tools import tool
+
+from api_app.chatbot_manager.agent.tools._common import clamp_limit
+from api_app.chatbot_manager.serializers.my_tool import MyToolResultSerializer
+
+
+def make_my_tool(user):
+    @tool("my_tool")
+    def my_tool(query: str = "", limit: int = 10) -> str:
+        """One-line description the model reads to decide when to call this tool.
+
+        Args:
+            query: what to search for.
+            limit: maximum number of results (default 10, max 50).
+        """
+        from api_app.models import Job  # heavy/circular imports stay function-local
+
+        errors = []
+        limit = clamp_limit(limit, errors)
+        # Scope to the user: visible_for_user matches the REST viewsets / UI.
+        qs = Job.objects.visible_for_user(user).filter(analyzable__name__icontains=query)[:limit]
+        return MyToolResultSerializer({"errors": errors, "results": qs}).to_json()
+
+    return my_tool
+```
+
+Conventions to follow (the maintainers enforce them):
+
+- **Scope every query to `user`** with `visible_for_user(user)` (or the appropriate owner/org
+  filter). Treat all arguments as **untrusted** — they come from the LLM: validate them against the
+  enums in `api_app/choices.py` and clamp limits with `clamp_limit` (`agent/tools/_common.py`).
+- **Return a JSON string** with the same `{"errors": [...], "<payload>": ...}` envelope via a DRF
+  serializer's `.to_json()` — never hand-build a dict. LangChain feeds the returned string back to
+  the model as the tool observation.
+- Use named constants and top-level imports (keep only heavy/circular imports function-local, as the
+  existing tools do).
+
+### 2. Add the result serializer
+
+Add `api_app/chatbot_manager/serializers/<your_tool>.py` producing that envelope (build on the
+shared base in `serializers/base.py`, like the other tools). One serializer module per tool keeps
+parallel PRs from colliding on a shared file.
+
+### 3. Register the tool
+
+Add it to `build_tools()` in `api_app/chatbot_manager/agent/tools/__init__.py`:
+
+```python
+from .my_tool import make_my_tool
+
+
+def build_tools(user) -> list:
+    return [
+        # ... existing tools ...
+        make_my_tool(user),
+    ]
+```
+
+### 4. Tell the model when to use it
+
+Add a one-line entry under `[Tools — when to use each]` in
+`api_app/chatbot_manager/agent/system_prompt.txt`. The agent binds the tools through
+`create_tool_calling_agent`; that line is how the model learns when to reach for yours. See the
+[Fine-tuning & Prompting](./chatbot_tuning.md) guide for the prompt structure.
+
+### 5. Test it
+
+Add a per-tool test under `tests/api_app/chatbot_manager/tools/test_<your_tool>.py`. **Mock Ollama
+and any HTTP** — tests must never hit a real model or network. Cover the scoping (a second user must
+not see the first user's data) and the error/empty branches. For a tool that reads the database, also
+keep its **query count invariant to result size** with a query-count guard (an `assertNumQueries` /
+`CaptureQueriesContext` test that stays constant as the result set grows), so a future un-prefetched
+relation cannot introduce an N+1.
+
+Run the chatbot tests (rebuild the test image first if dependencies changed):
+
+```bash
+./start test build && ./start test up
+docker exec intelowl_uwsgi python manage.py test tests.api_app.chatbot_manager --keepdb
+```
+
 ## How to modify a plugin
 
 If the changes that you have to make should stay local, you can just change the configuration inside the `Django admin` page.
