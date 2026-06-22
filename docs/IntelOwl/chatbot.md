@@ -1,5 +1,7 @@
 # Chatbot
 
+_Available from version >= 6.7.0_
+
 The IntelOwl chatbot is a locally-hosted LLM assistant that answers natural-language questions over
 your threat-intelligence data. It runs entirely on your own deployment (Ollama) and **never sends
 data to external APIs** — your jobs, observables and reports never leave the instance.

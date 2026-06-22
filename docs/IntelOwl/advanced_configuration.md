@@ -282,6 +282,8 @@ or change the `.htpasswd` file that is created in the `docker` directory in the 
 
 ## Chatbot
 
+_Available from version >= 6.7.0_
+
 The optional LLM chatbot (enabled with the `--ollama` flag, see
 [installation](./installation.md#chatbot-ollama)) is configured through the following variables, set
 like every other secret in `docker/env_file_app`. All have sensible defaults; override them only if

@@ -1,5 +1,7 @@
 # Chatbot: Fine-tuning & Prompting
 
+_Available from version >= 6.7.0_
+
 This guide covers choosing and customizing the language model behind the chatbot, tuning the prompt,
 and packaging a custom model. It is aimed at operators who want to change the default model or
 improve answer quality. For the environment variables referenced here see the
