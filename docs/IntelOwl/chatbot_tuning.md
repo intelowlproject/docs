@@ -25,10 +25,20 @@ Two consequences matter for tuning:
 ## Choosing a model
 
 The default is **`qwen2.5:3b`**. It is chosen on purpose: it is the smallest model that reliably
-picks the right tool and answers from the tool output with **usable latency on a CPU-only deploy**
-(for comparison, a 7B model such as `mistral` was markedly slower on CPU — minutes per agent round,
-often hitting the turn timeout). On stronger
-hardware you can switch to any larger tool-capable Ollama model for better answer quality.
+picks the right tool and answers from the tool output with **usable latency on a CPU-only deploy**.
+Measured end-to-end on a 14-thread CPU (no GPU), warm:
+
+- a plain answer that needs no tool returns in **~5–6 s** (first token in ~0.3 s);
+- a tool-backed answer returns in **~30–50 s** (first token in ~5–13 s, then it streams in).
+
+The first request after the model has been idle (Ollama unloads it after ~5 min) pays a one-time
+**~70 s** cold-load to read the model back into memory; later turns are warm again.
+
+Bigger is not automatically better: in the same measurement a 7B model (`mistral`) **did not emit any
+tool calls on this stack** and replied with invented data instead, so `qwen2.5:3b` is the default for
+**tool-calling reliability**, not only speed. On stronger hardware you can move to any larger
+tool-capable Ollama model — but confirm it actually calls tools (see
+[Validating a model](#validating-a-model-before-rollout)).
 
 Requirements for a replacement model:
 
