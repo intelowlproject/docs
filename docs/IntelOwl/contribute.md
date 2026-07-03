@@ -652,7 +652,7 @@ def build_tools(user) -> list:
 
 Add a one-line entry under `[Tools — when to use each]` in
 `api_app/chatbot_manager/agent/system_prompt.txt`. The agent binds the tools through
-`create_tool_calling_agent`; that line is how the model learns when to reach for yours. See the
+`create_agent`; that line is how the model learns when to reach for yours. See the
 [Fine-tuning & Prompting](./chatbot_tuning.md) guide for the prompt structure.
 
 ### 5. Test it
