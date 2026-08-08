@@ -15,7 +15,7 @@ the chat button does not connect; see the
 Ask in plain language and the assistant answers by calling read-only IntelOwl tools on your behalf:
 
 - search your jobs and show a job's details;
-- summarize a job or an investigation;
+- summarize a job — including IntelOwl's verdict on the observable — or an investigation;
 - show an investigation's job tree;
 - show a job's aggregated data model;
 - list the analyzers available on the instance;
@@ -45,6 +45,7 @@ Example questions:
 
 - "Show me my most recent jobs."
 - "Summarize job #1234."
+- "Is job #1234 malicious?"
 - "Which analyzers can run on a domain?"
 - "Which playbook should I use for an IP address?"
 
@@ -53,12 +54,25 @@ Example questions:
 ## Quick actions
 
 Below the input you'll find one-click quick actions. They are **context-aware**: on a job page they
-offer job actions ("Summarize this job", "Which plugins ran?", "Show job details", "Evaluate
-results"), on an investigation page they offer investigation actions, and elsewhere they offer
-general ones ("Show my recent jobs", "List my investigations"). Clicking a chip sends the
-corresponding question for you.
+offer job actions ("Summarize & evaluate", "Which plugins ran?", "Show job details"), on an
+investigation page they offer investigation actions, and elsewhere they offer general ones ("Show my
+recent jobs", "List my investigations"). Clicking a chip sends the corresponding question for you.
 
 ![quick actions](./static/chatbot/quick_actions.png)
+
+## The verdict on a job
+
+When you summarize a job, the assistant also reports **IntelOwl's own verdict** on the observable —
+the same evaluation the job page badge shows — together with the evidence behind it: which analyzers
+support it, which disagree, and which produced no opinion at all.
+
+The verdict is never the model's own judgement. It is the platform's reconciliation of the analyzer
+data models, so the chatbot says the same word the badge does. When no analyzer produced an
+evaluation — or the observable is a `generic` one, which IntelOwl does not evaluate — the assistant
+reports that instead of guessing.
+
+Because the verdict travels with the summary, "summarize job #N", "evaluate the results of job #N"
+and "is job #N malicious?" all reach it.
 
 ## Working with the page you're on
 
