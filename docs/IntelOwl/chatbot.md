@@ -62,6 +62,8 @@ recent jobs", "List my investigations"). Clicking a chip sends the corresponding
 
 ## The verdict on a job
 
+_Available from version > 6.7.0_
+
 When you summarize a job, the assistant also reports **IntelOwl's own verdict** on the observable —
 the same evaluation the job page badge shows — together with the evidence behind it: which analyzers
 support it, which disagree, and which produced no opinion at all.
