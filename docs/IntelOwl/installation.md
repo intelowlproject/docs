@@ -94,6 +94,7 @@ IntelOwl is composed of various different technologies, namely:
 - Daphne: Asgi Server for WebSockets
 - Elastic Search (_optional_): Auto-sync indexing of analysis' results.
 - Flower (_optional_): Celery Management Web Interface
+- MISP (_optional_): Self-hosted threat intelligence platform for IOC management.
 
 All these components are managed via `docker compose`.
 
@@ -294,6 +295,62 @@ larger models). **GPU passthrough is not yet supported** out of the box (tracked
 [issue #3717](https://github.com/intelowlproject/IntelOwl/issues/3717)). For model selection,
 context window and packaging see the [Fine-tuning & Prompting](./chatbot_tuning.md) guide; for the
 chatbot environment variables see the [advanced configuration](./advanced_configuration.md#chatbot).
+
+### MISP
+
+IntelOwl ships an optional, self-hosted [MISP](https://www.misp-project.org/) instance that can be
+deployed alongside IntelOwl with a single flag. This allows you to use MISP as a local threat
+intelligence platform - pushing analysis results from IntelOwl into MISP and searching MISP for
+known IOCs - without needing a separate MISP deployment.
+
+It is disabled by default and enabled with the `--misp` flag, which adds the
+`docker/misp.override.yml` compose file. That file starts three extra containers:
+
+- **`misp-core`** - the MISP web application (image `ghcr.io/misp/misp-docker/misp-core`),
+  reachable in-cluster at `https://misp-core`.
+- **`misp-db`** - a MariaDB 10.11 instance for MISP's database, tuned for lightweight usage.
+- **`misp-redis`** - a dedicated Valkey (Redis-compatible) instance for MISP's internal caching,
+  separate from IntelOwl's own Redis.
+
+```bash
+./start prod up --misp
+```
+
+On first start, MISP initializes its database schema, generates a GPG key, and creates the default
+admin user. This process takes approximately **2–3 minutes**. The container reports unhealthy until
+initialization completes.
+
+**Default credentials:**
+
+| Setting | Default Value |
+|---|---|
+| Admin Email | `admin@admin.test` |
+| Admin Password | `admin` |
+| Admin API Key | `mispdefaultintelowladminapikeychgme01234` |
+| Admin Org | `IntelOwl` |
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+These are development defaults. Change them in <code>docker/env_file_misp</code> before any
+production deployment.
+</div>
+
+**Connecting IntelOwl to the local MISP instance:**
+
+Once the MISP container is healthy, configure the IntelOwl MISP connector and/or analyzer
+(via the Django Admin or the GUI plugin configuration) with:
+
+| Parameter | Value |
+|---|---|
+| `url_key_name` | `https://misp-core` |
+| `api_key_name` | `mispdefaultintelowladminapikeychgme01234` |
+| `ssl_check` | `False` |
+
+The `ssl_check` must be `False` because MISP generates a self-signed certificate internally.
+Since communication happens entirely over the Docker network, this is safe.
+
+For full MISP configuration options (authentication, PHP tuning, sync servers, etc.), see the
+[MISP section in Advanced Configuration](./advanced_configuration.md#misp).
 
 ### Stop
 
