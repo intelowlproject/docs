@@ -306,6 +306,8 @@ context window, or packaging a custom model, see the
 
 ## MISP
 
+_Available from version >= 6.8.0_
+
 IntelOwl can optionally deploy a self-hosted [MISP](https://www.misp-project.org/) instance
 alongside the main application stack. This is enabled with the `--misp` flag
 (see [installation](./installation.md#misp)).

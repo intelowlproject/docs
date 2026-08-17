@@ -298,6 +298,8 @@ chatbot environment variables see the [advanced configuration](./advanced_config
 
 ### MISP
 
+_Available from version >= 6.8.0_
+
 IntelOwl ships an optional, self-hosted [MISP](https://www.misp-project.org/) instance that can be
 deployed alongside IntelOwl with a single flag. This allows you to use MISP as a local threat
 intelligence platform - pushing analysis results from IntelOwl into MISP and searching MISP for
