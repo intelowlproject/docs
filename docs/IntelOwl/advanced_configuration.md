@@ -304,6 +304,119 @@ passthrough is not yet supported (tracked in
 context window, or packaging a custom model, see the
 [Fine-tuning & Prompting](./chatbot_tuning.md) guide.
 
+## MISP
+
+_Available from version >= 6.8.0_
+
+IntelOwl can optionally deploy a self-hosted [MISP](https://www.misp-project.org/) instance
+alongside the main application stack. This is enabled with the `--misp` flag
+(see [installation](./installation.md#misp)).
+
+### Configuration
+
+MISP is configured via the environment file `docker/env_file_misp`. A comprehensive template with
+all available options is provided at `docker/env_file_misp_template`.
+
+To customize your MISP deployment:
+
+```bash
+cd docker
+cp env_file_misp_template env_file_misp
+# Edit env_file_misp with your preferred values
+```
+
+The most important variables are:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `ADMIN_EMAIL` | `admin@admin.test` | Login email for the MISP admin user. |
+| `ADMIN_PASSWORD` | `admin` | Login password for the MISP admin user. |
+| `ADMIN_KEY` | `mispdefaultintelowladminapikeychgme01234` | API key used by IntelOwl's MISP connector/analyzer. Must be exactly 40 characters. |
+| `ADMIN_ORG` | `IntelOwl` | Name of the default MISP organization. |
+| `BASE_URL` | `https://misp-core` | MISP's canonical URL (see note on GUI access below). |
+| `MYSQL_PASSWORD` | `misp_password` | MariaDB password (must match `misp-db` service). |
+| `REDIS_PASSWORD` | `misp_redis_password` | Redis password (must match `misp-redis` service). |
+
+The template file (`env_file_misp_template`) includes many more options inherited from the
+[official MISP Docker project](https://github.com/MISP/misp-docker), including:
+
+- PHP memory limits and FPM pool configuration
+- OIDC, LDAP, and Azure AD authentication
+- Proxy and S3 storage settings
+- Sync server configuration
+- Nginx and FastCGI tuning
+
+### Accessing the MISP Web GUI
+
+By default, the MISP container does **not** expose any ports to the host — it is only reachable
+from within the Docker network (i.e., by IntelOwl's backend). This is intentional for security.
+
+If you want to access the MISP web interface from your browser, you need to:
+
+1. **Expose the port.** Add port mapping to the `misp-core` service. You can do this via
+   `docker/custom.override.yml` (use with `--custom` flag):
+
+    ```yaml
+    services:
+      misp-core:
+        ports:
+          - "8443:443"
+    ```
+
+2. **Update the `BASE_URL`.** MISP enforces strict URL matching — it will redirect all requests
+   to its configured `BASE_URL`. Change it in `docker/env_file_misp` to match how you access
+   it from your browser:
+
+    ```env
+    BASE_URL=https://localhost:8443
+    ```
+
+    Or, if accessing from another machine on your network:
+
+    ```env
+    BASE_URL=https://192.168.1.50:8443
+    ```
+
+3. **Restart the MISP containers** to apply the changes.
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+MISP enforces a single, fixed <code>BASE_URL</code> for security reasons (Host Header Injection
+protection). You cannot access MISP from multiple different URLs simultaneously. Choose one
+canonical URL that matches your deployment.
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+Changing the <code>BASE_URL</code> does <strong>not</strong> affect IntelOwl's API connectivity.
+IntelOwl's MISP connector always connects via the internal Docker hostname
+(<code>https://misp-core</code>), regardless of the <code>BASE_URL</code> setting.
+</div>
+
+### MISP Modules
+
+The optional MISP container does **not** include the `misp-modules` service (MISP's own enrichment
+modules). This is intentional -- IntelOwl already provides its own enrichment pipeline via analyzers,
+making MISP modules redundant and saving significant resources (~500MB+ image).
+
+If you need MISP modules for other purposes, you can add the service via `docker/custom.override.yml`:
+
+```yaml
+services:
+  misp-modules:
+    image: ghcr.io/misp/misp-docker/misp-modules:latest
+    container_name: intelowl_misp_modules
+    hostname: misp-modules
+    restart: unless-stopped
+    healthcheck:
+      test: "/bin/bash -c '</dev/tcp/localhost/6666'"
+      interval: 5s
+      timeout: 2s
+      retries: 3
+      start_period: 10s
+```
+
+
 ## Manual Usage
 
 The `./start` script essentially acts as a wrapper over Docker Compose, performing additional checks.
