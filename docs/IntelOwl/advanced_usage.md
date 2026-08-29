@@ -253,6 +253,11 @@ To better understand how this integration works, here is a diagram showing how t
 
 Some analyzers could require a special configuration:
 
+- `ScanMalware`:
+  - `max_results` (default `20`): bounds how much a single run returns. It caps both the scan list and the Certificate Transparency domain list for an IP, which the API returns unlimited; when it applies, the response says so and keeps the real total.
+  - `fetch_scan_details` (default `true`): also fetch the risk verdict, indicators and AI classification for the most recent scan. One extra request per run; set it to `false` for a lighter lookup.
+  - `api_key_name` (optional): the API is anonymous, a key only raises the rate limit.
+
 - `GoogleWebRisk`: this analyzer needs a service account key with the Google Cloud credentials to work properly.
   You should follow the [official guide](https://cloud.google.com/web-risk/docs/quickstart) for creating the key.
   Then you can populate the secret `service_account_json` for that analyzer with the JSON of the service account file.
