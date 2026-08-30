@@ -255,7 +255,7 @@ Some analyzers could require a special configuration:
 
 - `ScanMalware`:
   - `max_results` (default `20`): bounds how much a single run returns. It caps both the scan list and the Certificate Transparency domain list for an IP, which the API returns unlimited; when it applies, the response says so and keeps the real total.
-  - `fetch_scan_details` (default `true`): also fetch the risk verdict, indicators and AI classification for the most recent scan. One extra request per run; set it to `false` for a lighter lookup.
+  - `fetch_scan_details` (default `true`): also fetch the risk verdict, indicators and AI classification for the most recent scan. Three extra requests per run (`/result`, `/ioc`, `/ai`); set it to `false` for a lighter lookup.
   - `api_key_name` (optional): the API is anonymous, a key only raises the rate limit.
 
 - `GoogleWebRisk`: this analyzer needs a service account key with the Google Cloud credentials to work properly.
