@@ -179,7 +179,6 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `DNS4EU_Malicious_Detector`: Check if a domain or an url is marked as malicious in [DNS4EU](https://www.joindns4.eu/) database.
 - `DocGuard_Get`: check if an hash was analyzed on DocGuard. [DocGuard](https://www.docguard.io)
 - `DShield`: Service Provided by [DShield](https://www.dshield.org/) to get useful information about IP addresses
-- `Feodo_Tracker`: [Feodo Tracker](https://feodotracker.abuse.ch/) offers various blocklists, helping network owners to protect their users from Dridex and Emotet/Heodo.
 - `FileScan_Search`: Finds reports and uploaded files by various tokens, like hash, filename, verdict, IOCs etc via [FileScan.io API](https://www.filescan.io/api/docs).
 - `FireHol_IPList`: check if an IP is in [FireHol's IPList](https://iplists.firehol.org/)
 - `GoogleSafebrowsing`: Scan an observable against GoogleSafeBrowsing DB
