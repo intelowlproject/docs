@@ -225,6 +225,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Quad9_DNS`: Retrieve current domain resolution with Quad9 DoH (DNS over HTTPS)
 - `Quad9_Malicious_Detector`: Leverages Quad9 DoH to check if a domain is related to malware
 - `Robtex`: scan a domain/IP against the Robtex Passive DNS DB
+- `ScanMalware`: Look up a domain, URL or IP in the [ScanMalware](https://scanmalware.com) archive of sandboxed URL scans (no API key required)
 - `Securitytrails`: scan an IP/Domain against [Securitytrails](https://securitytrails.com/) API
 - `Shodan_Honeyscore`: scan an IP against [Shodan](https://www.shodan.io/) Honeyscore API
 - `Shodan_Search`: scan an IP against [Shodan](https://www.shodan.io/) Search API
