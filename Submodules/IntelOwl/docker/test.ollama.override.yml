@@ -1,0 +1,7 @@
+services:
+  celery_worker_chatbot:
+    image: intelowlproject/intelowl:test
+    volumes:
+      - ../:/opt/deploy/intel_owl
+    environment:
+      - DEBUG=True

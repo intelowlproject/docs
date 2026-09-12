@@ -1,0 +1,5 @@
+services:
+  flower:
+    image: intelowlproject/intelowl:test
+    volumes:
+      - ../:/opt/deploy/intel_owl
