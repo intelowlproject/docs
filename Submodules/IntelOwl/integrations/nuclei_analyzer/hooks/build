@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "display path"
+pwd
+echo "display dockerfile path"
+echo "$DOCKERFILE_PATH"
+echo "current branch"
+echo "$SOURCE_BRANCH"
+
+# ARM is not supported here
+echo "The branch is not master, proceeding with classic build"
+docker buildx build -f "$DOCKERFILE_PATH" -t "$IMAGE_NAME" --push .

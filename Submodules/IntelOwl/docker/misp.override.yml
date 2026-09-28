@@ -1,0 +1,90 @@
+services:
+  misp-core:
+    image: ghcr.io/misp/misp-docker/misp-core:latest
+    container_name: intelowl_misp_core
+    hostname: misp-core
+    restart: unless-stopped
+    cap_add:
+      - AUDIT_WRITE
+    depends_on:
+      misp-db:
+        condition: service_healthy
+      misp-redis:
+        condition: service_healthy
+    env_file:
+      - env_file_misp
+    volumes:
+      - misp_configs:/var/www/MISP/app/Config
+      - misp_logs:/var/www/MISP/app/tmp/logs
+      - misp_files:/var/www/MISP/app/files
+      - misp_ssl:/etc/nginx/certs
+      - misp_gnupg:/var/www/MISP/.gnupg
+    healthcheck:
+      test: curl -ks https://localhost/users/heartbeat > /dev/null || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    # Internal only -- IntelOwl talks to MISP via Docker network.
+    # To access the MISP web UI from the host, add port mappings
+    # via docker/custom.override.yml, e.g.:
+    #   services:
+    #     misp-core:
+    #       ports:
+    #         - "8443:443"
+    expose:
+      - "443"
+      - "80"
+
+  misp-db:
+    image: mariadb:10.11
+    container_name: intelowl_misp_db
+    hostname: misp-db
+    restart: unless-stopped
+    environment:
+      - "MYSQL_USER=${MISP_MYSQL_USER:-misp}"
+      - "MYSQL_PASSWORD=${MISP_MYSQL_PASSWORD:-misp_password}"
+      - "MYSQL_ROOT_PASSWORD=${MISP_MYSQL_ROOT_PASSWORD:-misp_root_password}"
+      - "MYSQL_DATABASE=${MISP_MYSQL_DATABASE:-misp}"
+    command: >-
+      --innodb-buffer-pool-size=${MISP_INNODB_BUFFER_POOL_SIZE:-256M}
+      --innodb-change-buffering=none
+      --innodb-io-capacity=100
+      --innodb-io-capacity-max=200
+      --innodb-log-file-size=64M
+      --innodb-read-io-threads=4
+      --innodb-write-io-threads=2
+    volumes:
+      - misp_mysql_data:/var/lib/mysql
+    cap_add:
+      - SYS_NICE
+    healthcheck:
+      test: mysqladmin --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD status
+      interval: 5s
+      timeout: 2s
+      retries: 5
+      start_period: 30s
+
+  misp-redis:
+    image: valkey/valkey:7.2
+    container_name: intelowl_misp_redis
+    hostname: misp-redis
+    restart: unless-stopped
+    command: valkey-server --requirepass "${MISP_REDIS_PASSWORD:-misp_redis_password}"
+    healthcheck:
+      test: valkey-cli -a "${MISP_REDIS_PASSWORD:-misp_redis_password}" ping | grep -q PONG || exit 1
+      interval: 5s
+      timeout: 2s
+      retries: 3
+      start_period: 5s
+    volumes:
+      - misp_cache_data:/data
+
+volumes:
+  misp_configs:
+  misp_logs:
+  misp_files:
+  misp_ssl:
+  misp_gnupg:
+  misp_mysql_data:
+  misp_cache_data:

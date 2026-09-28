@@ -1,0 +1,55 @@
+services:
+  ollama:
+    # 0.8.0+ is required to stream responses while tools are bound (older servers return the
+    # whole message in one chunk, breaking token-by-token chat streaming); 0.30.7 is the
+    # latest stable at the time of writing.
+    image: ollama/ollama:0.30.7
+    container_name: intelowl_ollama
+    hostname: ollama
+    restart: unless-stopped
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./entrypoints/ollama.sh:/usr/local/bin/intelowl-ollama-entrypoint.sh:ro
+    expose:
+      - "11434"
+    env_file:
+      - env_file_app
+    entrypoint:
+      - /bin/sh
+      - /usr/local/bin/intelowl-ollama-entrypoint.sh
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s
+
+  # Dedicated worker that drains the chatbot queue (process_chat_message). It lives with the
+  # ollama stack so the same --ollama flag that starts the LLM also starts the worker that uses
+  # it; without this service the chatbot queue would have no consumer and chat turns would hang.
+  celery_worker_chatbot:
+    image: intelowlproject/intelowl:${REACT_APP_INTELOWL_VERSION}
+    container_name: intelowl_celery_worker_chatbot
+    hostname: celery_worker_chatbot
+    restart: unless-stopped
+    stop_grace_period: 3m
+    volumes:
+      - ../configuration:/opt/deploy/intel_owl/configuration
+      - generic_logs:/var/log/intel_owl
+      - shared_files:/opt/deploy/files_required
+    entrypoint:
+      - ./docker/entrypoints/celery_chatbot.sh
+    env_file:
+      - env_file_app
+    depends_on:
+      redis:
+        condition: service_started
+      uwsgi:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    healthcheck:
+      disable: true
+
+volumes:
+  ollama_data:

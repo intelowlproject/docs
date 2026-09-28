@@ -1,0 +1,9 @@
+services:
+  # In CI the chatbot worker must run the freshly built :ci image (like every other service in
+  # ci.override.yml), not the pulled release image pinned in ollama.override.yml. Without this the
+  # worker would run stale released code and, before a release ships the chatbot, would crash on
+  # the missing celery_chatbot.sh entrypoint. No source mount: CI bakes the source into the image.
+  celery_worker_chatbot:
+    image: intelowlproject/intelowl:ci
+    env_file:
+      - env_file_app_ci
