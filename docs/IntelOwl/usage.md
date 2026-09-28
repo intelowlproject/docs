@@ -205,6 +205,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Ip2location`: [API Docs](https://www.ip2location.io/ip2location-documentation) IP2Location.io allows users to check IP address location in real time. (Supports both with or without key)
 - `Intezer_Get`: check if an analysis related to a hash is available in [Intezer](https://analyze.intezer.com/?utm_source=IntelOwl). Register for a free community account [here](https://analyze.intezer.com/sign-in).
 - `Koodous`: [koodous API](https://docs.koodous.com/api/) get information about android malware.
+- `LamisNetwork` (_Available from version > 6.8.0_): Enrich an IP address with a risk score and available ASN, geolocation, hosting, proxy, VPN, and Tor indicators from [Lamis Network](https://lamisnetwork.com/community.html). Request a Community API key and set it as the secret `api_key_name` in the analyzer's Plugin config before running an analysis. The IP address is sent to the external service; see the [Lamis Network Privacy Policy](https://lamisnetwork.com/privacy).
 - `MalwareBazaar_Get_Observable`: Check if a particular malware hash is known to [MalwareBazaar](https://bazaar.abuse.ch/)
 - `MalwareBazaar_Google_Observable`: Check if a particular IP, domain or url is known to MalwareBazaar using google search
 - `MaxMindGeoIP`: extract GeoIP info for an observable
@@ -305,11 +306,11 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 
 Sometimes, it's enough to provide a URL and a way to authenticate, like an API key, to connect to the service you want to integrate. If the service provides results in JSON format, you will get it in the report. There's no need to write python code for these cases, you need to leverage the "Create analyzer" button that you can find on the top right of the Analyzers table Page. 
 
-![img.png](./static/analyzer_creation_btn.png)
+![Create analyzer button in the Analyzers table](./static/analyzer_creation_btn.png)
 
 The form will open with the fields to fill in to create the analyzer.
 
-![img.png](./static/analyzer_creation.png)
+![Create a new analyzer form](./static/analyzer_creation.png)
 
 ### DataModels
 
