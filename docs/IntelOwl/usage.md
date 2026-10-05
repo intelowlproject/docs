@@ -218,6 +218,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `NERD_analyzer`: search an IP against NERD reputation database [NERD](https://nerd.cesnet.cz/)
 - `ONYPHE`: search an observable in [ONYPHE](https://www.onyphe.io/)
 - `OpenCTI`: scan an observable on an [OpenCTI](https://github.com/OpenCTI-Platform/opencti) instance
+- `OTILabs_DomainIntelligence` (_Available from version > 6.8.0_): Look up a domain, or the hostname of a URL, with the [OTI Labs Domain Intelligence API](https://oti-labs.com/domain-intelligence-api): WHOIS/RDAP registration, DNS records, the TLS certificate, subdomains (live ones with their IP addresses) and SPF/DMARC/DKIM in one request. Subscribe on [RapidAPI](https://rapidapi.com/osiris-technical-institute-osiris-technical-institute-default/api/domain-intelligence-api) (the free plan includes 1,000 requests a month) and set the RapidAPI key as the secret `api_key_name` in the analyzer's Plugin config. The domain is sent to the external service; see the [OTI Labs privacy policy](https://oti-labs.com/privacy).
 - `OTXQuery`: scan an observable on [Alienvault OTX](https://otx.alienvault.com/)
 - `Phishstats`: Search [PhishStats API](https://phishstats.info/) to determine if an IP/URL/domain is malicious.
 - `Phishtank`: Search an url against [Phishtank](https://phishtank.org/api_info.php) API
