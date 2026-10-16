@@ -298,6 +298,19 @@ Some analyzers could require a special configuration:
     - `frida_code`: Custom Frida code to be executed by mobsf
     - `activity_duration`: Wait time period for mobsf to collect sufficient info from dynamic activities such as results from`frida_code` before generating report. Default value is 60 seconds. Configure as per your requirements.
     
+### IsMalicious
+
+1. Create an [IsMalicious](https://ismalicious.com/) account and open the [account page](https://ismalicious.com/app/account) to obtain your API credentials.
+2. In the analyzer's Plugin config, set the `api_key_name` secret to the encoded credential shown in the dashboard. This is the Base64 encoding of `apiKey:apiSecret`. Paste the encoded value without a `Basic` prefix; an API key alone is insufficient.
+3. Keep the `url` parameter set to `https://api.ismalicious.com`, the supported service endpoint.
+4. Run the analyzer on an IP address, domain or URL. The observable, including the full URL when applicable, is sent to `https://api.ismalicious.com/check` with standard enrichment.
+
+Only the official HTTPS API is supported. TLS certificates are verified and redirects are rejected.
+
+The report retains the API's JSON response, with reputation and scoring fields also copied into the observable's `DataModel.additional_info`. `riskScore` and `confidence` are separate fields. The analyzer preserves both, leaves IntelOwl's evaluation unset and does not map either field to IntelOwl's reliability. These results do not contribute to the aggregate verdict. Available results depend on the indicator and the account's plan.
+
+If the API returns HTTP 429, the analyzer reports the service's error or message and includes its action URL when provided. Check your account's usage or follow that URL before retrying.
+
 ## Notifications
 
 Since v4, IntelOwl integrated the notification system from the `certego_saas` package, allowing the admins to create notification that every user will be able to see.
