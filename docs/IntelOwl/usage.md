@@ -230,7 +230,6 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Securitytrails`: scan an IP/Domain against [Securitytrails](https://securitytrails.com/) API
 - `Shodan_Honeyscore`: scan an IP against [Shodan](https://www.shodan.io/) Honeyscore API
 - `Shodan_Search`: scan an IP against [Shodan](https://www.shodan.io/) Search API
-- `Spyse`: Scan domains, IPs, emails and CVEs using Spyse's API. Register [here](https://spyse.com/user/registration).
 - `SSAPINet`: get a screenshot of a web page using [screenshotapi.net](https://screenshotapi.net/) (external source); additional config options can be added to `extra_api_params` [in the config](https://github.com/intelowlproject/IntelOwl/blob/master/configuration/analyzer_config.json).
 - `Stalkphish`: Search [Stalkphish API](https://www.stalkphish.io/) to retrieve information about a potential phishing site (IP/URL/domain/Generic).
 - `Stratosphere_Blacklist`: Cross-reference an IP from blacklists maintained by [Stratosphere Labs](https://www.stratosphereips.org/attacker-ip-prioritization-blacklist)
@@ -282,7 +281,6 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 
 - `Anomali_Threatstream_Confidence`: Give max, average and minimum confidence of maliciousness for an observable. On [Anomali Threatstream](https://www.anomali.com/products/threatstream) Confidence API.
 - `Anomali_Threatstream_Intelligence`: Search for threat intelligence information about an observable. On [Anomali Threatstream](https://www.anomali.com/products/threatstream) Intelligence API.
-- `CRXcavator`: scans a chrome extension against crxcavator.io
 - `Dehashed_Search`: Query any observable/keyword against https://dehashed.com's search API.
 - `EmailRep`: search an email address on [emailrep.io](https://emailrep.io)
 - `HaveIBeenPwned`: [HaveIBeenPwned](https://haveibeenpwned.com/API/v3) checks if an email address has been involved in a data breach
