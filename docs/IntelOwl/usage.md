@@ -214,6 +214,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Mmdb_server`: [Mmdb_server](https://github.com/adulau/mmdb-server) mmdb-server is an open source fast API server to lookup IP addresses for their geographic location, AS number.
 - `Mnemonic_PassiveDNS` : Look up a domain or IP using the [Mnemonic PassiveDNS public API](https://docs.mnemonic.no/display/public/API/Passive+DNS+Overview).
 - `MWDB_Get`: [mwdblib](https://mwdb.readthedocs.io/en/latest/) Retrieve malware file analysis by hash from repository maintained by CERT Polska MWDB.
+- `NetAPI` (_Available from version > 6.8.0_): Check a domain, IP address or URL host against the [NetAPI](https://netapi.com/) compromised feed: whether it is listed now or was listed before, with the first and last seen dates and the reason. IPs come from NetAPI's own honeypot network, domains from merged public blocklists. Free, no API key.
 - `Netlas`: search an IP against [Netlas](https://netlas.io/api)
 - `NERD_analyzer`: search an IP against NERD reputation database [NERD](https://nerd.cesnet.cz/)
 - `ONYPHE`: search an observable in [ONYPHE](https://www.onyphe.io/)
