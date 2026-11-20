@@ -163,7 +163,6 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Anomali_Threatstream_PassiveDNS`: Return information from passive dns of Anomali. On [Anomali Threatstream](https://www.anomali.com/products/threatstream) PassiveDNS Api.
 - `Auth0`: scan an IP against the Auth0 API
 - `BinaryEdge`: Details about an Host. List of recent events for the specified host, including details of exposed ports and services using [IP query](https://docs.binaryedge.io/api-v2/#v2queryiptarget) and return list of subdomains known from the target domains using [domain query](https://docs.binaryedge.io/api-v2/#v2querydomainssubdomaintarget)
-- `BitcoinAbuse` : Check a BTC address against bitcoinabuse.com, a public database of BTC addresses used by hackers and criminals.
 - `Censys_Search`: scan an IP address against [Censys](https://censys.io/) View API
 - `CheckPhish`: [CheckPhish](https://checkphish.ai/checkphish-api/) can detect phishing and fraudulent sites.
 - `CIRCLPassiveDNS`: scan an observable against the CIRCL Passive DNS DB
