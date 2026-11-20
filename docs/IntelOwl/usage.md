@@ -249,6 +249,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `UrlScan_Submit_Result`: Submit & retrieve result of an URL against [URLScan](https://urlscan.io) API
 - `Virushee_CheckHash`: Search for a previous analysis of a file by its hash (SHA256/SHA1/MD5) on [Virushee API](https://api.virushee.com/).
 - `VirusTotal_v3_Get_Observable`: search an observable in the VirusTotal DB
+- `VPNDetection` (_Available from version > 6.8.0_): Check whether an IP address is a commercial VPN, a Tor node or a privacy relay such as iCloud Private Relay, with its country and ASN, on [VPNDetection](https://vpndetection.io/). Free, no API key ([terms](https://vpndetection.io/terms#no-key), [privacy](https://vpndetection.io/privacy)); a key on a paid plan adds residential, datacenter, mobile and public proxy flags and the VPN's provider.
 - `Whoisxmlapi`: Fetch WHOIS record data, of a domain name, an IP address, or an email address.
 - `WhoIs_RipeDB_Search` : Fetch whois record data of an IP address from Ripe DB using their [search API](https://github.com/RIPE-NCC/whois/wiki/WHOIS-REST-API-search) (no API key required)
 - `XForceExchange`: scan an observable on [IBM X-Force Exchange](https://exchange.xforce.ibmcloud.com/)
