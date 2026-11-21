@@ -184,7 +184,7 @@ You can click on "**Runtime Configuration**" ![img.png](./static/runtime_config.
 Example:
 
 ```javascript
-"VirusTotal_v3_File": {
+"VirusTotal_v3_Get_File": {
     "force_active_scan_if_old": true
 }
 ```

@@ -140,7 +140,7 @@ The following is the list of the available analyzers you can run out-of-the-box.
 - `Triage_Scan`: leverage [Triage](https://tria.ge) sandbox environment to scan various files
 - `UnpacMe`: [UnpacMe](https://www.unpac.me/) is an automated malware unpacking service
 - `Virushee_Scan`: Check file hash on [Virushee API](https://api.virushee.com/). With TLP `CLEAR`, in case the hash is not found, you would send the file to the service.
-- `VirusTotal_v3_File`: check the file hash on VirusTotal. With TLP `CLEAR`, in case the hash is not found, you would send the file to the service.
+- `VirusTotal_v3_Get_File`: check the file hash on VirusTotal. With TLP `CLEAR`, in case the hash is not found, you would send the file to the service.
 - `YARAify_File_Scan`: scan a file against public and non-public YARA and ClamAV signatures in [YARAify](https://yaraify.abuse.ch/) public service
 - `YARAify_File_Search`: scan an hash against [YARAify](https://yaraify.abuse.ch/) database
 
@@ -296,7 +296,7 @@ Some analyzers require details other than just IP, URL, Domain, etc. We classifi
 - `WiGLE`: Maps and database of 802.11 wireless networks, with statistics, submitted by wardrivers, netstumblers, and net huggers.
 - `YARAify_Generics`: lookup a YARA rule (default), ClamAV rule, imphash, TLSH, telfhash or icon_dash in [YARAify](https://yaraify.abuse.ch/)
 - `HudsonRock`: [Hudson Rock](https://cavalier.hudsonrock.com/docs) provides its clients the ability to query a database of over 27,541,128 computers which were compromised through global info-stealer campaigns performed by threat actors.
-- `NIST_CVE_DB`: [NIST_CVE_DB](https://nvd.nist.gov/developers/start-here) provides the details of supplied CVE Id.
+- `NVD_CVE`: [NVD](https://nvd.nist.gov/developers/start-here) provides the details of supplied CVE Id.
 - `Phunter`: [Phunter Analyzer](https://github.com/N0rz3/Phunter) is an OSINT tool for finding information about a phone number.
 - `Presend_AddressRisk`: check an EVM address (`0x` plus 40 hex characters) against the [OFAC SDN list](https://presend.pages.dev/api) via the Presend address-risk API. No API key.
 
